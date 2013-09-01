@@ -18,11 +18,13 @@ void Scripting::Initialize()
 	InitLuaState();
 }
 
-void Scripting::ExecuteFile(const fs::path& path)
+bool Scripting::ExecuteFile(const fs::path& path)
 {
 	int res = luaL_dofile(L, path.string().c_str());
 	if (res != 0)
 		LOG(Error, "Failed to execute file '" << path.string() << "': " << lua_tostring(L, -1));
+
+	return res == 0;
 }
 
 void Scripting::Update(float elapsed)
