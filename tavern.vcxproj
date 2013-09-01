@@ -287,6 +287,450 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\extlibs\GLee\src\GLee.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\Adjustment.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\Alignment.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\Bin.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\Box.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\Button.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\Canvas.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\CheckButton.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\ComboBox.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\Container.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\Context.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\DejaVuSansFont.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\Desktop.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\Engine.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\Engines\BREW.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\Engines\BREW\Button.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\Engines\BREW\CheckButton.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\Engines\BREW\ComboBox.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\Engines\BREW\Entry.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\Engines\BREW\Frame.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\Engines\BREW\Image.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\Engines\BREW\Label.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\Engines\BREW\Notebook.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\Engines\BREW\ProgressBar.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\Engines\BREW\Scale.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\Engines\BREW\Scrollbar.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\Engines\BREW\ScrolledWindow.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\Engines\BREW\Separator.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\Engines\BREW\SpinButton.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\Engines\BREW\Spinner.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\Engines\BREW\ToggleButton.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\Engines\BREW\Window.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\Entry.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\FileResourceLoader.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\Fixed.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\Frame.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\Image.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\Label.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\Misc.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\NonCopyable.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\Notebook.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\Object.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\Parsers\ThemeParser\Grammar.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\Parsers\ThemeParser\GrammarPredicates.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\Parsers\ThemeParser\GrammarSelector.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\Parsers\ThemeParser\GrammarSimpleSelector.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\Parsers\ThemeParser\GrammarStatement.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\Parsers\ThemeParser\GrammarToken.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\Parsers\ThemeParser\Parse.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\Primitive.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\ProgressBar.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\RadioButton.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\Range.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\Renderer.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\RendererViewport.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\RenderQueue.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\ResourceLoader.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\ResourceManager.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\Scale.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\Scrollbar.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\ScrolledWindow.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\Selector.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\Separator.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\SFGUI.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\Signal.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\SpinButton.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\Spinner.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\Table.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\TableCell.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\TableOptions.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\ToggleButton.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\Viewport.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\Widget.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\Window.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\GLee\include;$(SolutionDir)\ext\SFGUI-0.1.1\extlibs\libELL\include;</AdditionalIncludeDirectories>
+    </ClCompile>
     <ClCompile Include="ext\TinyXML\tinyxml2.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
@@ -329,15 +773,15 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <ExecutablePath>..\..\ext\SFML-2.1\bin;..\..\ext\SFGUI-0.1.1\bin;$(ExecutablePath)</ExecutablePath>
-    <IncludePath>$(SolutionDir)\ext\luabind-0.9.1\;$(SolutionDir)\ext\lua-5.1.5\src;include;..\..\ext\SFML-2.1\include;..\..\ext\SFGUI-0.1.1\include;$(IncludePath)</IncludePath>
-    <LibraryPath>..\..\ext\SFML-2.1\lib;..\..\ext\SFGUI-0.1.1\lib;$(LibraryPath)</LibraryPath>
+    <ExecutablePath>$(ExecutablePath)</ExecutablePath>
+    <IncludePath>$(SolutionDir)\ext\luabind-0.9.1\;$(SolutionDir)\ext\lua-5.1.5\src;include;..\..\ext\SFML-2.1\include;F:\Programmieren\src\tavern\ext\SFGUI-0.1.1\include;$(IncludePath)</IncludePath>
+    <LibraryPath>..\..\ext\SFML-2.1\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <ExecutablePath>..\..\ext\SFML-2.1\bin;..\..\ext\SFGUI-0.1.1\bin;$(ExecutablePath)</ExecutablePath>
-    <IncludePath>$(SolutionDir)\ext\luabind-0.9.1\;$(SolutionDir)\ext\lua-5.1.5\src;include;..\..\ext\SFML-2.1\include;..\..\ext\SFGUI-0.1.1\include;$(IncludePath)</IncludePath>
-    <LibraryPath>..\..\ext\SFML-2.1\lib;..\..\ext\SFGUI-0.1.1\lib;$(LibraryPath)</LibraryPath>
+    <ExecutablePath>$(ExecutablePath)</ExecutablePath>
+    <IncludePath>$(SolutionDir)\ext\luabind-0.9.1\;$(SolutionDir)\ext\lua-5.1.5\src;include;..\..\ext\SFML-2.1\include;F:\Programmieren\src\tavern\ext\SFGUI-0.1.1\include;$(IncludePath)</IncludePath>
+    <LibraryPath>..\..\ext\SFML-2.1\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -345,14 +789,15 @@
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;_CRT_SECURE_NO_WARNINGS;LUABIND_CPLUSPLUS_LUA;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_CRT_SECURE_NO_WARNINGS;LUABIND_CPLUSPLUS_LUA;SFGUI_STATIC;SFGUI_INCLUDE_FONT;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <ObjectFileName>$(IntDir)/%(RelativeDir)/</ObjectFileName>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>sfml-main-d.lib;sfml-system-d.lib;sfml-graphics-d.lib;sfml-window-d.lib;sfgui-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>glew32.lib;opengl32.lib;glu32.lib;sfml-audio-d.lib;sfml-graphics-d.lib;sfml-main-d.lib;sfml-system-d.lib;sfml-window-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -363,15 +808,17 @@
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <PreprocessorDefinitions>WIN32;_CRT_SECURE_NO_WARNINGS;LUABIND_CPLUSPLUS_LUA;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_CRT_SECURE_NO_WARNINGS;LUABIND_CPLUSPLUS_LUA;SFGUI_STATIC;SFGUI_INCLUDE_FONT;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <ObjectFileName>$(IntDir)/%(RelativeDir)/</ObjectFileName>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>glew32.lib;opengl32.lib;glu32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

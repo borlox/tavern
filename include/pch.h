@@ -25,5 +25,7 @@
 #include <SFML/Window.hpp>
 #include <SFML/Graphics.hpp>
 
+// SFGUI
+#include <SFGUI/SFGUI.hpp>
 
 #endif //PCH_H
