@@ -1,6 +1,9 @@
 #include "pch.h"
 #include "Log.h"
 #include "Scripting.h"
+#include "sf_world.h"
+#include "sf_tilemap.h"
+#include "sf_smart_camera.h"
 
 int main(int argc, char **argv)
 {
@@ -24,6 +27,7 @@ int main(int argc, char **argv)
 	sfg::Window::Ptr testwnd(sfg::Window::Create());
 	testwnd->SetTitle("tavern - SFGUI");
 	testwnd->Add(boxlayout);
+	testwnd->SetPosition(sf::Vector2f(0., 384.));
 
 	sfg::Desktop desktop;
 	desktop.Add(testwnd);
@@ -35,9 +39,21 @@ int main(int argc, char **argv)
 
 	sf::Clock clk;
 
+	sftile::SfWorld world;
+	auto tilemap = world.LoadTilemap("test", "maps/test.tmx");
+	if (!tilemap) {
+		LOG(Error, "Failed to load tilemap");
+		return 0;
+	}
+
+	sftile::SfSmartCamera camera(800, 600);
+	tilemap->RegisterCamera(&camera);
+
+	window.setFramerateLimit(120);
 	while (window.isOpen()) {
 		sf::Event event;
 		while (window.pollEvent(event)) {
+			world.HandleEvents(event);
 			desktop.HandleEvent(event);
 			Scripting::Get().HandleEvent(event);
 
@@ -47,10 +63,12 @@ int main(int argc, char **argv)
 
 		float elapsed = clk.restart().asSeconds();
 
+		world.Update();
 		Scripting::Get().Update(elapsed);
 		desktop.Update(elapsed);
 
 		window.clear();
+		world.Render(window);
 		sfgui.Display(window);
 		window.display();
 	}
