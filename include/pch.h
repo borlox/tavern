@@ -16,9 +16,16 @@
 #include <algorithm>
 
 // BOOST
+#include <boost/date_time.hpp>
+#include <boost/filesystem.hpp>
 #include <boost/lexical_cast.hpp>
 
-#include <boost/date_time.hpp>
+// Lua
+#include <lua.h>
+#include <lualib.h>
+#include <lauxlib.h>
+// luabind
+#include <luabind/luabind.hpp>
 
 // SFML
 #include <SFML/System.hpp>

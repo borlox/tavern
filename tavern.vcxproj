@@ -37,6 +37,7 @@
     <ClInclude Include="ext\TinyXML\tinyxml2.h" />
     <ClInclude Include="include\Log.h" />
     <ClInclude Include="include\pch.h" />
+    <ClInclude Include="include\Scripting.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ext\lua-5.1.5\src\lapi.c">
@@ -740,6 +741,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="src\Scripting.cpp" />
     <ClCompile Include="src\tavern.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
