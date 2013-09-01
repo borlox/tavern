@@ -43,6 +43,6 @@ void Logger::RedirectStdStreams()
 	if (!fcout)
 		GetStream(Error) << "Failed to redirect cout, cannot open cout.txt" << "\n";
 	else
-		std::cout.rdbuf(fcerr.rdbuf());
+		std::cout.rdbuf(fcout.rdbuf());
 }
 
