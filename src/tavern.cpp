@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "Log.h"
+#include "Scripting.h"
 
 int main(int argc, char **argv)
 {
@@ -10,11 +11,10 @@ int main(int argc, char **argv)
 	sf::RenderWindow window(sf::VideoMode(800, 600), "tavern");
 
 	sfg::Label::Ptr testlbl(sfg::Label::Create("Hello World!"));
-	sfg::Button::Ptr testbtn(sfg::Button::Create("Hello SFGUI"));
+	sfg::Button::Ptr testbtn(sfg::Button::Create("Quit"));
 
 	testbtn->GetSignal(sfg::Widget::OnLeftClick).Connect(sfg::Delegate([&]() {
-		testlbl->SetText("Foobar");
-		testbtn->Show(false);
+		window.close();
 	}));
 
 	sfg::Box::Ptr boxlayout(sfg::Box::Create(sfg::Box::VERTICAL, 5.f));
@@ -30,17 +30,25 @@ int main(int argc, char **argv)
 
 	window.resetGLStates();
 
+	Scripting::Get().Initialize();
+	Scripting::Get().ExecuteFile("script/init.lua");
+
 	sf::Clock clk;
+
 	while (window.isOpen()) {
 		sf::Event event;
 		while (window.pollEvent(event)) {
 			desktop.HandleEvent(event);
+			Scripting::Get().HandleEvent(event);
 
 			if (event.type == sf::Event::Closed)
 				window.close();
 		}
 
-		desktop.Update(clk.restart().asSeconds());
+		float elapsed = clk.restart().asSeconds();
+
+		Scripting::Get().Update(elapsed);
+		desktop.Update(elapsed);
 
 		window.clear();
 		sfgui.Display(window);
