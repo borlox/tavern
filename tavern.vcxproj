@@ -49,7 +49,7 @@
     <ClInclude Include="include\sf_tilemap_loader.h" />
     <ClInclude Include="include\sf_tileset.h" />
     <ClInclude Include="include\sf_tile_layer.h" />
-    <ClInclude Include="include\sf_world.h" />
+    <ClInclude Include="include\World.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ext\lua-5.1.5\src\lapi.c">
@@ -800,14 +800,11 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Use</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Use</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="src\sf_world.cpp">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Use</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Use</PrecompiledHeader>
-    </ClCompile>
     <ClCompile Include="src\tavern.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Use</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Use</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="src\World.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{341BC7B7-BE75-4D2A-B897-9B5234132B89}</ProjectGuid>

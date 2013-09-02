@@ -1,46 +1,16 @@
-////////////////////////////////////////////////////////////
-/// SfTileEngine: C++/SFML Tile Engine
-/// Copyright (C) 2013 Tyler Petresky
-///
-/// This program is free software: you can redistribute it and/or modify
-/// it under the terms of the GNU General Public License as published by
-/// the Free Software Foundation, either version 3 of the License, or
-/// (at your option) any later version.
-///
-/// This program is distributed in the hope that it will be useful,
-/// but WITHOUT ANY WARRANTY; without even the implied warranty of
-/// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-/// GNU General Public License for more details.
-///
-/// You should have received a copy of the GNU General Public License
-/// along with this program.  If not, see <http://www.gnu.org/licenses/>.
-////////////////////////////////////////////////////////////
-
-#ifndef SF_WORLD_H
-#define SF_WORLD_H
-
-#include <iostream>
-  using std::cout;
-  using std::endl;
-#include <string>
-  using std::string;
-#include <map>
-  using std::map;
-#include <memory>
-  using std::unique_ptr;
-
-#include <SFML\Graphics.hpp>
+#ifndef WORLD_H
+#define WORLD_H
 
 #include "sf_tilemap_loader.h"
-#include "sf_dll_macro.h"
 
-/// Engine namespace
-namespace sftile
-{
-class SfTilemap;
+namespace sftile {
+	class SfTilemap;
+}
+
+using namespace sftile;
 
 /**
- * \class SfWorld
+ * \class World
  * \brief Provides a class to load and interact with
  *        your tilemaps.
  *
@@ -62,8 +32,8 @@ class SfTilemap;
  *
  * Proper Usage
  * \code
- * // Create SfWorld object
- * SfWorld world;
+ * // Create World object
+ * World world;
  *
  * // Load a tilemap and save it in the world.
  * // This also saves a pointer to that tilemap.
@@ -95,7 +65,7 @@ class SfTilemap;
  * \endcode
  */
 
-class SfWorld
+class World
 {
 public:
 	/**
@@ -103,14 +73,14 @@ public:
 	 *
 	 * Creates an empty world object.
 	 */
-	SfWorld();
+	World();
 
 	/**
 	 * \brief Copy constructor
 	 *
 	 * Copies an existing world object.
 	 */
-	SfWorld(const SfWorld& _copy);
+	World(const World& _copy);
 
 
 	/**
@@ -118,7 +88,7 @@ public:
 	 *
 	 * Copies an existing world object.
 	 */
-	SfWorld& operator=(const SfWorld& _copy);
+	World& operator=(const World& _copy);
 
 
 	/**
@@ -206,6 +176,4 @@ private:
 	std::string current_id;                 // Id of the current map
 };
 
-}
-
-#endif // SF_WORLD_H
+#endif // WORLD_H

@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "Log.h"
 #include "Scripting.h"
-#include "sf_world.h"
+#include "World.h"
 #include "sf_tilemap.h"
 #include "sf_smart_camera.h"
 
@@ -39,7 +39,7 @@ int main(int argc, char **argv)
 
 	sf::Clock clk;
 
-	sftile::SfWorld world;
+	World world;
 	auto tilemap = world.LoadTilemap("test", "maps/test.tmx");
 	if (!tilemap) {
 		LOG(Error, "Failed to load tilemap");

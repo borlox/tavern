@@ -1,5 +1,5 @@
 #include "pch.h"
-#include "sf_world.h"
+#include "World.h"
 
 #include "sf_tilemap.h"
 #include "sf_tileset.h"
@@ -7,24 +7,24 @@
 
 using namespace sftile;
 
-SfWorld::SfWorld()
+World::World()
 : current_id("null")
 {
 	cout << "World created" << endl;
 }
 
-SfWorld::SfWorld(const SfWorld& copy)
+World::World(const World& copy)
 : loader(copy.loader)
 , tilemaps(copy.tilemaps)
 , current_id(copy.current_id)
 {}
 
-SfWorld& SfWorld::operator=(const SfWorld& copy)
+World& World::operator=(const World& copy)
 {
 	using std::swap;
 
 	if (this != &copy) {
-		SfWorld temp(copy);
+		World temp(copy);
 		swap(loader, temp.loader);
 		swap(tilemaps, temp.tilemaps);
 		swap(current_id, temp.current_id);
@@ -33,7 +33,7 @@ SfWorld& SfWorld::operator=(const SfWorld& copy)
 	return *this;
 }
 
-SfTilemap* SfWorld::LoadTilemap(string id, string path)
+SfTilemap* World::LoadTilemap(string id, string path)
 {
 	SfTilemap tilemap;
   
@@ -52,7 +52,7 @@ SfTilemap* SfWorld::LoadTilemap(string id, string path)
 	return GetTilemap(id);
 }
 
-SfTilemap* SfWorld::GetTilemap(string _id)
+SfTilemap* World::GetTilemap(string _id)
 {
 	if (tilemaps.find(_id) == tilemaps.end()) {
 		cout << "Failed to find SfTilemap with ID: " << _id << endl;
@@ -63,22 +63,22 @@ SfTilemap* SfWorld::GetTilemap(string _id)
 	}
 }
 
-void SfWorld::HandleEvents(sf::Event _evt)
+void World::HandleEvents(sf::Event _evt)
 {
 	GetTilemap(current_id)->HandleEvents(_evt);
 }
 
-void SfWorld::Update()
+void World::Update()
 {
 	GetTilemap(current_id)->Update();
 }
 
-void SfWorld::Render(sf::RenderWindow& _window)
+void World::Render(sf::RenderWindow& _window)
 {
 	GetTilemap(current_id)->Render(_window);
 }
 
-bool SfWorld::MapExists(string id)
+bool World::MapExists(string id)
 {
 	return tilemaps.find(id) != tilemaps.end();
 }
