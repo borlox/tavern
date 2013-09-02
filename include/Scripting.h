@@ -1,6 +1,9 @@
 #ifndef SCRIPTING_H
 #define SCRIPTING_H
 
+// Log needed for template functions below
+#include "Log.h"
+
 class Scripting
 {
 	luabind::object updateFunc;
@@ -44,7 +47,12 @@ public:
 	 *
 	 * @param event The event to handle
 	 */
-	void HandleEvent(sf::Event& event);
+	void PostSfmlEvent(sf::Event& event);
+
+	void PostEvent(const std::string& event);
+
+	template <typename Arg>
+	void PostEvent(const std::string& event, const Arg& arg);
 
 	void exp_SetUpdateHandler(luabind::object func);
 	void exp_SetEventHandler(luabind::object func);
@@ -54,5 +62,32 @@ private:
 
 	void InitLuaState();
 };
+
+inline void Scripting::PostEvent(const std::string& event)
+{
+	if (!eventFunc)
+		return;
+
+	try {
+		luabind::call_function<void>(eventFunc, event);
+	}
+	catch (luabind::error err) {
+		LOG(Error, "Error executing event handler: " << lua_tostring(L, -1));
+	}
+}
+
+template <typename Arg>
+inline void Scripting::PostEvent(const std::string& event, const Arg& arg)
+{
+	if (!eventFunc)
+		return;
+
+	try {
+		luabind::call_function<void>(eventFunc, event, arg);
+	}
+	catch (luabind::error err) {
+		LOG(Error, "Error executing event handler: " << lua_tostring(L, -1));
+	}
+}
 
 #endif //SCRIPTING_H

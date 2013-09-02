@@ -3,6 +3,9 @@
 #ifndef PCH_H
 #define PCH_H
 
+// Disable warning about too long decorated names
+#pragma warning(disable:4503)
+
 // STL
 #include <iostream>
 #include <fstream>
@@ -12,6 +15,9 @@
 
 #include <vector>
 #include <list>
+#include <map>
+
+#include <memory>
 
 #include <algorithm>
 

@@ -1,6 +1,5 @@
 #include "pch.h"
 #include "Scripting.h"
-#include "Log.h"
 
 using namespace luabind;
 namespace fs = boost::filesystem;
@@ -40,17 +39,9 @@ void Scripting::Update(float elapsed)
 	}
 }
 
-void Scripting::HandleEvent(sf::Event& event)
+void Scripting::PostSfmlEvent(sf::Event& event)
 {
-	if (!eventFunc)
-		return;
-
-	try {
-		call_function<void>(eventFunc);
-	}
-	catch (error err) {
-		LOG(Error, "Error executing update function: " << lua_tostring(L, -1));
-	}
+	PostEvent("SfmlEvent");
 }
 
 void Scripting::exp_SetUpdateHandler(object func)
