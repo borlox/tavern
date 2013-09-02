@@ -1,37 +1,36 @@
 #include "pch.h"
 #include "Log.h"
 #include "Scripting.h"
+#include "State.h"
 #include "World.h"
 #include "sf_tilemap.h"
 #include "sf_smart_camera.h"
 
+
 int main(int argc, char **argv)
 {
 	Log::Logger::Instance().RedirectStdStreams();
+#ifdef _DEBUG
+	Log::Logger::Instance().SetLogLevel(Log::Logger::Debug);
+#endif
 
 	sfg::SFGUI sfgui;
 
 	sf::RenderWindow window(sf::VideoMode(800, 600), "tavern");
 
-	sfg::Label::Ptr testlbl(sfg::Label::Create("Hello World!"));
-	sfg::Button::Ptr testbtn(sfg::Button::Create("Quit"));
+	sfg::Window::Ptr guiWnd(sfg::Window::Create(0));
+	guiWnd->SetPosition(sf::Vector2f(0.f, 0.f));
 
-	testbtn->GetSignal(sfg::Widget::OnLeftClick).Connect(sfg::Delegate([&]() {
+	sfg::Button::Ptr guiQuitBtn(sfg::Button::Create("Quit"));
+	guiQuitBtn->GetSignal(sfg::Widget::OnLeftClick).Connect(sfg::Delegate([&]() {
 		window.close();
 	}));
 
-	sfg::Box::Ptr boxlayout(sfg::Box::Create(sfg::Box::VERTICAL, 5.f));
-	boxlayout->Pack(testlbl);
-	boxlayout->Pack(testbtn);
+	sfg::Fixed::Ptr guiFixed(sfg::Fixed::Create());
+	guiFixed->Put(guiQuitBtn, sf::Vector2f(390, 6));
 
-	sfg::Window::Ptr testwnd(sfg::Window::Create());
-	testwnd->SetTitle("tavern - SFGUI");
-	testwnd->Add(boxlayout);
-	testwnd->SetPosition(sf::Vector2f(0., 384.));
-
-	sfg::Desktop desktop;
-	desktop.Add(testwnd);
-
+	guiWnd->Add(guiFixed);
+	
 	window.resetGLStates();
 
 	Scripting::Get().Initialize();
@@ -49,13 +48,22 @@ int main(int argc, char **argv)
 	sftile::SfSmartCamera camera(800, 600);
 	tilemap->RegisterCamera(&camera);
 
+	SetupStates();
+
+	State* currentState = GetState("MainMenuState");
+	if (!currentState) {
+		LOG(Crit, "MainMenuState not found.");
+		return 0;
+	}
+	bool stateChanged = true;
+
 	window.setFramerateLimit(120);
 	while (window.isOpen()) {
 		sf::Event event;
 		while (window.pollEvent(event)) {
 			world.HandleEvents(event);
-			desktop.HandleEvent(event);
-			Scripting::Get().HandleEvent(event);
+			guiWnd->HandleEvent(event);
+			Scripting::Get().PostSfmlEvent(event);
 
 			if (event.type == sf::Event::Closed)
 				window.close();
@@ -63,9 +71,28 @@ int main(int argc, char **argv)
 
 		float elapsed = clk.restart().asSeconds();
 
+		if (stateChanged) {
+			currentState->Start();
+			stateChanged = false;
+		}
+
+		if (!currentState->Run(elapsed)) {
+			currentState->Stop();
+			auto nextStateId = currentState->GetNextState();
+
+			LOG(Msg, "Changing state from " << currentState->GetId() << " to " << nextStateId);
+
+			currentState = GetState(nextStateId);
+			if (!currentState) {
+				LOG(Crit, "State " << nextStateId << " not found!");
+				return 0;
+			}
+			stateChanged = true;
+		}
+
 		world.Update();
 		Scripting::Get().Update(elapsed);
-		desktop.Update(elapsed);
+		guiWnd->Update(elapsed);
 
 		window.clear();
 		world.Render(window);

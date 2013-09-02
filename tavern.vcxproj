@@ -49,6 +49,7 @@
     <ClInclude Include="include\sf_tilemap_loader.h" />
     <ClInclude Include="include\sf_tileset.h" />
     <ClInclude Include="include\sf_tile_layer.h" />
+    <ClInclude Include="include\State.h" />
     <ClInclude Include="include\World.h" />
   </ItemGroup>
   <ItemGroup>
@@ -800,6 +801,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Use</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Use</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="src\State.cpp" />
     <ClCompile Include="src\tavern.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Use</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Use</PrecompiledHeader>
