@@ -25,6 +25,8 @@
 #include <boost/date_time.hpp>
 #include <boost/filesystem.hpp>
 #include <boost/lexical_cast.hpp>
+#include <boost/range/algorithm.hpp>
+#include <boost/range/adaptors.hpp>
 
 // Lua
 #include <lua.h>
