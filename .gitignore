@@ -8,7 +8,7 @@ ipch/*
 *.sdf
 *.opensdf
 *.sdf
-*.vcproj.*
+*.vcxproj.*
 
 # generated files
 cerr.txt
