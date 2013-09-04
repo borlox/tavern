@@ -11,6 +11,8 @@
 #include "sf_object_layer.h"
 #include "sf_object.h"
 
+#include "TextureManager.h"
+
 namespace fs = boost::filesystem;
 
 /// Engine namespace
@@ -139,55 +141,38 @@ bool SfTilemapLoader::LoadTilemap(const fs::path& _path, SfTilemap& _tilemap)
 ////////////////////////////////////////////////////////////
 bool SfTilemapLoader::ParseTileset(const XMLElement* _element, SfTileset& _tileset)
 {
-  // First GID of the currently parsing tileset
-  int first_gid = 0; _element->QueryIntAttribute("firstgid", &first_gid);
-  _element->QueryIntAttribute("tilewidth", &_tileset.tile_dimensions.x);
-  _element->QueryIntAttribute("tileheight", &_tileset.tile_dimensions.y);
-  // Space around the tileset image
-  int margin = 0; _element->QueryIntAttribute("margin", &margin);
-  // Space in between each tile in the tileset
-  int spacing = 0; _element->QueryIntAttribute("spacing", &spacing);
+	// First GID of the currently parsing tileset
+	int first_gid = 0; _element->QueryIntAttribute("firstgid", &first_gid);
+	_element->QueryIntAttribute("tilewidth", &_tileset.tile_dimensions.x);
+	_element->QueryIntAttribute("tileheight", &_tileset.tile_dimensions.y);
+	// Space around the tileset image
+	int margin = 0; _element->QueryIntAttribute("margin", &margin);
+	// Space in between each tile in the tileset
+	int spacing = 0; _element->QueryIntAttribute("spacing", &spacing);
 
-  _tileset.first_gid = first_gid;
+	_tileset.first_gid = first_gid;
 
-  // Load the image of the tileset and store
-  // it in the SfTileset.
-  const XMLElement* image_element = _element->FirstChildElement("image");
-  if (!CheckPointer(image_element, "Couldn't locate image element in map file"))
-    return false;
+	// Load the image of the tileset and store
+	// it in the SfTileset.
+	const XMLElement* image_element = _element->FirstChildElement("image");
+	if (!CheckPointer(image_element, "Couldn't locate image element in map file"))
+		return false;
 
-  // Load the tileset image
-  string source = image_element->Attribute("source");
-  fs::path srcPath = mapDirectory / source;
-  if (!_tileset.tileset_image.loadFromFile(srcPath.string()))
-  {
-    cout << "Failed to load tileset image" << endl;
-    return false;
-  }
+	// Load the tileset image
+	string source = image_element->Attribute("source");
+	fs::path srcPath = mapDirectory / source;
 
-  int width = 0; image_element->QueryIntAttribute("width", &width);
-  int height = 0; image_element->QueryIntAttribute("height", &height);
-  image_element = nullptr;
+	_tileset.tileset_image = TextureManager::Get().Load(srcPath.string());
+	if (!_tileset.tileset_image) {
+		cout << "Failed to load tileset image" << endl;
+		return false;
+	}
 
-  return true;
+	int width = 0; image_element->QueryIntAttribute("width", &width);
+	int height = 0; image_element->QueryIntAttribute("height", &height);
+	image_element = nullptr;
 
-  // no longer needed
-  /*// Load all of the tiles into the tileset
-  int gid = first_gid;
-  for (int y = margin; y < height; y += spacing + _tileset.tile_dimensions.y)
-    for (int x = margin; x < width; x += spacing + _tileset.tile_dimensions.x)
-    {
-      // We only save the rectangle around the tile
-      // to help shorten loading times.
-      // We can then load the texture every frame when we want
-      // to display the tile.
-      sf::IntRect rect(x, y, _tileset.tile_dimensions.x, _tileset.tile_dimensions.y);
-
-      SfTile temp_tile(gid, rect);
-      _tileset.tiles.push_back(temp_tile);
-    }*/
-
-  return true;
+	return true;
 }
 
 ////////////////////////////////////////////////////////////
