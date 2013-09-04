@@ -35,6 +35,7 @@
     <ClInclude Include="ext\lua-5.1.5\src\lvm.h" />
     <ClInclude Include="ext\lua-5.1.5\src\lzio.h" />
     <ClInclude Include="ext\TinyXML\tinyxml2.h" />
+    <ClInclude Include="include\GameObject.h" />
     <ClInclude Include="include\Log.h" />
     <ClInclude Include="include\pch.h" />
     <ClInclude Include="include\Scripting.h" />
@@ -750,6 +751,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="src\GameObject.cpp" />
     <ClCompile Include="src\Log.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Use</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Use</PrecompiledHeader>
