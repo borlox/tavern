@@ -123,7 +123,7 @@ public:
 	////////////////////////////////////////////////////////////
 	const int GetNumTiles()
 	{
-		auto imgSize = tileset_image.getSize();
+		auto imgSize = tileset_image->getSize();
 		auto n_x = imgSize.x / tile_dimensions.x;
 		auto n_y = imgSize.y / tile_dimensions.y;
 
@@ -150,7 +150,7 @@ private:
   size_t first_gid;
 
   /// Texture of the entire tileset in full
-  sf::Texture tileset_image;
+  sf::Texture* tileset_image;
 
 
   /// Properties of the tileset

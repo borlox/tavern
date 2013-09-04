@@ -17,7 +17,7 @@ namespace priv
 ////////////////////////////////////////////////////////////
 SfTileset::SfTileset()
 : tile_dimensions(32, 32)
-, tileset_image()
+, tileset_image(nullptr)
 , first_gid(0)
 { }
 
@@ -58,7 +58,7 @@ SfTile SfTileset::GetTile(const unsigned int gid)
 {
 	assert(HasTileForGID(gid));
 	size_t localId = gid - first_gid;
-	auto imgSize = tileset_image.getSize();
+	auto imgSize = tileset_image->getSize();
 	size_t nX = imgSize.x / tile_dimensions.x;
 	size_t nY = imgSize.y / tile_dimensions.y;
 
@@ -79,7 +79,7 @@ SfTile SfTileset::GetTile(const unsigned int gid)
 void SfTileset::RenderTile(sf::RenderWindow& _window, const unsigned int _id, const float _x, const float _y)
 {
   SfTile tile = GetTile(_id);
-  sf::Sprite sprite(tileset_image, tile.GetRect());
+  sf::Sprite sprite(*tileset_image, tile.GetRect());
   sprite.setPosition(_x, _y);
 
   _window.draw(sprite);
