@@ -8,6 +8,10 @@
 #include "sf_tilemap.h"
 #include "sf_smart_camera.h"
 
+#include "Globals.h"
+
+World g_World;
+
 static void InitSingletons()
 {
 	TextureManager::Get().Initialize();
@@ -46,7 +50,7 @@ int main(int argc, char **argv)
 
 	sf::Clock clk;
 
-	World world;
+	World& world = g_World;
 	auto tilemap = world.LoadTilemap("test", "maps/test.tmx");
 	if (!tilemap) {
 		LOG(Error, "Failed to load tilemap");
@@ -54,9 +58,9 @@ int main(int argc, char **argv)
 	}
 
 	auto hero = new AnimatedObject(TextureManager::Get().Load("assets/image/character/TestCharacter.png"));
-	hero->SetPosition(5, 5);
-	hero->Animate();
-	world.AddObject(hero);
+	hero->SetPosition(6, 6);
+	//hero->Animate();
+	world.SetHeroObject(hero);
 
 	sftile::SfSmartCamera camera(800, 600);
 	tilemap->RegisterCamera(&camera);
