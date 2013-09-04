@@ -4,6 +4,7 @@
 #include "State.h"
 #include "World.h"
 #include "TextureManager.h"
+#include "AnimatedObject.h"
 #include "sf_tilemap.h"
 #include "sf_smart_camera.h"
 
@@ -52,6 +53,11 @@ int main(int argc, char **argv)
 		return 0;
 	}
 
+	auto hero = new AnimatedObject(TextureManager::Get().Load("assets/image/character/TestCharacter.png"));
+	hero->SetPosition(5, 5);
+	hero->Animate();
+	world.AddObject(hero);
+
 	sftile::SfSmartCamera camera(800, 600);
 	tilemap->RegisterCamera(&camera);
 
@@ -97,7 +103,7 @@ int main(int argc, char **argv)
 			stateChanged = true;
 		}
 
-		world.Update();
+		world.Update(elapsed);
 		Scripting::Get().Update(elapsed);
 		guiWnd->Update(elapsed);
 
