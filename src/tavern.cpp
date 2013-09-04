@@ -3,9 +3,15 @@
 #include "Scripting.h"
 #include "State.h"
 #include "World.h"
+#include "TextureManager.h"
 #include "sf_tilemap.h"
 #include "sf_smart_camera.h"
 
+static void InitSingletons()
+{
+	TextureManager::Get().Initialize();
+	Scripting::Get().Initialize();
+}
 
 int main(int argc, char **argv)
 {
@@ -13,6 +19,8 @@ int main(int argc, char **argv)
 #ifdef _DEBUG
 	Log::Logger::Instance().SetLogLevel(Log::Logger::Debug);
 #endif
+
+	InitSingletons();
 
 	sfg::SFGUI sfgui;
 
@@ -33,7 +41,6 @@ int main(int argc, char **argv)
 	
 	window.resetGLStates();
 
-	Scripting::Get().Initialize();
 	Scripting::Get().ExecuteFile("script/init.lua");
 
 	sf::Clock clk;
