@@ -54,6 +54,7 @@ void Scripting::exp_SetEventHandler(object func)
 	eventFunc = func;
 }
 
+#include "ScriptingSfml.h"
 namespace Exp
 {
 	void Log(Log::Logger::LogLevel lvl, std::string str)
