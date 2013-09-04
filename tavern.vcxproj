@@ -51,6 +51,7 @@
     <ClInclude Include="include\sf_tile_layer.h" />
     <ClInclude Include="include\State.h" />
     <ClInclude Include="include\World.h" />
+    <ClInclude Include="src\TextureManager.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ext\lua-5.1.5\src\lapi.c">
