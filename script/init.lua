@@ -27,6 +27,12 @@ EventHandler:AddEventHandler("StateStart", function(event, state)
 	Log(LogLevel.Msg, "State start: " .. state)
 end)
 
+EventHandler:AddEventHandler("SfmlEvent", function(event, etype, arg)
+	Log(LogLevel.Msg, "SFML Event: " .. etype)
+	Log(LogLevel.Msg, "  x: " .. arg.x .. " | y: " .. arg.y)
+end)
+
+
 function Initialize()
 	local function HandleEvent(event, ...)
 		EventHandler:HandleEvent(event, ...)

@@ -55,6 +55,8 @@ void Scripting::exp_SetEventHandler(object func)
 }
 
 #include "ScriptingSfml.h"
+#include "GameObject.h"
+
 namespace Exp
 {
 	void Log(Log::Logger::LogLevel lvl, std::string str)
@@ -108,6 +110,10 @@ void Scripting::InitLuaState()
 			value("Msg", Log::Logger::Msg),
 			value("Debug", Log::Logger::Debug),
 			value("Trace", Log::Logger::Trace)
-		]
+		],
+
+		ExportSfmlClasses(),
+
+		GameObject::ExportClass()
 	];
 }
