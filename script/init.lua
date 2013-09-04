@@ -29,7 +29,7 @@ end)
 
 EventHandler:AddEventHandler("SfmlEvent", function(event, etype, arg)
 	Log(LogLevel.Msg, "SFML Event: " .. etype)
-	Log(LogLevel.Msg, "  x: " .. arg.x .. " | y: " .. arg.y)
+	Log(LogLevel.Msg, "  x: " .. arg.x .. " | y: " .. arg.y .. " | button: " .. arg.button)
 end)
 
 

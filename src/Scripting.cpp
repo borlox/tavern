@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "Scripting.h"
+#include "Globals.h"
 
 using namespace luabind;
 namespace fs = boost::filesystem;
@@ -60,6 +61,7 @@ void Scripting::exp_SetEventHandler(object func)
 
 #include "ScriptingSfml.h"
 #include "GameObject.h"
+#include "World.h"
 
 namespace Exp
 {
@@ -118,6 +120,14 @@ void Scripting::InitLuaState()
 
 		ExportSfmlClasses(),
 
+		World::ExportClass(),
 		GameObject::ExportClass()
 	];
+
+	RegisterGlobals();
+}
+
+void Scripting::RegisterGlobals()
+{
+	globals(L)["World"] = &g_World;
 }

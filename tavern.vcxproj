@@ -37,6 +37,7 @@
     <ClInclude Include="ext\TinyXML\tinyxml2.h" />
     <ClInclude Include="include\AnimatedObject.h" />
     <ClInclude Include="include\GameObject.h" />
+    <ClInclude Include="include\Globals.h" />
     <ClInclude Include="include\Log.h" />
     <ClInclude Include="include\pch.h" />
     <ClInclude Include="include\Scripting.h" />

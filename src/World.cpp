@@ -53,14 +53,17 @@ SfTilemap* World::LoadTilemap(string id, string path)
 	return GetTilemap(id);
 }
 
-SfTilemap* World::GetTilemap(string _id)
+SfTilemap* World::GetTilemap(string id)
 {
-	if (tilemaps.find(_id) == tilemaps.end()) {
-		cout << "Failed to find SfTilemap with ID: " << _id << endl;
+	if (id.empty())
+		id = current_id;
+
+	if (tilemaps.find(id) == tilemaps.end()) {
+		cout << "Failed to find SfTilemap with ID: " << id << endl;
 		return nullptr;
 	}
 	else {
-		return &tilemaps.at(_id);
+		return &tilemaps.at(id);
 	}
 }
 
@@ -87,9 +90,18 @@ void World::Render(sf::RenderWindow& window)
 
 	tilemap->Render(window);
 
+	bool heroDrawn = false;
 	for (auto& obj: gameObjects) {
 		obj->Render(window, tilemap->TileToScreen(obj->GetPosition()));
+
+		if (heroObject && !heroDrawn && heroObject->GetPosition().y > obj->GetPosition().y) {
+			heroObject->Render(window, tilemap->TileToScreen(heroObject->GetPosition()));
+			heroDrawn = true;
+		}
 	}
+
+	if (heroObject && !heroDrawn)
+		heroObject->Render(window, tilemap->TileToScreen(heroObject->GetPosition()));
 }
 
 bool World::MapExists(string id)

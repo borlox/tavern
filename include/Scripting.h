@@ -64,6 +64,7 @@ private:
 	Scripting();
 
 	void InitLuaState();
+	void RegisterGlobals();
 };
 
 inline void Scripting::PostEvent(const std::string& event)
