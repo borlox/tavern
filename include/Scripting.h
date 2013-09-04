@@ -51,8 +51,11 @@ public:
 
 	void PostEvent(const std::string& event);
 
-	template <typename Arg>
-	void PostEvent(const std::string& event, const Arg& arg);
+	template <typename Arg1>
+	void PostEvent(const std::string& event, const Arg1& arg1);
+
+	template <typename Arg1, typename Arg2>
+	void PostEvent(const std::string& event, const Arg1& arg1, const Arg2& arg2);
 
 	void exp_SetUpdateHandler(luabind::object func);
 	void exp_SetEventHandler(luabind::object func);
@@ -76,14 +79,28 @@ inline void Scripting::PostEvent(const std::string& event)
 	}
 }
 
-template <typename Arg>
-inline void Scripting::PostEvent(const std::string& event, const Arg& arg)
+template <typename Arg1>
+inline void Scripting::PostEvent(const std::string& event, const Arg1& arg1)
 {
 	if (!eventFunc)
 		return;
 
 	try {
-		luabind::call_function<void>(eventFunc, event, arg);
+		luabind::call_function<void>(eventFunc, event, arg1);
+	}
+	catch (luabind::error err) {
+		LOG(Error, "Error executing event handler: " << lua_tostring(L, -1));
+	}
+}
+
+template <typename Arg1, typename Arg2>
+inline void Scripting::PostEvent(const std::string& event, const Arg1& arg1, const Arg2& arg2)
+{
+	if (!eventFunc)
+		return;
+
+	try {
+		luabind::call_function<void>(eventFunc, event, arg1, arg2);
 	}
 	catch (luabind::error err) {
 		LOG(Error, "Error executing event handler: " << lua_tostring(L, -1));

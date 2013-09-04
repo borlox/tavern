@@ -41,7 +41,11 @@ void Scripting::Update(float elapsed)
 
 void Scripting::PostSfmlEvent(sf::Event& event)
 {
-	PostEvent("SfmlEvent");
+	switch (event.type) {
+	case sf::Event::MouseButtonPressed:
+		PostEvent("SfmlEvent", "MouseButtonPressed", event.mouseButton);
+		break;
+	}
 }
 
 void Scripting::exp_SetUpdateHandler(object func)
