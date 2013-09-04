@@ -1,0 +1,17 @@
+# MSCV generated directories
+Debug/*
+Release/*
+ipch/*
+
+# Add MSVC files
+*.suo
+*.sdf
+*.opensdf
+*.sdf
+*.vcproj.*
+
+# generated files
+cerr.txt
+cout.txt
+log.txt
+
