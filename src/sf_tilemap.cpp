@@ -97,3 +97,17 @@ void SfTilemap::Render(sf::RenderWindow& _window)
 		}
 	}
 }
+
+sf::Vector2f SfTilemap::TileToScreen(sf::Vector2f tilePos)
+{
+	sf::Vector2i offset = camera->GetTileOffset(tile_dimensions.x, tile_dimensions.y);
+	sf::IntRect bounds = camera->GetBounds(tile_dimensions.x, tile_dimensions.y);
+
+	float x = tilePos.x - bounds.left;
+	float y = tilePos.y - bounds.top;
+
+	float px = x * tile_dimensions.x - offset.x;
+	float py = y * tile_dimensions.y - offset.y;
+
+	return sf::Vector2f(px, py);
+}

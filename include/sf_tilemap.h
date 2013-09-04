@@ -169,6 +169,7 @@ public:
   ////////////////////////////////////////////////////////////
   void Render(sf::RenderWindow& _window);
 
+	sf::Vector2f TileToScreen(sf::Vector2f tilePos);
 
 private:
   /// Camera registered to the tile map
