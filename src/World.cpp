@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "World.h"
+#include "GameObject.h"
 
 #include "sf_tilemap.h"
 #include "sf_tileset.h"
@@ -68,14 +69,27 @@ void World::HandleEvents(sf::Event _evt)
 	GetTilemap(current_id)->HandleEvents(_evt);
 }
 
-void World::Update()
+void World::Update(float elapsed)
 {
 	GetTilemap(current_id)->Update();
+
+	for (auto& obj: gameObjects)
+		obj->Update(elapsed);
+
+	boost::sort(gameObjects, [](const GameObject::Ptr& a, const GameObject::Ptr& b) {
+		return a->GetPosition().y < b->GetPosition().y;
+	});
 }
 
-void World::Render(sf::RenderWindow& _window)
+void World::Render(sf::RenderWindow& window)
 {
-	GetTilemap(current_id)->Render(_window);
+	SfTilemap* tilemap = GetTilemap(current_id);
+
+	tilemap->Render(window);
+
+	for (auto& obj: gameObjects) {
+		obj->Render(window, tilemap->TileToScreen(obj->GetPosition()));
+	}
 }
 
 bool World::MapExists(string id)

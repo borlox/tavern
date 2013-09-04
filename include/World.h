@@ -3,6 +3,8 @@
 
 #include "sf_tilemap_loader.h"
 
+class GameObject;
+
 namespace sftile {
 	class SfTilemap;
 }
@@ -133,7 +135,7 @@ public:
 	///        updating.
 	///
 	////////////////////////////////////////////////////////////
-	void Update();
+	void Update(float elapsed);
 
 
 	////////////////////////////////////////////////////////////
@@ -143,6 +145,16 @@ public:
 	///
 	////////////////////////////////////////////////////////////
 	void Render(sf::RenderWindow& _window);
+
+	/**
+	 * Add an object to the world.
+	 *
+	 * The World takes ownership of the object.
+	 */
+	void AddObject(GameObject* obj)
+	{
+		gameObjects.emplace_back(obj);
+	}
 
 
 private:
@@ -174,6 +186,8 @@ private:
 	std::map<string, SfTilemap> tilemaps;
 
 	std::string current_id;                 // Id of the current map
+
+	std::vector<std::unique_ptr<GameObject>> gameObjects;
 };
 
 #endif // WORLD_H
