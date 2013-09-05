@@ -30,8 +30,11 @@ end)
 EventHandler:AddEventHandler("MouseButtonReleased", function(event, arg)
 	if arg.button == MouseButton.Left then
 		hero = World:GetHero()
+		map = World:GetMap("")
+		
+		tilePos = map:ScreenToTile(Vector2f(arg.x, arg.y))
 		Log(LogLevel.Debug, "Setting hero position: (" .. arg.x .. ", " .. arg.y .. ")")
-		hero:SetPosition(arg.x, arg.y)
+		hero:SetPosition(tilePos.x, tilePos.y)
 	end
 end)
 

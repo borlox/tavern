@@ -114,7 +114,7 @@ public:
 		return
 			luabind::class_<World>("World")
 			.def("GetHero", &World::GetHeroObject)
-			//.def("GetMap", &World::GetTilemap)
+			.def("GetMap", &World::GetTilemap)
 		;
 	}
 
