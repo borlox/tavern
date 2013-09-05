@@ -1,32 +1,18 @@
 #ifndef TILEMAP_H
 #define TILEMAP_H
 
-#include <iostream>
-  using std::cout;
-  using std::endl;
-#include <memory>
-  using std::unique_ptr;
-#include <string>
-  using std::string;
-#include <vector>
-  using std::vector;
-
-#include <SFML\Graphics.hpp>
-
 #include "sf_tile_layer.h"
 #include "sf_object_layer.h"
 #include "sf_tileset.h"
-#include "sf_dll_macro.h"
 
-/// Engine namespace
-namespace sftile
-{
-class SfCamera;
-
-/// Private engine namespace
-namespace priv
-{
-class SfTilemapLoader;
+namespace sftile {
+	class SfCamera;
+	namespace priv {
+		class TilemapLoader;
+	}
+}
+using namespace sftile;
+using namespace priv;
 
 /// Orientation of the tile map.
 enum TilemapOrientation
@@ -52,30 +38,7 @@ enum TilemapCompression
   SFTILE_COMPRESS_ZLIB
 };
 
-}
-
-////////////////////////////////////////////////////////////
-/// \class: SfTilemap
-/// \brief Class for storing and interacting with tile maps
-///
-/// This class is used to store the data of a tile map.
-/// Duh! However, you can't load it directly. You always
-/// need to load the tile maps through your SfWorld object.
-/// This is so that your world can know about this tile
-/// map and make sure it gets rendered and updated.
-///
-/// While you are loading the tile map you can save a
-/// pointer to the that tile map in one of these. This
-/// will allow you to later use data from the to and add
-/// objects to it, etc.
-///
-/// Proper Usage:
-/// -- Loading Method --
-/// SfTilemap* tilemap = world.LoadTilemap("testmap", "res\\maps\\test_map.tmx");
-///
-////////////////////////////////////////////////////////////
-
-class SF_TILE_API SfTilemap
+class Tilemap
 {
 friend class priv::SfTilemapLoader;
 public:
@@ -84,126 +47,94 @@ public:
 	 *
 	 * Constructs an empty tile map.
 	 */
-	SfTilemap();
+	Tilemap();
 
 	/**
 	 * \brief Copy constructor
 	 *
 	 * Copies an existing tile map.
 	 */
-	SfTilemap(const SfTilemap& copy);
+	Tilemap(const Tilemap& copy);
 
 	/**
 	 * \brief Move constructor
 	 *
 	 * Moves an existing tile map.
 	 */
-	SfTilemap(SfTilemap&& moved);
+	Tilemap(Tilemap&& moved);
 
 	/**
-	* \brief Assignment operator
-	*
-	* Copies an existing tile map.
-	*/
-	SfTilemap& operator=(SfTilemap copy);
+	 * \brief Assignment operator
+	 *
+	 * Copies an existing tile map.
+	 */
+	Tilemap& operator=(Tilemap copy);
 
-  ////////////////////////////////////////////////////////////
-  /// \brief Destructor
-  ///
-  /// Destroys the tile map.
-  ///
-  ////////////////////////////////////////////////////////////
-  ~SfTilemap();
+	/**
+	 * \brief Destructor
+	 * 
+	 * Destroys the tile map.
+	 */
+	~Tilemap();
 
+	/**
+	 * \brief Registers a camera with the tile map by saving
+	 *        a pointer to the camera object.
+	 * 
+	 * \param _camera Pointer to the camera object
+	 */
+	void RegisterCamera(SfCamera* _camera);
 
-  ////////////////////////////////////////////////////////////
-  /// \brief Registers a camera with the tile map by saving
-  ///        a pointer to the camera object.
-  ///
-  /// \param _camera Pointer to the camera object
-  ///
-  ////////////////////////////////////////////////////////////
-  void RegisterCamera(SfCamera* _camera);
+	/**
+	 * \brief Handles any events referring to the tile map.
+	 *
+	 * \param _evt SFML event object
+	 */
+	void HandleEvents(sf::Event _evt);
 
+	/**
+	 * \brief Updates anything in the tile map that needs
+	 *        updating.
+	 */
+	void Update();
 
-  ////////////////////////////////////////////////////////////
-  /// \brief Handles any events referring to the tile map.
-  ///
-  /// \param _evt SFML event object
-  ///
-  ////////////////////////////////////////////////////////////
-  void HandleEvents(sf::Event _evt);
-
-
-  ////////////////////////////////////////////////////////////
-  /// \brief Updates anything in the tile map that needs
-  ///        updating.
-  ///
-  ////////////////////////////////////////////////////////////
-  void Update();
-
-
-  ////////////////////////////////////////////////////////////
-  /// \brief Renders the tile map.
-  ///
-  /// \param _window SFML window to render to
-  ///
-  ////////////////////////////////////////////////////////////
-  void Render(sf::RenderWindow& _window);
+	/**
+	 * \brief Renders the tile map.
+	 *
+	 * \param _window SFML window to render to
+	 */
+	void Render(sf::RenderWindow& _window);
 
 	sf::Vector2f TileToScreen(sf::Vector2f tilePos);
 
 private:
-  /// Camera registered to the tile map
-  sftile::SfCamera* camera;
+	sftile::SfCamera* camera;
 
+	std::vector<SfTileset> tilesets;
 
-  /// Tileset to hold all tilesets in this tile map
-  //priv::SfTileset tileset;
+	SfTileset& TilesetForGID(size_t gid);
 
-  std::vector<priv::SfTileset> tilesets;
+	vector<SfTileLayer> tile_layers;
 
-	priv::SfTileset& TilesetForGID(size_t gid)
-	{
-		for (size_t i=0; i < tilesets.size(); ++i) {
-			if (tilesets[i].HasTileForGID(gid))
-				return tilesets[i];
-		}
-		throw std::out_of_range("Failed to find tileset for global id");
-	}
+	vector<SfObjectLayer> object_layers;
 
-  /// Vector holding all tile layers
-  vector<priv::SfTileLayer> tile_layers;
+	/// Dimensions of the tile map in tiles
+	sf::Vector2i map_dimensions;
 
+	/// Dimensions of the tiles in the map in pixels
+	sf::Vector2i tile_dimensions;
 
-  /// Vector holding all object layers
-  vector<priv::SfObjectLayer> object_layers;
+	/// Version of TMX being used
+	float version;
 
+	/// Orientation of the tile map
+	TilemapOrientation orientation;
 
-  /// Dimensions of the tile map in tiles
-  sf::Vector2i map_dimensions;
+	/// Encoding of the tile map
+	TilemapEncoding encoding;
 
-
-  /// Dimensions of the tiles in the map in pixels
-  sf::Vector2i tile_dimensions;
-
-
-  /// Version of TMX being used
-  float version;
-
-
-  /// Orientation of the tile map
-  priv::TilemapOrientation orientation;
-
-
-  /// Encoding of the tile map
-  priv::TilemapEncoding encoding;
-
-
-  /// Compression of the tile map
-  priv::TilemapCompression compression;
+	/// Compression of the tile map
+	TilemapCompression compression;
 };
-
-}
 
 #endif // TILEMAP_H

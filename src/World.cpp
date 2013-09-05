@@ -34,32 +34,32 @@ World& World::operator=(const World& copy)
 	return *this;
 }
 
-SfTilemap* World::LoadTilemap(string id, string path)
+Tilemap* World::LoadTilemap(string id, string path)
 {
-	SfTilemap tilemap;
+	Tilemap tilemap;
   
-	// Check to make sure the SfTilemap doesn't already exists.
+	// Check to make sure the Tilemap doesn't already exists.
 	// If not, then attempt to parse the data for it.
 	if (!MapExists(id) && !loader.LoadTilemap(path, tilemap)) {
-		cout << "Failed to load SfTilemap from path: " << path << endl;
+		cout << "Failed to load Tilemap from path: " << path << endl;
 		return nullptr;
 	}
   
 	tilemaps.emplace(id, std::move(tilemap));
 
-	cout << "Loaded SfTilemap from path: " << path << endl;
+	cout << "Loaded Tilemap from path: " << path << endl;
 
 	current_id = id;
 	return GetTilemap(id);
 }
 
-SfTilemap* World::GetTilemap(string id)
+Tilemap* World::GetTilemap(string id)
 {
 	if (id.empty())
 		id = current_id;
 
 	if (tilemaps.find(id) == tilemaps.end()) {
-		cout << "Failed to find SfTilemap with ID: " << id << endl;
+		cout << "Failed to find Tilemap with ID: " << id << endl;
 		return nullptr;
 	}
 	else {
@@ -86,7 +86,7 @@ void World::Update(float elapsed)
 
 void World::Render(sf::RenderWindow& window)
 {
-	SfTilemap* tilemap = GetTilemap(current_id);
+	Tilemap* tilemap = GetTilemap(current_id);
 
 	tilemap->Render(window);
 

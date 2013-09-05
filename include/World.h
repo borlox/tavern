@@ -5,11 +5,10 @@
 
 class GameObject;
 
-namespace sftile {
-	class SfTilemap;
-}
+class Tilemap;
 
 using namespace sftile;
+using namespace priv;
 
 class World
 {
@@ -49,7 +48,7 @@ public:
 	 * 
 	 * \return Pointer to the loaded tile map if successful
 	 */
-	SfTilemap* LoadTilemap(string id, string path);
+	Tilemap* LoadTilemap(string id, string path);
 
 	/**
 	 * \brief Return a pointer to a previously loaded 
@@ -58,7 +57,7 @@ public:
 	 * \param id Unique string ID of the tile map
 	 * \return Pointer to the tile map if successful
 	 */
-	SfTilemap* GetTilemap(string id = "");
+	Tilemap* GetTilemap(string id = "");
 
 	/**
 	 * \brief Handles any events referring to the tile engine.
@@ -124,9 +123,9 @@ private:
 
 	bool MapExists(string _id);
 
-	priv::SfTilemapLoader loader;
+	SfTilemapLoader loader;
 
-	std::map<string, SfTilemap> tilemaps;
+	std::map<string, Tilemap> tilemaps;
 
 	std::string current_id; // Id of the current map
 

@@ -5,7 +5,7 @@
 #include "World.h"
 #include "TextureManager.h"
 #include "AnimatedObject.h"
-#include "sf_tilemap.h"
+#include "Tilemap.h"
 #include "sf_smart_camera.h"
 
 #include "Globals.h"

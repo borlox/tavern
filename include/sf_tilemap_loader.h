@@ -37,10 +37,11 @@ namespace tinyxml2
   class XMLElement;
 }
 
+class Tilemap;
+
 /// Engine namespace
 namespace sftile
 {
-class SfTilemap;
 class SfObject;
 
 /// Private engine namespace
@@ -78,7 +79,7 @@ public:
   /// \return True if successful
   ///
   ////////////////////////////////////////////////////////////
-  bool LoadTilemap(const boost::filesystem::path& _path, SfTilemap& _tilemap);
+  bool LoadTilemap(const boost::filesystem::path& _path, Tilemap& _tilemap);
 
 private:
 	boost::filesystem::path mapDirectory;

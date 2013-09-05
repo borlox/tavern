@@ -36,10 +36,10 @@ bool CheckPointer(const void* _ptr, string _error)
 
 
 ////////////////////////////////////////////////////////////
-bool SfTilemapLoader::LoadTilemap(const fs::path& _path, SfTilemap& _tilemap)
+bool SfTilemapLoader::LoadTilemap(const fs::path& _path, Tilemap& _tilemap)
 {
   // Temporary map object
-  SfTilemap temp_map;
+  Tilemap temp_map;
   temp_map.tilesets.reserve(5);
   temp_map.tile_layers.reserve(10);
 

@@ -4,8 +4,9 @@
 #include "sf_camera.h"
 
 using namespace sftile;
+using namespace priv;
 
-SfTilemap::SfTilemap()
+Tilemap::Tilemap()
 : camera(nullptr)
 , tilesets()
 , tile_layers()
@@ -15,17 +16,17 @@ SfTilemap::SfTilemap()
 , version(1.0)
 {}
 
-SfTilemap::SfTilemap(const SfTilemap& _copy)
-: camera(_copy.camera)
-, tilesets(_copy.tilesets)
-, tile_layers(_copy.tile_layers)
-, object_layers(_copy.object_layers)
-, map_dimensions(_copy.map_dimensions)
-, tile_dimensions(_copy.tile_dimensions)
-, version(_copy.version)
+Tilemap::Tilemap(const Tilemap& copy)
+: camera(copy.camera)
+, tilesets(copy.tilesets)
+, tile_layers(copy.tile_layers)
+, object_layers(copy.object_layers)
+, map_dimensions(copy.map_dimensions)
+, tile_dimensions(copy.tile_dimensions)
+, version(copy.version)
 {}
 
-SfTilemap::SfTilemap(SfTilemap&& moved)
+Tilemap::Tilemap(Tilemap&& moved)
 : camera(moved.camera)
 , tilesets(std::move(moved.tilesets))
 , tile_layers(std::move(moved.tile_layers))
@@ -37,7 +38,7 @@ SfTilemap::SfTilemap(SfTilemap&& moved)
 	moved.camera = nullptr;
 }
 
-SfTilemap& SfTilemap::operator=(SfTilemap copy)
+Tilemap& Tilemap::operator=(Tilemap copy)
 {
 	using std::swap;
 
@@ -51,27 +52,36 @@ SfTilemap& SfTilemap::operator=(SfTilemap copy)
 	return *this;
 }
 
-SfTilemap::~SfTilemap()
+Tilemap::~Tilemap()
 {
 	camera = nullptr;
 }
 
-void SfTilemap::RegisterCamera(SfCamera* _camera)
+SfTileset& Tilemap::TilesetForGID(size_t gid)
 {
-	camera = _camera;
+	for (size_t i=0; i < tilesets.size(); ++i) {
+		if (tilesets[i].HasTileForGID(gid))
+			return tilesets[i];
+	}
+	throw std::out_of_range("Failed to find tileset for global id");
 }
 
-void SfTilemap::HandleEvents(sf::Event _evt)
+void Tilemap::RegisterCamera(SfCamera* cam)
 {
-	camera->HandleEvents(_evt);
+	camera = cam;
 }
 
-void SfTilemap::Update()
+void Tilemap::HandleEvents(sf::Event evt)
+{
+	camera->HandleEvents(evt);
+}
+
+void Tilemap::Update()
 {
 	camera->Update();
 }
 
-void SfTilemap::Render(sf::RenderWindow& _window)
+void Tilemap::Render(sf::RenderWindow& _window)
 {
 	sf::Vector2i offset = camera->GetTileOffset(tile_dimensions.x, tile_dimensions.y);
 	sf::IntRect bounds = camera->GetBounds(tile_dimensions.x, tile_dimensions.y);
@@ -92,13 +102,12 @@ void SfTilemap::Render(sf::RenderWindow& _window)
 				const float pos_x = static_cast<float>(x * tile_dimensions.x - offset.x);
 				const float pos_y = static_cast<float>(y * tile_dimensions.y - offset.y);
 				TilesetForGID(gid).RenderTile(_window, gid, pos_x, pos_y);
-				//tileset.RenderTile(_window, gid, pos_x, pos_y);
 			}
 		}
 	}
 }
 
-sf::Vector2f SfTilemap::TileToScreen(sf::Vector2f tilePos)
+sf::Vector2f Tilemap::TileToScreen(sf::Vector2f tilePos)
 {
 	sf::Vector2i offset = camera->GetTileOffset(tile_dimensions.x, tile_dimensions.y);
 	sf::IntRect bounds = camera->GetBounds(tile_dimensions.x, tile_dimensions.y);
