@@ -54,6 +54,7 @@ int main(int argc, char **argv)
 
 	sfg::Fixed::Ptr guiFixed(sfg::Fixed::Create());
 	guiFixed->Put(guiQuitBtn, sf::Vector2f(390, 6));
+	guiFixed->Put(guiResetBtn, sf::Vector2f(390, 36));
 
 	guiWnd->Add(guiFixed);
 	

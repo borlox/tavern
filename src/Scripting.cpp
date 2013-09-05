@@ -15,6 +15,8 @@ Scripting::Scripting()
 
 void Scripting::Reset()
 {
+	eventFunc = object();
+	updateFunc = object();
 	lua_close(L);
 	L = nullptr;
 
