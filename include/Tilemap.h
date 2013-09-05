@@ -108,12 +108,25 @@ public:
 	sf::Vector2f TileToScreen(sf::Vector2f tilePos);
 	sf::Vector2f ScreenToTile(sf::Vector2f screenPos);
 
+	bool ContainsScreenPos(sf::Vector2f screenPos)
+	{
+		return ContainsTilePos(ScreenToTile(screenPos));
+	}
+
+	bool ContainsTilePos(sf::Vector2f tilePos)
+	{
+		return tilePos.x >= 0 && tilePos.x < map_dimensions.x &&
+		       tilePos.y >= 0 && tilePos.y < map_dimensions.y;
+	}
+
 	static luabind::scope ExportClass()
 	{
 		return 
 			luabind::class_<Tilemap>("Tilemap")
 			.def("TileToScreen", &Tilemap::TileToScreen)
 			.def("ScreenToTile", &Tilemap::ScreenToTile)
+			.def("ContainsScreenPos", &Tilemap::ContainsScreenPos)
+			.def("ContainsTilePos", &Tilemap::ContainsTilePos)
 		;
 	}
 
