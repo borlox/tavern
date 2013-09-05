@@ -120,3 +120,18 @@ sf::Vector2f Tilemap::TileToScreen(sf::Vector2f tilePos)
 
 	return sf::Vector2f(px, py);
 }
+
+sf::Vector2f Tilemap::ScreenToTile(sf::Vector2f screenPos)
+{
+	sf::Vector2i offset = camera->GetTileOffset(tile_dimensions.x, tile_dimensions.y);
+	sf::IntRect bounds = camera->GetBounds(tile_dimensions.x, tile_dimensions.y);
+
+	float x = (screenPos.x + offset.x) / tile_dimensions.x;
+	float y = (screenPos.y + offset.y) / tile_dimensions.y;
+
+	float px = x + bounds.left;
+	float py = y + bounds.top;
+
+	return sf::Vector2f(px, py);
+}
+

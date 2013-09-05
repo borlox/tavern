@@ -106,6 +106,7 @@ public:
 	void Render(sf::RenderWindow& _window);
 
 	sf::Vector2f TileToScreen(sf::Vector2f tilePos);
+	sf::Vector2f ScreenToTile(sf::Vector2f screenPos);
 
 private:
 	sftile::SfCamera* camera;
