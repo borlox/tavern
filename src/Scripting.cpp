@@ -52,7 +52,10 @@ void Scripting::PostSfmlEvent(sf::Event& event)
 {
 	switch (event.type) {
 	case sf::Event::MouseButtonPressed:
-		PostEvent("SfmlEvent", "MouseButtonPressed", event.mouseButton);
+		PostEvent("MouseButtonPressed", event.mouseButton);
+		break;
+	case sf::Event::MouseButtonReleased:
+		PostEvent("MouseButtonReleased", event.mouseButton);
 		break;
 	}
 }
