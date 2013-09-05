@@ -108,6 +108,15 @@ public:
 	sf::Vector2f TileToScreen(sf::Vector2f tilePos);
 	sf::Vector2f ScreenToTile(sf::Vector2f screenPos);
 
+	static luabind::scope ExportClass()
+	{
+		return 
+			luabind::class_<Tilemap>("Tilemap")
+			.def("TileToScreen", &Tilemap::TileToScreen)
+			.def("ScreenToTile", &Tilemap::ScreenToTile)
+		;
+	}
+
 private:
 	sftile::SfCamera* camera;
 
