@@ -27,9 +27,12 @@ EventHandler:AddEventHandler("StateStart", function(event, state)
 	Log(LogLevel.Msg, "State start: " .. state)
 end)
 
-EventHandler:AddEventHandler("SfmlEvent", function(event, etype, arg)
-	Log(LogLevel.Msg, "SFML Event: " .. etype)
-	Log(LogLevel.Msg, "  x: " .. arg.x .. " | y: " .. arg.y .. " | button: " .. arg.button)
+EventHandler:AddEventHandler("MouseButtonReleased", function(event, arg)
+	if arg.button == MouseButton.Left then
+		hero = World:GetHero()
+		Log(LogLevel.Debug, "Setting hero position: (" .. arg.x .. ", " .. arg.y .. ")")
+		hero:SetPosition(arg.x, arg.y)
+	end
 end)
 
 
