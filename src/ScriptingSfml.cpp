@@ -23,9 +23,20 @@ scope ExportEventClasses()
 	;
 }
 
+scope ExportUtilityClasses()
+{
+	return
+		class_<sf::Vector2f>("Vector2f")
+		.def(luabind::constructor<float, float>())
+		.def_readwrite("x", &sf::Vector2f::x)
+		.def_readwrite("y", &sf::Vector2f::y)
+	;
+}
+
 scope ExportSfmlClasses()
 {
 	return
+		ExportUtilityClasses(),
 		ExportEventClasses()
 	;
 }
