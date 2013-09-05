@@ -18,6 +18,13 @@ static void InitSingletons()
 	Scripting::Get().Initialize();
 }
 
+static void InitScripting()
+{
+	Scripting& s = Scripting::Get();
+
+	s.ExecuteFile("script/init.lua");
+}
+
 int main(int argc, char **argv)
 {
 	Log::Logger::Instance().RedirectStdStreams();
@@ -39,14 +46,18 @@ int main(int argc, char **argv)
 		window.close();
 	}));
 
+	sfg::Button::Ptr guiResetBtn(sfg::Button::Create("Reset"));
+	guiResetBtn->GetSignal(sfg::Widget::OnLeftClick).Connect(sfg::Delegate(std::function<void (void)>([]() {
+		Scripting::Get().Reset();
+		InitScripting();
+	})));
+
 	sfg::Fixed::Ptr guiFixed(sfg::Fixed::Create());
 	guiFixed->Put(guiQuitBtn, sf::Vector2f(390, 6));
 
 	guiWnd->Add(guiFixed);
 	
 	window.resetGLStates();
-
-	Scripting::Get().ExecuteFile("script/init.lua");
 
 	sf::Clock clk;
 
@@ -66,6 +77,7 @@ int main(int argc, char **argv)
 	tilemap->RegisterCamera(&camera);
 
 	SetupStates();
+	InitScripting();
 
 	State* currentState = GetState("MainMenuState");
 	if (!currentState) {

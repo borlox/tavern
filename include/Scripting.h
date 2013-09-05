@@ -23,6 +23,11 @@ public:
 	}
 
 	/**
+	 * Reset the scripting system.
+ 	 */
+	void Reset();
+
+	/**
 	 * Initialize the scripting system.
 	 */
 	void Initialize();

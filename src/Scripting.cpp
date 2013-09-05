@@ -13,6 +13,14 @@ Scripting::Scripting()
 : L(nullptr)
 { }
 
+void Scripting::Reset()
+{
+	lua_close(L);
+	L = nullptr;
+
+	InitLuaState();
+}
+
 void Scripting::Initialize()
 {
 	InitLuaState();
