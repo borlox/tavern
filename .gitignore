@@ -14,4 +14,5 @@ ipch/*
 cerr.txt
 cout.txt
 log.txt
+sfml_err.txt
 
