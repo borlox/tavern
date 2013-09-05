@@ -4,7 +4,7 @@
 #include "tinyxml2.h"
   using namespace tinyxml2;
 
-#include "sf_tilemap.h"
+#include "Tilemap.h"
 #include "sf_tileset.h"
 #include "sf_tile_layer.h"
 #include "sf_tile.h"

@@ -50,12 +50,12 @@
     <ClInclude Include="include\sf_object_layer.h" />
     <ClInclude Include="include\sf_smart_camera.h" />
     <ClInclude Include="include\sf_tile.h" />
-    <ClInclude Include="include\sf_tilemap.h" />
     <ClInclude Include="include\sf_tilemap_loader.h" />
     <ClInclude Include="include\sf_tileset.h" />
     <ClInclude Include="include\sf_tile_layer.h" />
     <ClInclude Include="include\State.h" />
     <ClInclude Include="include\TextureManager.h" />
+    <ClInclude Include="include\Tilemap.h" />
     <ClInclude Include="include\World.h" />
   </ItemGroup>
   <ItemGroup>
@@ -794,10 +794,6 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Use</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Use</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="src\sf_tilemap.cpp">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Use</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Use</PrecompiledHeader>
-    </ClCompile>
     <ClCompile Include="src\sf_tilemap_loader.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Use</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Use</PrecompiledHeader>
@@ -815,6 +811,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Use</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Use</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="src\Tilemap.cpp" />
     <ClCompile Include="src\World.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
