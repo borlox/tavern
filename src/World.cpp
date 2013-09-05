@@ -2,7 +2,7 @@
 #include "World.h"
 #include "GameObject.h"
 
-#include "sf_tilemap.h"
+#include "Tilemap.h"
 #include "sf_tileset.h"
 #include "sf_tilemap_loader.h"
 
