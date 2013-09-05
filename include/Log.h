@@ -9,7 +9,7 @@ class Logger
 	int loglvl;
 
 	std::ofstream out;
-	std::ofstream fcerr, fcout;
+	std::ofstream fcerr, fcout, fsfmlErr;
 public:
 	enum LogLevel
 	{

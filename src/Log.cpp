@@ -44,5 +44,11 @@ void Logger::RedirectStdStreams()
 		GetStream(Error) << "Failed to redirect cout, cannot open cout.txt" << "\n";
 	else
 		std::cout.rdbuf(fcout.rdbuf());
+
+	fsfmlErr.open("sfml_err.txt");
+	if (!fsfmlErr)
+		GetStream(Error) << "Failed to redirect SFML error messages, cannot open sfml-err.txt" << "\n";
+	else
+		sf::err().rdbuf(fsfmlErr.rdbuf());
 }
 
