@@ -90,6 +90,9 @@ void Tilemap::Render(sf::RenderWindow& _window)
 		for (int x = 0, tile_x = bounds.left; x < bounds.width; ++x, ++tile_x) {
 
 			for (unsigned int l = 0; l < tile_layers.size(); ++l) {
+				if (!tile_layers[l].IsVisible())
+					continue;
+
 				if (tile_x < 0 || tile_y < 0)
 					continue;
 				if (tile_x >= map_dimensions.x || tile_y >= map_dimensions.y)

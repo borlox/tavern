@@ -180,6 +180,7 @@ bool SfTilemapLoader::ParseTileLayer(const XMLElement* _element, SfTileLayer& _t
 {
   // Load the arbitrary name of the layer
   string name = _element->Attribute("name");
+  _tile_layer.name = name;
   
   cout << "Loading layer: " << name << endl;
 
@@ -187,6 +188,10 @@ bool SfTilemapLoader::ParseTileLayer(const XMLElement* _element, SfTileLayer& _t
   sf::Vector2i layer_dimensions(0, 0);
   _element->QueryIntAttribute("width", &layer_dimensions.x);
   _element->QueryIntAttribute("height", &layer_dimensions.y);
+
+  int visible = 1;
+  _element->QueryIntAttribute("visible", &visible);
+  _tile_layer.visible = visible != 0; // != 0 to suppress MSVC warning
 
   _tile_layer.layer_dimensions = layer_dimensions;
 

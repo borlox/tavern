@@ -81,12 +81,26 @@ public:
   ////////////////////////////////////////////////////////////
   int GetTileGID(const int _x, const int _y);
 
+  std::string GetName() const
+  {
+	  return name;
+  }
+  
+  bool IsVisible() const
+  {
+	  return visible;
+  }
+
 protected:
+  std::string name;
+
   /// Vector of the tile GIDs in the layer
   vector< vector<int> > tile_gids;
 
   /// Tile dimensions in pixels
   sf::Vector2i layer_dimensions;
+
+  bool visible;
 
 };
 
