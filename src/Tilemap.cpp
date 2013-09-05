@@ -10,6 +10,7 @@ Tilemap::Tilemap()
 : camera(nullptr)
 , tilesets()
 , tile_layers()
+, collisionLayer(nullptr)
 , object_layers()
 , map_dimensions(-1, -1)
 , tile_dimensions(32, 32)
@@ -20,22 +21,27 @@ Tilemap::Tilemap(const Tilemap& copy)
 : camera(copy.camera)
 , tilesets(copy.tilesets)
 , tile_layers(copy.tile_layers)
+, collisionLayer(nullptr)
 , object_layers(copy.object_layers)
 , map_dimensions(copy.map_dimensions)
 , tile_dimensions(copy.tile_dimensions)
 , version(copy.version)
-{}
+{
+	UpdateCollisionLayer();
+}
 
 Tilemap::Tilemap(Tilemap&& moved)
 : camera(moved.camera)
 , tilesets(std::move(moved.tilesets))
 , tile_layers(std::move(moved.tile_layers))
+, collisionLayer(nullptr)
 , object_layers(std::move(moved.object_layers))
 , map_dimensions(moved.map_dimensions)
 , tile_dimensions(moved.tile_dimensions)
 , version(moved.version)
 {
 	moved.camera = nullptr;
+	UpdateCollisionLayer();
 }
 
 Tilemap& Tilemap::operator=(Tilemap copy)
@@ -48,6 +54,8 @@ Tilemap& Tilemap::operator=(Tilemap copy)
 	swap(object_layers, copy.object_layers);
 	swap(map_dimensions, copy.map_dimensions);
 	swap(tile_dimensions, copy.tile_dimensions);
+
+	UpdateCollisionLayer();
 
 	return *this;
 }
@@ -138,3 +146,10 @@ sf::Vector2f Tilemap::ScreenToTile(sf::Vector2f screenPos)
 	return sf::Vector2f(px, py);
 }
 
+void Tilemap::UpdateCollisionLayer()
+{
+	collisionLayer = nullptr;
+	for (auto& layer: tile_layers)
+		if (layer.GetName() == "collision")
+			collisionLayer = &layer;
+}

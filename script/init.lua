@@ -28,13 +28,16 @@ EventHandler:AddEventHandler("StateStart", function(event, state)
 end)
 
 EventHandler:AddEventHandler("MouseButtonReleased", function(event, arg)
-	if not World:GetMap(""):ContainsScreenPos(Vector2f(arg.x, arg.y)) then
+	map = World:GetMap("")
+	tilePos = map:ScreenToTile(Vector2f(arg.x, arg.y))
+
+	if not map:ContainsTilePos(tilePos) then
+		Log(LogLevel.Debug, "Click outside map")
 		return
 	end
 
-	if arg.button == MouseButton.Left then
+	if arg.button == MouseButton.Left and map:IsTileAccessible(tilePos) then
 		hero = World:GetHero()
-		map = World:GetMap("")
 		
 		tilePos = map:ScreenToTile(Vector2f(arg.x, arg.y))
 		hero:SetPosition(tilePos.x, tilePos.y)

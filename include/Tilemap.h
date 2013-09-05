@@ -119,6 +119,13 @@ public:
 		       tilePos.y >= 0 && tilePos.y < map_dimensions.y;
 	}
 
+	bool IsTileAccessible(sf::Vector2f tilePos)
+	{
+		if (!collisionLayer)
+			return true;
+		return collisionLayer->GetTileGID(tilePos.x, tilePos.y) != 0;
+	}
+
 	static luabind::scope ExportClass()
 	{
 		return 
@@ -127,10 +134,13 @@ public:
 			.def("ScreenToTile", &Tilemap::ScreenToTile)
 			.def("ContainsScreenPos", &Tilemap::ContainsScreenPos)
 			.def("ContainsTilePos", &Tilemap::ContainsTilePos)
+			.def("IsTileAccessible", &Tilemap::IsTileAccessible)
 		;
 	}
 
 private:
+	void UpdateCollisionLayer();
+
 	sftile::SfCamera* camera;
 
 	std::vector<SfTileset> tilesets;
@@ -138,6 +148,8 @@ private:
 	SfTileset& TilesetForGID(size_t gid);
 
 	vector<SfTileLayer> tile_layers;
+
+	SfTileLayer* collisionLayer;
 
 	vector<SfObjectLayer> object_layers;
 

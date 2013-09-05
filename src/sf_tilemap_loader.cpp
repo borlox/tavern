@@ -133,6 +133,7 @@ bool SfTilemapLoader::LoadTilemap(const fs::path& _path, Tilemap& _tilemap)
   }
   object_layer_element = nullptr;
 
+  temp_map.UpdateCollisionLayer();
   _tilemap = std::move(temp_map);
 
   return true;
