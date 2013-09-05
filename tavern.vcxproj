@@ -846,13 +846,13 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
     <ExecutablePath>$(ExecutablePath)</ExecutablePath>
-    <IncludePath>$(SolutionDir)\ext\luabind-0.9.1\;$(SolutionDir)\ext\TinyXML;$(SolutionDir)\ext\lua-5.1.5\src;include;..\..\ext\SFML-2.1\include;F:\Programmieren\src\tavern\ext\SFGUI-0.1.1\include;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)\ext\luabind-0.9.1\;$(SolutionDir)\ext\TinyXML;$(SolutionDir)\ext\lua-5.1.5\src;include;..\..\ext\SFML-2.1\include;$(SolutionDir)\ext\SFGUI-0.1.1\include;$(IncludePath)</IncludePath>
     <LibraryPath>..\..\ext\SFML-2.1\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
     <ExecutablePath>$(ExecutablePath)</ExecutablePath>
-    <IncludePath>$(SolutionDir)\ext\luabind-0.9.1\;$(SolutionDir)\ext\TinyXML;$(SolutionDir)\ext\lua-5.1.5\src;include;..\..\ext\SFML-2.1\include;F:\Programmieren\src\tavern\ext\SFGUI-0.1.1\include;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)\ext\luabind-0.9.1\;$(SolutionDir)\ext\TinyXML;$(SolutionDir)\ext\lua-5.1.5\src;include;..\..\ext\SFML-2.1\include;$(SolutionDir)\ext\SFGUI-0.1.1\include;$(IncludePath)</IncludePath>
     <LibraryPath>..\..\ext\SFML-2.1\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
