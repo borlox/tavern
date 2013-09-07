@@ -36,11 +36,15 @@ EventHandler:AddEventHandler("MouseButtonReleased", function(event, arg)
 		return
 	end
 
-	if arg.button == MouseButton.Left and map:IsTileAccessible(tilePos) then
+	if arg.button == MouseButton.Left then -- and map:IsTileAccessible(tilePos) then
 		hero = World:GetHero()
+
+		heroPos = Vector2f(hero:GetPosition())
+		path = map:FindPath(heroPos, tilePos)
+		hero:FollowPath(path)
 		
-		tilePos = map:ScreenToTile(Vector2f(arg.x, arg.y))
-		hero:SetPosition(tilePos.x, tilePos.y)
+		--tilePos = map:ScreenToTile(Vector2f(arg.x, arg.y))
+		--hero:SetPosition(tilePos.x, tilePos.y)
 	end
 end)
 
