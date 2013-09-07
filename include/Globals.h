@@ -8,4 +8,6 @@
 #include "World.h"
 extern World g_World;
 
+void DisplayTextFromFile(const std::string& path);
+
 #endif //GLOBALS_H

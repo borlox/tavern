@@ -26,6 +26,49 @@ static void InitScripting()
 	s.ExecuteFile("script/init.lua");
 }
 
+sfg::Desktop guiDesktop;
+
+void DisplayTextFromFile(const std::string& path)
+{
+	static bool initialized = false;
+	static sfg::Window::Ptr window;
+	static sfg::Label::Ptr label;
+	static sfg::Button::Ptr button;
+	static sfg::Box::Ptr box;
+
+	if (!initialized) {
+		window = sfg::Window::Create();
+		box = sfg::Box::Create(sfg::Box::VERTICAL, 10.f);
+
+		button = sfg::Button::Create("Ok");
+		button->GetSignal(sfg::Widget::OnLeftClick).Connect(sfg::Delegate(std::function<void(void)>([&]() {
+			window->Show(false);
+		})));
+
+		label = sfg::Label::Create("");
+
+		box->Pack(label);
+		box->Pack(button);
+		window->Add(box);
+
+		window->SetPosition(sf::Vector2f(100, 100));
+
+		guiDesktop.Add(window);
+
+		initialized = true;
+	}
+
+	std::ifstream inf(path);
+	std::string text;
+	std::string line;
+
+	while (std::getline(inf, line))
+		text += line + "\n";
+
+	label->SetText(text);
+	window->Show();
+}
+
 int main(int argc, char **argv)
 {
 	Log::Logger::Instance().RedirectStdStreams();
@@ -82,6 +125,8 @@ int main(int argc, char **argv)
 
 	guiWnd->Add(guiFixed);
 	
+	guiDesktop.Add(guiWnd);
+
 	window.resetGLStates();
 
 	sf::Clock clk;
@@ -94,6 +139,7 @@ int main(int argc, char **argv)
 	}
 
 	auto hero = new MovableObject(TextureManager::Get().Load("assets/image/character/TestCharacter.png"));
+	hero->SetId("hero");
 	hero->SetPosition(6, 6);
 	//hero->Animate();
 	world.SetHeroObject(hero);
@@ -117,7 +163,7 @@ int main(int argc, char **argv)
 		while (window.pollEvent(event)) {
 			g_CurrentEvent = event;
 			world.HandleEvents(event);
-			guiWnd->HandleEvent(event);
+			guiDesktop.HandleEvent(event);
 			Scripting::Get().PostSfmlEvent(event);
 
 			if (event.type == sf::Event::Closed)
@@ -147,7 +193,7 @@ int main(int argc, char **argv)
 
 		world.Update(elapsed);
 		Scripting::Get().Update(elapsed);
-		guiWnd->Update(elapsed);
+		guiDesktop.Update(elapsed);
 
 		window.clear();
 		world.Render(window);

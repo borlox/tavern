@@ -142,6 +142,8 @@ void Scripting::InitLuaState()
 			value("Trace", Log::Logger::Trace)
 		],
 
+		def("DisplayTextFile", DisplayTextFromFile),
+
 		ExportSfmlClasses(),
 
 		MapObject::ExportClass(),
