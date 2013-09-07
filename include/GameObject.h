@@ -24,6 +24,16 @@ public:
 		SetTexture(texture);
 	}
 
+	void SetId(std::string str)
+	{
+		id = str;
+	}
+
+	std::string GetId() const
+	{
+		return id;
+	}
+
 	void SetPosition(float x, float y)
 	{
 		SetPosition(sf::Vector2f(x, y));
@@ -112,6 +122,8 @@ private:
 	sf::Vector2f position;
 	sf::Texture* texture;
 	sf::IntRect subRect;
+
+	std::string id;
 
 	float moveSpeed;
 
