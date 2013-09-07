@@ -41,6 +41,14 @@ public:
 	bool ExecuteFile(const boost::filesystem::path& path);
 
 	/**
+	 * Execute a lua file.
+	 *
+	 * @param path Path of the file to execute
+	 * @return true if execution was successfull, false otherwise
+	 */
+	bool ExecuteString(const std::string& str);
+
+	/**
 	 * Call the Lua defined update function.
 	 *
 	 * @param elapsed Time in seconds since the last call to Update

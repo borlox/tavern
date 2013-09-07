@@ -37,6 +37,15 @@ bool Scripting::ExecuteFile(const fs::path& path)
 	return res == 0;
 }
 
+bool Scripting::ExecuteString(const std::string& str)
+{
+	int res = luaL_dostring(L, str.c_str());
+	if (res != 0)
+		LOG(Error, "Failed to execute string: " << lua_tostring(L, -1));
+
+	return res == 0;
+}
+
 void Scripting::Update(float elapsed)
 {
 	if (!updateFunc)
