@@ -153,3 +153,182 @@ void Tilemap::UpdateCollisionLayer()
 		if (layer.GetName() == "collision")
 			collisionLayer = &layer;
 }
+
+std::vector<std::pair<sf::Vector2i, float>> Tilemap::FindNeighbors(sf::Vector2i tile)
+{
+	std::vector<std::pair<sf::Vector2i, float>> res;
+
+	if (IsTileAccessible(sf::Vector2f(tile.x-1, tile.y)))
+		res.emplace_back(sf::Vector2i(tile.x-1, tile.y), 1.0f);
+	if (IsTileAccessible(sf::Vector2f(tile.x+1, tile.y)))
+		res.emplace_back(sf::Vector2i(tile.x+1, tile.y), 1.0f);
+	if (IsTileAccessible(sf::Vector2f(tile.x, tile.y-1)))
+		res.emplace_back(sf::Vector2i(tile.x, tile.y-1), 1.0f);
+	if (IsTileAccessible(sf::Vector2f(tile.x, tile.y+1)))
+		res.emplace_back(sf::Vector2i(tile.x, tile.y+1), 1.0f);
+
+	if (IsTileAccessible(sf::Vector2f(tile.x-1, tile.y-1)))
+		res.emplace_back(sf::Vector2i(tile.x-1, tile.y-1), 1.4f);
+	if (IsTileAccessible(sf::Vector2f(tile.x+1, tile.y+1)))
+		res.emplace_back(sf::Vector2i(tile.x+1, tile.y+1), 1.4f);
+	if (IsTileAccessible(sf::Vector2f(tile.x+1, tile.y-1)))
+		res.emplace_back(sf::Vector2i(tile.x+1, tile.y-1), 1.4f);
+	if (IsTileAccessible(sf::Vector2f(tile.x-1, tile.y+1)))
+		res.emplace_back(sf::Vector2i(tile.x-1, tile.y+1), 1.4f);
+
+	return res;
+}
+
+sf::Vector2f Tilemap::FindNearestAccessible(sf::Vector2f start, sf::Vector2f end)
+{
+	sf::Vector2f dir = end - start;
+	dir /= std::sqrt(dir.x*dir.x + dir.y*dir.y) * 2;
+
+	while (ContainsTilePos(end) && !IsTileAccessible(end))
+		end -= dir;
+
+	if (!ContainsTilePos(end))
+		return start;
+
+	return end;
+}
+
+struct Node
+{
+	int x, y;
+	float g, f;
+
+	Node* parent;
+
+	explicit Node(sf::Vector2i pos)
+	: x(pos.x), y(pos.y), g(.0f), f(.0f), parent(nullptr)
+	{ }
+
+	bool operator==(const Node& rhs) const
+	{
+		return x==rhs.x && y==rhs.y;
+	}
+
+	bool operator!=(const Node& rhs) const
+	{
+		return !(*this == rhs);
+	}
+
+	operator sf::Vector2i() const
+	{
+		return sf::Vector2i(x, y);
+	}
+
+	float H(const Node* goal) const
+	{
+		return 1.0f * (std::abs(x - goal->x) + std::abs(y - goal->y));
+	}
+		
+};
+
+static bool NodePtrCmp(const Node* lhs, const Node *rhs)
+{
+	return lhs->f > rhs->f;
+}
+
+struct NodeAtPos
+{
+	const Node& ref;
+
+	explicit NodeAtPos(const Node& r)
+	: ref(r)
+	{ }
+
+	bool operator()(const Node* nptr) const
+	{
+		return (*nptr) == ref;
+	}
+};
+
+Tilemap::Path Tilemap::FindPath(sf::Vector2f start, sf::Vector2f end)
+{
+	assert(IsTileAccessible(start));
+
+	sf::Vector2f target = FindNearestAccessible(start, end);
+
+	sf::Vector2i absStart(start);
+	sf::Vector2i absTarget(target);
+
+	std::vector<Node*> allNodes;
+	std::vector<Node*> open, closed;
+
+	auto targetNode = new Node(absTarget);
+	allNodes.push_back(targetNode);
+
+	auto startNode = new Node(absStart);
+	allNodes.push_back(startNode);
+
+	open.push_back(startNode);
+	boost::push_heap(open, NodePtrCmp);
+
+	while (!open.empty() && *open.front() != *targetNode) {
+		Node* cur = open.front();
+
+		boost::pop_heap(open, NodePtrCmp);
+		open.pop_back();
+
+		for (auto& nbCost: FindNeighbors(*cur)) {
+			auto& nb = nbCost.first;
+			float cost = nbCost.second;
+
+			auto suc = new Node(nb);
+			allNodes.push_back(suc);
+
+			float newg = cur->g + cost;
+
+			auto openIt = boost::find_if(open, NodeAtPos(*suc));
+			auto closedIt = boost::find_if(closed, NodeAtPos(*suc));
+
+			if (openIt != open.end()) {
+				if ((*openIt)->g <= newg)
+					continue;
+			}
+
+			if (closedIt != closed.end()) {
+				if ((*closedIt)->g <= newg)
+					continue;
+			}
+
+			suc->parent = cur;
+			suc->g = newg;
+			suc->f = suc->g + suc->H(targetNode);
+
+			if (openIt != open.end()) {
+				open.erase(openIt);
+				boost::make_heap(open, NodePtrCmp);
+			}
+			if (closedIt != closed.end()) {
+				closed.erase(closedIt);
+			}
+
+			open.push_back(suc);
+			boost::push_heap(open, NodePtrCmp);
+		}
+
+		closed.push_back(cur);
+	}
+
+	Path path;
+	if (!open.empty()) {
+		path.push(target);
+
+		auto n = open.front();
+		bool first = true;
+		while (n) {
+			if (!first && n->parent) // do not use first or last step of the computed path, they just point to the upper left corner of the start/end tile
+				path.push(sf::Vector2f(n->x, n->y));
+			n = n->parent;
+			first = false;
+		}
+	}
+
+	for (auto& n: allNodes)
+		delete n;
+
+	return path;
+}

@@ -42,6 +42,8 @@ class Tilemap
 {
 friend class priv::SfTilemapLoader;
 public:
+	typedef std::stack<sf::Vector2f> Path;
+
 	/**
 	 * \brief Default constructor
 	 *
@@ -121,25 +123,36 @@ public:
 
 	bool IsTileAccessible(sf::Vector2f tilePos)
 	{
+		if (!ContainsTilePos(tilePos))
+			return false;
+
 		if (!collisionLayer)
 			return true;
 		return collisionLayer->GetTileGID(tilePos.x, tilePos.y) != 0;
 	}
 
+	Path FindPath(sf::Vector2f start, sf::Vector2f end);
+
 	static luabind::scope ExportClass()
 	{
-		return 
+		return
 			luabind::class_<Tilemap>("Tilemap")
 			.def("TileToScreen", &Tilemap::TileToScreen)
 			.def("ScreenToTile", &Tilemap::ScreenToTile)
 			.def("ContainsScreenPos", &Tilemap::ContainsScreenPos)
 			.def("ContainsTilePos", &Tilemap::ContainsTilePos)
 			.def("IsTileAccessible", &Tilemap::IsTileAccessible)
+			.def("FindPath", &Tilemap::FindPath)
+			,
+			luabind::class_<Tilemap::Path>("Path")
 		;
 	}
 
 private:
 	void UpdateCollisionLayer();
+
+	sf::Vector2f FindNearestAccessible(sf::Vector2f start, sf::Vector2f);
+	std::vector<std::pair<sf::Vector2i, float>> FindNeighbors(sf::Vector2i tile);
 
 	sftile::SfCamera* camera;
 
