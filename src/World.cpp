@@ -76,6 +76,7 @@ void World::Update(float elapsed)
 {
 	GetTilemap(current_id)->Update();
 
+	heroObject->Update(elapsed);
 	for (auto& obj: gameObjects)
 		obj->Update(elapsed);
 
