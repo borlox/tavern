@@ -1,0 +1,600 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="ext">
+      <UniqueIdentifier>{09d4552e-70bc-4812-9b78-7107b22ac2dc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ext\TinyXML">
+      <UniqueIdentifier>{31fc0c53-464e-4a33-96bf-46bb54789d4a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ext\lua">
+      <UniqueIdentifier>{44ecd0d4-8cf1-4b6e-a8c1-dd43210549a5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ext\luabind">
+      <UniqueIdentifier>{0a278d5e-5b1e-44e7-8860-0d4039d4c9d2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ext\SFGUI">
+      <UniqueIdentifier>{b34b2268-3264-44aa-8a11-5fbb30d22c4a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ext\SFGUI\ext">
+      <UniqueIdentifier>{e8fed30e-5609-474b-918c-c28d0c3525e4}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\pch.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Log.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ext\TinyXML\tinyxml2.h">
+      <Filter>ext\TinyXML</Filter>
+    </ClInclude>
+    <ClInclude Include="ext\lua-5.1.5\src\ltable.h">
+      <Filter>ext\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="ext\lua-5.1.5\src\ltm.h">
+      <Filter>ext\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="ext\lua-5.1.5\src\lua.h">
+      <Filter>ext\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="ext\lua-5.1.5\src\luaconf.h">
+      <Filter>ext\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="ext\lua-5.1.5\src\lualib.h">
+      <Filter>ext\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="ext\lua-5.1.5\src\lundump.h">
+      <Filter>ext\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="ext\lua-5.1.5\src\lvm.h">
+      <Filter>ext\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="ext\lua-5.1.5\src\lzio.h">
+      <Filter>ext\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="ext\lua-5.1.5\src\lapi.h">
+      <Filter>ext\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="ext\lua-5.1.5\src\lauxlib.h">
+      <Filter>ext\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="ext\lua-5.1.5\src\lcode.h">
+      <Filter>ext\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="ext\lua-5.1.5\src\ldebug.h">
+      <Filter>ext\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="ext\lua-5.1.5\src\ldo.h">
+      <Filter>ext\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="ext\lua-5.1.5\src\lfunc.h">
+      <Filter>ext\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="ext\lua-5.1.5\src\lgc.h">
+      <Filter>ext\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="ext\lua-5.1.5\src\llex.h">
+      <Filter>ext\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="ext\lua-5.1.5\src\llimits.h">
+      <Filter>ext\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="ext\lua-5.1.5\src\lmem.h">
+      <Filter>ext\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="ext\lua-5.1.5\src\lobject.h">
+      <Filter>ext\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="ext\lua-5.1.5\src\lopcodes.h">
+      <Filter>ext\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="ext\lua-5.1.5\src\lparser.h">
+      <Filter>ext\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="ext\lua-5.1.5\src\lstate.h">
+      <Filter>ext\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="ext\lua-5.1.5\src\lstring.h">
+      <Filter>ext\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Scripting.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\sf_camera.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\sf_entity.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\sf_object.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\sf_object_layer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\sf_smart_camera.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\sf_tile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\sf_tile_layer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\sf_tilemap_loader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\sf_tileset.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\sf_dll_macro.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\World.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\State.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\AnimatedObject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\GameObject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\TextureManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ScriptingHelper.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ScriptingSfml.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Globals.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Tilemap.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\pch.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\tavern.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Log.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ext\TinyXML\tinyxml2.cpp">
+      <Filter>ext\TinyXML</Filter>
+    </ClCompile>
+    <ClCompile Include="ext\lua-5.1.5\src\lstrlib.c">
+      <Filter>ext\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="ext\lua-5.1.5\src\ltable.c">
+      <Filter>ext\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="ext\lua-5.1.5\src\ltablib.c">
+      <Filter>ext\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="ext\lua-5.1.5\src\ltm.c">
+      <Filter>ext\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="ext\lua-5.1.5\src\lundump.c">
+      <Filter>ext\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="ext\lua-5.1.5\src\lvm.c">
+      <Filter>ext\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="ext\lua-5.1.5\src\lzio.c">
+      <Filter>ext\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="ext\lua-5.1.5\src\print.c">
+      <Filter>ext\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="ext\lua-5.1.5\src\lapi.c">
+      <Filter>ext\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="ext\lua-5.1.5\src\lauxlib.c">
+      <Filter>ext\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="ext\lua-5.1.5\src\lbaselib.c">
+      <Filter>ext\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="ext\lua-5.1.5\src\lcode.c">
+      <Filter>ext\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="ext\lua-5.1.5\src\ldblib.c">
+      <Filter>ext\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="ext\lua-5.1.5\src\ldebug.c">
+      <Filter>ext\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="ext\lua-5.1.5\src\ldo.c">
+      <Filter>ext\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="ext\lua-5.1.5\src\ldump.c">
+      <Filter>ext\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="ext\lua-5.1.5\src\lfunc.c">
+      <Filter>ext\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="ext\lua-5.1.5\src\lgc.c">
+      <Filter>ext\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="ext\lua-5.1.5\src\linit.c">
+      <Filter>ext\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="ext\lua-5.1.5\src\liolib.c">
+      <Filter>ext\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="ext\lua-5.1.5\src\llex.c">
+      <Filter>ext\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="ext\lua-5.1.5\src\lmathlib.c">
+      <Filter>ext\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="ext\lua-5.1.5\src\lmem.c">
+      <Filter>ext\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="ext\lua-5.1.5\src\loadlib.c">
+      <Filter>ext\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="ext\lua-5.1.5\src\lobject.c">
+      <Filter>ext\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="ext\lua-5.1.5\src\lopcodes.c">
+      <Filter>ext\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="ext\lua-5.1.5\src\loslib.c">
+      <Filter>ext\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="ext\lua-5.1.5\src\lparser.c">
+      <Filter>ext\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="ext\lua-5.1.5\src\lstate.c">
+      <Filter>ext\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="ext\lua-5.1.5\src\lstring.c">
+      <Filter>ext\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="ext\luabind-0.9.1\src\class.cpp">
+      <Filter>ext\luabind</Filter>
+    </ClCompile>
+    <ClCompile Include="ext\luabind-0.9.1\src\class_info.cpp">
+      <Filter>ext\luabind</Filter>
+    </ClCompile>
+    <ClCompile Include="ext\luabind-0.9.1\src\class_registry.cpp">
+      <Filter>ext\luabind</Filter>
+    </ClCompile>
+    <ClCompile Include="ext\luabind-0.9.1\src\class_rep.cpp">
+      <Filter>ext\luabind</Filter>
+    </ClCompile>
+    <ClCompile Include="ext\luabind-0.9.1\src\create_class.cpp">
+      <Filter>ext\luabind</Filter>
+    </ClCompile>
+    <ClCompile Include="ext\luabind-0.9.1\src\error.cpp">
+      <Filter>ext\luabind</Filter>
+    </ClCompile>
+    <ClCompile Include="ext\luabind-0.9.1\src\exception_handler.cpp">
+      <Filter>ext\luabind</Filter>
+    </ClCompile>
+    <ClCompile Include="ext\luabind-0.9.1\src\function.cpp">
+      <Filter>ext\luabind</Filter>
+    </ClCompile>
+    <ClCompile Include="ext\luabind-0.9.1\src\inheritance.cpp">
+      <Filter>ext\luabind</Filter>
+    </ClCompile>
+    <ClCompile Include="ext\luabind-0.9.1\src\link_compatibility.cpp">
+      <Filter>ext\luabind</Filter>
+    </ClCompile>
+    <ClCompile Include="ext\luabind-0.9.1\src\object_rep.cpp">
+      <Filter>ext\luabind</Filter>
+    </ClCompile>
+    <ClCompile Include="ext\luabind-0.9.1\src\open.cpp">
+      <Filter>ext\luabind</Filter>
+    </ClCompile>
+    <ClCompile Include="ext\luabind-0.9.1\src\pcall.cpp">
+      <Filter>ext\luabind</Filter>
+    </ClCompile>
+    <ClCompile Include="ext\luabind-0.9.1\src\scope.cpp">
+      <Filter>ext\luabind</Filter>
+    </ClCompile>
+    <ClCompile Include="ext\luabind-0.9.1\src\stack_content_by_name.cpp">
+      <Filter>ext\luabind</Filter>
+    </ClCompile>
+    <ClCompile Include="ext\luabind-0.9.1\src\weak_ref.cpp">
+      <Filter>ext\luabind</Filter>
+    </ClCompile>
+    <ClCompile Include="ext\luabind-0.9.1\src\wrapper_base.cpp">
+      <Filter>ext\luabind</Filter>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\extlibs\GLee\src\GLee.c">
+      <Filter>ext\SFGUI\ext</Filter>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\Adjustment.cpp">
+      <Filter>ext\SFGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\Alignment.cpp">
+      <Filter>ext\SFGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\Bin.cpp">
+      <Filter>ext\SFGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\Box.cpp">
+      <Filter>ext\SFGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\Button.cpp">
+      <Filter>ext\SFGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\Canvas.cpp">
+      <Filter>ext\SFGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\CheckButton.cpp">
+      <Filter>ext\SFGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\ComboBox.cpp">
+      <Filter>ext\SFGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\Container.cpp">
+      <Filter>ext\SFGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\Context.cpp">
+      <Filter>ext\SFGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\DejaVuSansFont.cpp">
+      <Filter>ext\SFGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\Desktop.cpp">
+      <Filter>ext\SFGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\Engine.cpp">
+      <Filter>ext\SFGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\Engines\BREW\Button.cpp">
+      <Filter>ext\SFGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\Engines\BREW\CheckButton.cpp">
+      <Filter>ext\SFGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\Engines\BREW\ComboBox.cpp">
+      <Filter>ext\SFGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\Engines\BREW\Entry.cpp">
+      <Filter>ext\SFGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\Engines\BREW\Frame.cpp">
+      <Filter>ext\SFGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\Engines\BREW\Image.cpp">
+      <Filter>ext\SFGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\Engines\BREW\Label.cpp">
+      <Filter>ext\SFGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\Engines\BREW\Notebook.cpp">
+      <Filter>ext\SFGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\Engines\BREW\ProgressBar.cpp">
+      <Filter>ext\SFGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\Engines\BREW\Scale.cpp">
+      <Filter>ext\SFGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\Engines\BREW\Scrollbar.cpp">
+      <Filter>ext\SFGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\Engines\BREW\ScrolledWindow.cpp">
+      <Filter>ext\SFGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\Engines\BREW\Separator.cpp">
+      <Filter>ext\SFGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\Engines\BREW\SpinButton.cpp">
+      <Filter>ext\SFGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\Engines\BREW\Spinner.cpp">
+      <Filter>ext\SFGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\Engines\BREW\ToggleButton.cpp">
+      <Filter>ext\SFGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\Engines\BREW\Window.cpp">
+      <Filter>ext\SFGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\Engines\BREW.cpp">
+      <Filter>ext\SFGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\Entry.cpp">
+      <Filter>ext\SFGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\FileResourceLoader.cpp">
+      <Filter>ext\SFGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\Fixed.cpp">
+      <Filter>ext\SFGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\Frame.cpp">
+      <Filter>ext\SFGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\Image.cpp">
+      <Filter>ext\SFGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\Label.cpp">
+      <Filter>ext\SFGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\Misc.cpp">
+      <Filter>ext\SFGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\NonCopyable.cpp">
+      <Filter>ext\SFGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\Notebook.cpp">
+      <Filter>ext\SFGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\Object.cpp">
+      <Filter>ext\SFGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\Parsers\ThemeParser\Grammar.cpp">
+      <Filter>ext\SFGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\Parsers\ThemeParser\GrammarPredicates.cpp">
+      <Filter>ext\SFGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\Parsers\ThemeParser\GrammarSelector.cpp">
+      <Filter>ext\SFGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\Parsers\ThemeParser\GrammarSimpleSelector.cpp">
+      <Filter>ext\SFGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\Parsers\ThemeParser\GrammarStatement.cpp">
+      <Filter>ext\SFGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\Parsers\ThemeParser\GrammarToken.cpp">
+      <Filter>ext\SFGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\Parsers\ThemeParser\Parse.cpp">
+      <Filter>ext\SFGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\Primitive.cpp">
+      <Filter>ext\SFGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\ProgressBar.cpp">
+      <Filter>ext\SFGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\RadioButton.cpp">
+      <Filter>ext\SFGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\Range.cpp">
+      <Filter>ext\SFGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\Renderer.cpp">
+      <Filter>ext\SFGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\RendererViewport.cpp">
+      <Filter>ext\SFGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\RenderQueue.cpp">
+      <Filter>ext\SFGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\ResourceLoader.cpp">
+      <Filter>ext\SFGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\ResourceManager.cpp">
+      <Filter>ext\SFGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\Scale.cpp">
+      <Filter>ext\SFGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\Scrollbar.cpp">
+      <Filter>ext\SFGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\ScrolledWindow.cpp">
+      <Filter>ext\SFGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\Selector.cpp">
+      <Filter>ext\SFGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\Separator.cpp">
+      <Filter>ext\SFGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\SFGUI.cpp">
+      <Filter>ext\SFGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\Signal.cpp">
+      <Filter>ext\SFGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\SpinButton.cpp">
+      <Filter>ext\SFGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\Spinner.cpp">
+      <Filter>ext\SFGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\Table.cpp">
+      <Filter>ext\SFGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\TableCell.cpp">
+      <Filter>ext\SFGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\TableOptions.cpp">
+      <Filter>ext\SFGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\ToggleButton.cpp">
+      <Filter>ext\SFGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\Viewport.cpp">
+      <Filter>ext\SFGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\Widget.cpp">
+      <Filter>ext\SFGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="ext\SFGUI-0.1.1\src\SFGUI\Window.cpp">
+      <Filter>ext\SFGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Scripting.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\sf_camera.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\sf_entity.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\sf_object.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\sf_object_layer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\sf_smart_camera.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\sf_tile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\sf_tile_layer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\sf_tilemap_loader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\sf_tileset.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\World.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\State.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GameObject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\AnimatedObject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ScriptingSfml.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Tilemap.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
