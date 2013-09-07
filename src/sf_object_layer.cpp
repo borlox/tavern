@@ -37,6 +37,7 @@ SfObjectLayer::SfObjectLayer()
 ////////////////////////////////////////////////////////////
 SfObjectLayer::SfObjectLayer(const SfObjectLayer& _copy)
   : objects(_copy.objects)
+  , name(_copy.name)
   , layer_dimensions(_copy.layer_dimensions)
 {}
 
@@ -49,6 +50,7 @@ SfObjectLayer& SfObjectLayer::operator=(const SfObjectLayer& _copy)
     SfObjectLayer temp(_copy);
 
     std::swap(objects, temp.objects);
+	std::swap(name, temp.name);
     std::swap(layer_dimensions, temp.layer_dimensions);
   }
 

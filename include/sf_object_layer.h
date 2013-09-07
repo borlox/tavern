@@ -89,7 +89,10 @@ public:
   /// \return String name of the layer
   ///
   ////////////////////////////////////////////////////////////
-  string GetName();
+  std::string GetName() const
+  {
+	  return name;
+  }
 
 
   ////////////////////////////////////////////////////////////
@@ -101,6 +104,11 @@ public:
   ///
   ////////////////////////////////////////////////////////////
   MapObject* GetObject(unsigned int _index);
+
+  const std::vector<MapObject>& GetObjects() const
+  {
+	  return objects;
+  }
 
 private:
   /// Vector of the objects in the layer
