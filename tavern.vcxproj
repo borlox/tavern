@@ -39,6 +39,7 @@
     <ClInclude Include="include\GameObject.h" />
     <ClInclude Include="include\Globals.h" />
     <ClInclude Include="include\Log.h" />
+    <ClInclude Include="include\MapObject.h" />
     <ClInclude Include="include\MovableObject.h" />
     <ClInclude Include="include\pch.h" />
     <ClInclude Include="include\Scripting.h" />
@@ -47,7 +48,6 @@
     <ClInclude Include="include\sf_camera.h" />
     <ClInclude Include="include\sf_dll_macro.h" />
     <ClInclude Include="include\sf_entity.h" />
-    <ClInclude Include="include\sf_object.h" />
     <ClInclude Include="include\sf_object_layer.h" />
     <ClInclude Include="include\sf_smart_camera.h" />
     <ClInclude Include="include\sf_tile.h" />
@@ -762,6 +762,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Use</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Use</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="src\MapObject.cpp" />
     <ClCompile Include="src\pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
@@ -776,10 +777,6 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Use</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="src\sf_entity.cpp">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Use</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Use</PrecompiledHeader>
-    </ClCompile>
-    <ClCompile Include="src\sf_object.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Use</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Use</PrecompiledHeader>
     </ClCompile>

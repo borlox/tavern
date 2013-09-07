@@ -9,7 +9,7 @@
 #include "sf_tile_layer.h"
 #include "sf_tile.h"
 #include "sf_object_layer.h"
-#include "sf_object.h"
+#include "MapObject.h"
 
 #include "TextureManager.h"
 

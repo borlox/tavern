@@ -29,7 +29,7 @@
 
 #include <SFML\Graphics.hpp>
 
-#include "sf_object.h"
+#include "MapObject.h"
 #include "sf_dll_macro.h"
 
 /// Engine namespace

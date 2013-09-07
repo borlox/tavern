@@ -17,7 +17,7 @@
 ////////////////////////////////////////////////////////////
 
 #include "pch.h"
-#include "sf_object.h"
+#include "MapObject.h"
 
 namespace sftile
 {
