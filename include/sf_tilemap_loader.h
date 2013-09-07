@@ -162,6 +162,8 @@ private:
   ////////////////////////////////////////////////////////////
   bool ParseObject(const tinyxml2::XMLElement* _element, MapObject& _object);
 
+
+  bool ParseProperties(const tinyxml2::XMLElement* element, std::map<std::string, std::string>& properties);
 };
 
 }

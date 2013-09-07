@@ -1356,4 +1356,11 @@
    <tile gid="0"/>
   </data>
  </layer>
+ <objectgroup name="objects" width="12" height="12">
+  <object name="Letter" type="readable" x="162" y="295" width="29" height="19">
+   <properties>
+    <property name="textfile" value="assets/texts/Letter.txt"/>
+   </properties>
+  </object>
+ </objectgroup>
 </map>

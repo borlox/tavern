@@ -144,6 +144,8 @@ private:
   /// Type of the object
   ObjectType objectType;
 
+  std::map<std::string, std::string> properties;
+
   /// Name of the object
   std::string name;
 

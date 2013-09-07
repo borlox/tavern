@@ -319,52 +319,32 @@ bool SfTilemapLoader::ParseObject(const tinyxml2::XMLElement* _element, MapObjec
   _object.visible = visible;
 
   ObjectType object_type;
-  if (gid != -1)
-  {
+  if (gid != -1) {
     _object.objectType = SF_OBJECT_TYPE_TILE;
-    return true;
-  }
-
-  const XMLElement* child_element = _element->FirstChildElement();
-  if (child_element != nullptr)
-  {
-    string child_name = child_element->Name();
-
-    if (child_name == "ellipse")
-    {
-      object_type = SF_OBJECT_TYPE_UNKNOWN;
-      cout << "Ellipse objects unsupported" << endl;
-      return false;
-    }
-    else if (child_name == "polygon")
-    {
-      object_type = SF_OBJECT_TYPE_UNKNOWN;
-      cout << "Polygon objects unsupported" << endl;
-      return false;
-    }
-    else if (child_name == "polyline")
-    {
-      object_type = SF_OBJECT_TYPE_UNKNOWN;
-      cout << "Polyline objects unsupported" << endl;
-      return false;
-    }
-    else if (child_name == "image")
-    {
-      object_type = SF_OBJECT_TYPE_UNKNOWN;
-      cout << "Image objects unsupported" << endl;
-      return false;
-    }
-    else
-    {
-      object_type = SF_OBJECT_TYPE_UNKNOWN;
-      cout << "Unknown object type" << endl;
-      return false;
-    }
   }
   else {
 	  _object.objectType = SF_OBJECT_TYPE_RECT;
-	  return true;
   }
+
+  const XMLElement* properties = _element->FirstChildElement("properties");
+  if (properties)
+	  ParseProperties(properties, _object.properties);
+
+  return true;
+}
+
+bool SfTilemapLoader::ParseProperties(const tinyxml2::XMLElement* element, std::map<std::string, std::string>& properties)
+{
+	const XMLElement* prop = element->FirstChildElement("property");
+	while (prop) {
+		std::string name = prop->Attribute("name");
+		std::string value = prop->Attribute("value");
+		properties[name] = value;
+
+		prop = prop->NextSiblingElement("property");
+	}
+
+	return true;
 }
 
 }
