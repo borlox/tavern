@@ -57,7 +57,7 @@ SfObjectLayer& SfObjectLayer::operator=(const SfObjectLayer& _copy)
 
 
 ////////////////////////////////////////////////////////////
-SfObject* SfObjectLayer::GetObject(unsigned int _index)
+MapObject* SfObjectLayer::GetObject(unsigned int _index)
 {
   return &objects.at(_index);
 }

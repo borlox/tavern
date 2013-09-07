@@ -100,11 +100,11 @@ public:
   /// \return Pointer to the indexed object
   ///
   ////////////////////////////////////////////////////////////
-  SfObject* GetObject(unsigned int _index);
+  MapObject* GetObject(unsigned int _index);
 
 private:
   /// Vector of the objects in the layer
-  vector<SfObject> objects;
+  vector<MapObject> objects;
 
 
   /// Tile dimensions in pixels

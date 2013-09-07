@@ -38,6 +38,7 @@ namespace tinyxml2
 }
 
 class Tilemap;
+class MapObject;
 
 /// Engine namespace
 namespace sftile
@@ -159,7 +160,7 @@ private:
   /// \return True if successful
   ///
   ////////////////////////////////////////////////////////////
-  bool ParseObject(const tinyxml2::XMLElement* _element, SfObject& _object);
+  bool ParseObject(const tinyxml2::XMLElement* _element, MapObject& _object);
 
 };
 

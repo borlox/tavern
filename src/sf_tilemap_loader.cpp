@@ -274,7 +274,7 @@ bool SfTilemapLoader::ParseObjectLayer(const tinyxml2::XMLElement* _element, SfO
   const XMLElement* object = _element->FirstChildElement("object");
   while (object)
   {
-    SfObject temp_object;
+    MapObject temp_object;
     if (!ParseObject(object, temp_object))
     {
       cout << "Failed to parse object" << endl;
@@ -293,13 +293,13 @@ bool SfTilemapLoader::ParseObjectLayer(const tinyxml2::XMLElement* _element, SfO
 
 
 ////////////////////////////////////////////////////////////
-bool SfTilemapLoader::ParseObject(const tinyxml2::XMLElement* _element, SfObject& _object)
+bool SfTilemapLoader::ParseObject(const tinyxml2::XMLElement* _element, MapObject& _object)
 {
   string name = _element->Attribute("name");
   _object.name = name;
 
   string type = _element->Attribute("type");
-  _object.string_type = type;
+  _object.type = type;
 
   int x = _element->IntAttribute("x");
   int y = _element->IntAttribute("y");
@@ -321,7 +321,7 @@ bool SfTilemapLoader::ParseObject(const tinyxml2::XMLElement* _element, SfObject
   ObjectType object_type;
   if (gid != -1)
   {
-    object_type = SF_OBJECT_TYPE_TILE;
+    _object.objectType = SF_OBJECT_TYPE_TILE;
     return true;
   }
 
@@ -361,8 +361,10 @@ bool SfTilemapLoader::ParseObject(const tinyxml2::XMLElement* _element, SfObject
       return false;
     }
   }
-  else
-    return false;
+  else {
+	  _object.objectType = SF_OBJECT_TYPE_RECT;
+	  return true;
+  }
 }
 
 }

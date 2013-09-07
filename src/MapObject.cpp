@@ -1,32 +1,10 @@
-////////////////////////////////////////////////////////////
-/// SfTileEngine: C++/SFML Tile Engine
-/// Copyright (C) 2013 Tyler Petresky
-///
-/// This program is free software: you can redistribute it and/or modify
-/// it under the terms of the GNU General Public License as published by
-/// the Free Software Foundation, either version 3 of the License, or
-/// (at your option) any later version.
-///
-/// This program is distributed in the hope that it will be useful,
-/// but WITHOUT ANY WARRANTY; without even the implied warranty of
-/// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-/// GNU General Public License for more details.
-///
-/// You should have received a copy of the GNU General Public License
-/// along with this program.  If not, see <http://www.gnu.org/licenses/>.
-////////////////////////////////////////////////////////////
-
 #include "pch.h"
 #include "MapObject.h"
 
-namespace sftile
-{
-
-////////////////////////////////////////////////////////////
-SfObject::SfObject()
-  : object_type(SF_OBJECT_TYPE_UNKNOWN)
+MapObject::MapObject()
+  : objectType(SF_OBJECT_TYPE_UNKNOWN)
   , name("")
-  , string_type("")
+  , type("")
   , position(0, 0)
   , dimensions(0, 0)
   , rotation(0.f)
@@ -35,11 +13,10 @@ SfObject::SfObject()
 { }
 
 
-////////////////////////////////////////////////////////////
-SfObject::SfObject(const SfObject& _copy)
-  : object_type(_copy.object_type)
+MapObject::MapObject(const MapObject& _copy)
+  : objectType(_copy.objectType)
   , name(_copy.name)
-  , string_type(_copy.string_type)
+  , type(_copy.type)
   , position(_copy.position)
   , dimensions(_copy.dimensions)
   , rotation(_copy.rotation)
@@ -47,17 +24,15 @@ SfObject::SfObject(const SfObject& _copy)
   , visible(_copy.visible)
 { }
 
-
-////////////////////////////////////////////////////////////
-SfObject& SfObject::operator=(const SfObject& _copy)
+MapObject& MapObject::operator=(const MapObject& _copy)
 {
   if (this != &_copy)
   {
-    SfObject temp(_copy);
+    MapObject temp(_copy);
 
-    std::swap(object_type, temp.object_type);
+    std::swap(objectType, temp.objectType);
     std::swap(name, temp.name);
-    std::swap(string_type, temp.string_type);
+    std::swap(type, temp.type);
     std::swap(position, temp.position);
     std::swap(dimensions, temp.dimensions);
     std::swap(rotation, temp.rotation);
@@ -66,55 +41,4 @@ SfObject& SfObject::operator=(const SfObject& _copy)
   }
 
   return *this;
-}
-
-
-////////////////////////////////////////////////////////////
-string SfObject::GetName()
-{
-  return name;
-}
-
-
-////////////////////////////////////////////////////////////
-string SfObject::GetStringType()
-{
-  return string_type;
-}
-
-
-////////////////////////////////////////////////////////////
-sf::Vector2i SfObject::GetPosition()
-{
-  return position;
-}
-
-
-////////////////////////////////////////////////////////////
-sf::Vector2i SfObject::GetDimensions()
-{
-  return dimensions;
-}
-
-
-////////////////////////////////////////////////////////////
-float SfObject::GetRotation()
-{
-  return rotation;
-}
-
-
-////////////////////////////////////////////////////////////
-int SfObject::GetGid()
-{
-  return gid;
-}
-
-
-////////////////////////////////////////////////////////////
-bool SfObject::IsVisible()
-{
-  return visible;
-}
-
 }
