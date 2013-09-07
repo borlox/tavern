@@ -110,6 +110,16 @@ public:
 	sf::Vector2f TileToScreen(sf::Vector2f tilePos);
 	sf::Vector2f ScreenToTile(sf::Vector2f screenPos);
 
+	sf::Vector2f PixelToTile(sf::Vector2f pixelPos) const
+	{
+		return sf::Vector2f(pixelPos.x / tile_dimensions.x, pixelPos.y / tile_dimensions.y);
+	}
+
+	sf::Vector2f TileToPixel(sf::Vector2f tilePos) const
+	{
+		return sf::Vector2f(tilePos.x * tile_dimensions.x, tilePos.y * tile_dimensions.y);
+	}
+
 	bool ContainsScreenPos(sf::Vector2f screenPos)
 	{
 		return ContainsTilePos(ScreenToTile(screenPos));
@@ -139,6 +149,8 @@ public:
 			luabind::class_<Tilemap>("Tilemap")
 			.def("TileToScreen", &Tilemap::TileToScreen)
 			.def("ScreenToTile", &Tilemap::ScreenToTile)
+			.def("TileToPixel", &Tilemap::TileToPixel)
+			.def("PixelToTile", &Tilemap::PixelToTile)
 			.def("ContainsScreenPos", &Tilemap::ContainsScreenPos)
 			.def("ContainsTilePos", &Tilemap::ContainsTilePos)
 			.def("IsTileAccessible", &Tilemap::IsTileAccessible)
