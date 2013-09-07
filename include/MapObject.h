@@ -1,6 +1,8 @@
 #ifndef MAP_OBJECT_H
 #define MAP_OBJECT_H
 
+#include "ScriptingHelper.h"
+
 enum ObjectType
 {
   SF_OBJECT_TYPE_UNKNOWN = 0,
@@ -131,6 +133,13 @@ public:
 		return visible;
 	}
 
+	std::string GetProperty(const std::string& name) const
+	{
+		if (properties.find(name) != properties.end())
+			return properties.at(name);
+		return "";
+	}
+
 
   ////////////////////////////////////////////////////////////
   /// \brief Renders the object to the window
@@ -139,6 +148,19 @@ public:
   ///
   ////////////////////////////////////////////////////////////
 	void Render(sf::RenderWindow& _window);
+
+	static luabind::scope ExportClass()
+	{
+		return
+			luabind::class_<MapObject>("MapObject")
+			.def("GetName", &MapObject::GetName)
+			.def("GetType", &MapObject::GetType)
+			.def("IsVisible", &MapObject::IsVisible)
+			.def("GetPosition", ::GetPosition<MapObject>)
+			.def("GetDimensions", &MapObject::GetDimensions)
+			.def("GetProperty", &MapObject::GetProperty)
+		;
+	}
 
 private:
   /// Type of the object

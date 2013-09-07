@@ -85,6 +85,7 @@ void Scripting::exp_SetEventHandler(object func)
 #include "GameObject.h"
 #include "World.h"
 #include "Tilemap.h"
+#include "MapObject.h"
 
 namespace Exp
 {
@@ -143,6 +144,7 @@ void Scripting::InitLuaState()
 
 		ExportSfmlClasses(),
 
+		MapObject::ExportClass(),
 		Tilemap::ExportClass(),
 		World::ExportClass(),
 		GameObject::ExportClass()

@@ -30,6 +30,11 @@ scope ExportUtilityClasses()
 		.def(luabind::constructor<float, float>())
 		.def_readwrite("x", &sf::Vector2f::x)
 		.def_readwrite("y", &sf::Vector2f::y)
+		,
+		class_<sf::Vector2i>("Vector2i")
+		.def(luabind::constructor<int, int>())
+		.def_readwrite("x", &sf::Vector2i::x)
+		.def_readwrite("y", &sf::Vector2i::y)
 	;
 }
 
