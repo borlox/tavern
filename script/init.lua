@@ -23,12 +23,40 @@ function EventHandler:HandleEvent(event, ...)
 	end
 end
 
+local Object_MoveCompleteFunc = {}
+
+local function Object_MoveTo(obj, target)
+	local start = Vector2f(obj:GetPosition())
+	local path = World:GetMap(""):FindPath(start, target)
+	obj:FollowPath(path, false)
+	Object_MoveCompleteFunc[obj:GetId()] = nil
+end
+
+local function Object_MoveToThen(obj, target, func)
+	local start = Vector2f(obj:GetPosition())
+	local path = World:GetMap(""):FindPath(start, target)
+	obj:FollowPath(path, true)
+	Object_MoveCompleteFunc[obj:GetId()] = func
+end
+
 EventHandler:AddEventHandler("StateStart", function(event, state)
 	Log(LogLevel.Msg, "State start: " .. state)
 end)
 
+EventHandler:AddEventHandler("ObjectPathComplete", function(event, objId)
+	Log(LogLevel.Debug, "ObjectPathComplete, " .. objId)
+	if Object_MoveCompleteFunc[objId] then
+		Object_MoveCompleteFunc[objId]()
+	end
+end)
+
 local function HandleObjectClick(object)
 	Log(LogLevel.Msg, "Object clicked: " .. object:GetName())
+
+	Object_MoveToThen(World:GetHero(), World:GetMap(""):PixelToTile(Vector2f(object:GetPosition())), function()
+		Log(LogLevel.Msg, "Hero reached " .. object:GetName())
+		DisplayTextFile(object:GetProperty("textfile"))
+	end)
 end
 
 local function PointInRect(pt, topleft, dim)
@@ -58,11 +86,13 @@ EventHandler:AddEventHandler("MouseButtonReleased", function(event, arg)
 			end
 		end
 
-		local hero = World:GetHero()
+		--local hero = World:GetHero()
 
-		local heroPos = Vector2f(hero:GetPosition())
-		local path = map:FindPath(heroPos, tilePos)
-		hero:FollowPath(path)
+		Object_MoveTo(World:GetHero(), tilePos)
+
+		--local heroPos = Vector2f(hero:GetPosition())
+		--local path = map:FindPath(heroPos, tilePos)
+		--hero:FollowPath(path)
 	end
 end)
 
