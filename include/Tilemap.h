@@ -5,6 +5,8 @@
 #include "sf_object_layer.h"
 #include "sf_tileset.h"
 
+#include "Log.h"
+
 namespace sftile {
 	class SfCamera;
 	namespace priv {
@@ -141,6 +143,19 @@ public:
 		return collisionLayer->GetTileGID(static_cast<int>(tilePos.x), static_cast<int>(tilePos.y)) != 0;
 	}
 
+	const std::vector<MapObject>& GetObjects(const std::string& layer)
+	{
+		static std::vector<MapObject> noObjects;
+
+		for (auto& l: object_layers) {
+			if (l.GetName() == layer)
+				return l.GetObjects();
+		}
+
+		LOG(Error, "Object layer '" << layer << "' not found.");
+		return noObjects;
+	}
+
 	Path FindPath(sf::Vector2f start, sf::Vector2f end);
 
 	static luabind::scope ExportClass()
@@ -155,6 +170,7 @@ public:
 			.def("ContainsTilePos", &Tilemap::ContainsTilePos)
 			.def("IsTileAccessible", &Tilemap::IsTileAccessible)
 			.def("FindPath", &Tilemap::FindPath)
+			.def("GetObjects", &Tilemap::GetObjects, luabind::return_stl_iterator)
 			,
 			luabind::class_<Tilemap::Path>("Path")
 		;
