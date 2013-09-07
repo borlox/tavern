@@ -32,8 +32,10 @@
 #include <lua.h>
 #include <lualib.h>
 #include <lauxlib.h>
+
 // luabind
 #include <luabind/luabind.hpp>
+#include <luabind/iterator_policy.hpp>
 
 // SFML
 #include <SFML/System.hpp>
