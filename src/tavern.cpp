@@ -11,6 +11,7 @@
 #include "Globals.h"
 
 World g_World;
+sf::Event g_CurrentEvent;
 
 static void InitSingletons()
 {
@@ -52,9 +53,32 @@ int main(int argc, char **argv)
 		InitScripting();
 	})));
 
+	sfg::Entry::Ptr guiEntry(sfg::Entry::Create());
+	guiEntry->SetRequisition(sf::Vector2f(300, 20));
+	sfg::Button::Ptr guiExec(sfg::Button::Create("Run"));
+	
+	auto executeString = sfg::Delegate([&]() {
+		std::string script = guiEntry->GetText();
+		if (!script.empty()) {
+			Scripting::Get().ExecuteString(script);
+		}
+		guiEntry->SetText("");
+	});
+
+	guiExec->GetSignal(sfg::Widget::OnLeftClick).Connect(executeString);
+	guiEntry->GetSignal(sfg::Widget::OnKeyRelease).Connect(sfg::Delegate([&]() {
+		if (g_CurrentEvent.key.code == sf::Keyboard::Return)
+			executeString();
+	}));
+
+	sfg::Box::Ptr guiEntryLayout(sfg::Box::Create(sfg::Box::HORIZONTAL, 5.0f));
+	guiEntryLayout->Pack(guiEntry);
+	guiEntryLayout->Pack(guiExec);
+
 	sfg::Fixed::Ptr guiFixed(sfg::Fixed::Create());
 	guiFixed->Put(guiQuitBtn, sf::Vector2f(390, 6));
 	guiFixed->Put(guiResetBtn, sf::Vector2f(390, 36));
+	guiFixed->Put(guiEntryLayout, sf::Vector2f(5, 390));
 
 	guiWnd->Add(guiFixed);
 	
@@ -91,6 +115,7 @@ int main(int argc, char **argv)
 	while (window.isOpen()) {
 		sf::Event event;
 		while (window.pollEvent(event)) {
+			g_CurrentEvent = event;
 			world.HandleEvents(event);
 			guiWnd->HandleEvent(event);
 			Scripting::Get().PostSfmlEvent(event);
