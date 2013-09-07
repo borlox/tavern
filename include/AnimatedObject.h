@@ -17,12 +17,12 @@ class AnimatedObject : public GameObject
 
 public:
 	AnimatedObject()
-	: frameSize(64, 96), numFrames(4), thisFrame(0), frameTime(0.2f), thisTime(0.f), animate(false)
+	: frameSize(64, 96), numFrames(4), thisFrame(0), frameTime(0.15f), thisTime(0.f), animate(false)
 	{ }
 
 	AnimatedObject(sf::Texture* texture)
 	: GameObject(texture)
-	, frameSize(64, 96), numFrames(4), thisFrame(0), frameTime(0.2f), thisTime(0.f), animate(false)
+	, frameSize(64, 96), numFrames(4), thisFrame(0), frameTime(0.15f), thisTime(0.f), animate(false)
 	{ 
 		SetFrame(0);
 	}

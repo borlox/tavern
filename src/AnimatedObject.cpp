@@ -8,11 +8,11 @@ void AnimatedObject::Update(float elapsed)
 
 		if (thisTime > frameTime) {
 			thisTime -= frameTime;
-			thisFrame = (thisFrame + 1) % numFrames;
-			SetFrame(thisFrame);
+			thisFrame = (thisFrame + 1) % numFrames;		
 		}
 	}
 
+	SetFrame(thisFrame);
 	GameObject::Update(elapsed);
 }
 
