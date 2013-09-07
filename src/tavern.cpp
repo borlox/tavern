@@ -4,7 +4,7 @@
 #include "State.h"
 #include "World.h"
 #include "TextureManager.h"
-#include "AnimatedObject.h"
+#include "MovableObject.h"
 #include "Tilemap.h"
 #include "sf_smart_camera.h"
 
@@ -69,7 +69,7 @@ int main(int argc, char **argv)
 		return 0;
 	}
 
-	auto hero = new AnimatedObject(TextureManager::Get().Load("assets/image/character/TestCharacter.png"));
+	auto hero = new MovableObject(TextureManager::Get().Load("assets/image/character/TestCharacter.png"));
 	hero->SetPosition(6, 6);
 	//hero->Animate();
 	world.SetHeroObject(hero);
