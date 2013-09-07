@@ -2,6 +2,7 @@
 #define GAME_OBJECT_H
 
 #include "ScriptingHelper.h"
+#include "Tilemap.h"
 
 class GameObject
 {
@@ -14,11 +15,11 @@ public:
 
 public:
 	GameObject()
-	: orientation(South)
+	: orientation(South), moveSpeed(2.0)
 	{ }
 
 	GameObject(sf::Texture* texture)
-	:  orientation(South)
+	:  orientation(South), moveSpeed(2.0)
 	{ 
 		SetTexture(texture);
 	}
@@ -64,8 +65,17 @@ public:
 		subRect = rect;
 	}
 
-	virtual void Update(float elapsed)
-	{ }
+	void FollowPath(Tilemap::Path p)
+	{
+		path = p;
+	}
+
+	void ResetPath()
+	{
+		path = Tilemap::Path();
+	}
+
+	virtual void Update(float elapsed);
 
 	void Render(sf::RenderTarget& target, sf::Vector2f screenPos)
 	{
@@ -93,6 +103,7 @@ public:
 			.def("GetPosition", ::GetPosition<GameObject>)
 			.def("SetOrientation", &GameObject::SetOrientation)
 			.def("GetOrientation", &GameObject::GetOrientation)
+			.def("FollowPath", &GameObject::FollowPath)
 			;
 	}
 
@@ -101,6 +112,11 @@ private:
 	sf::Vector2f position;
 	sf::Texture* texture;
 	sf::IntRect subRect;
+
+	float moveSpeed;
+
+protected:
+	Tilemap::Path path;
 };
 
 static inline GameObject::Orientation DirectionToOrientation(sf::Vector2f dir)
