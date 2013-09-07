@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "GameObject.h"
+#include "Scripting.h"
 
 static float norm(const sf::Vector2f& v)
 {
@@ -14,6 +15,9 @@ void GameObject::Update(float elapsed)
 
 		if (norm(dist) < 0.2)
 			path.pop();
+
+		if (path.empty() && noticeOnPathComplete)
+			Scripting::Get().PostEvent("ObjectPathComplete", id);
 	}
 	if (!path.empty()) {
 		sf::Vector2f tgt = path.top();

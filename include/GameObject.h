@@ -75,14 +75,16 @@ public:
 		subRect = rect;
 	}
 
-	void FollowPath(Tilemap::Path p)
+	void FollowPath(Tilemap::Path p, bool sendNotice)
 	{
 		path = p;
+		noticeOnPathComplete = true;
 	}
 
 	void ResetPath()
 	{
 		path = Tilemap::Path();
+		noticeOnPathComplete = false;
 	}
 
 	virtual void Update(float elapsed);
@@ -113,6 +115,7 @@ public:
 			.def("GetPosition", ::GetPosition<GameObject>)
 			.def("SetOrientation", &GameObject::SetOrientation)
 			.def("GetOrientation", &GameObject::GetOrientation)
+			.def("GetId", &GameObject::GetId)
 			.def("FollowPath", &GameObject::FollowPath)
 			;
 	}
@@ -129,6 +132,7 @@ private:
 
 protected:
 	Tilemap::Path path;
+	bool noticeOnPathComplete;
 };
 
 static inline GameObject::Orientation DirectionToOrientation(sf::Vector2f dir)
