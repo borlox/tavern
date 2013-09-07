@@ -268,7 +268,7 @@ bool SfTilemapLoader::ParseObjectLayer(const tinyxml2::XMLElement* _element, SfO
   float opacity = _element->FloatAttribute("opacity");
   _object_layer.opacity = opacity;
 
-  bool visible = _element->IntAttribute("visible");
+  bool visible = _element->IntAttribute("visible") != 0;
   _object_layer.visible = visible;
 
   const XMLElement* object = _element->FirstChildElement("object");
@@ -315,10 +315,9 @@ bool SfTilemapLoader::ParseObject(const tinyxml2::XMLElement* _element, MapObjec
   int gid = -1; _element->QueryIntAttribute("gid", &gid);
   _object.gid = gid;
 
-  bool visible = _element->IntAttribute("visible");
+  bool visible = _element->IntAttribute("visible") != 0;
   _object.visible = visible;
 
-  ObjectType object_type;
   if (gid != -1) {
     _object.objectType = SF_OBJECT_TYPE_TILE;
   }

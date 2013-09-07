@@ -158,22 +158,22 @@ std::vector<std::pair<sf::Vector2i, float>> Tilemap::FindNeighbors(sf::Vector2i 
 {
 	std::vector<std::pair<sf::Vector2i, float>> res;
 
-	if (IsTileAccessible(sf::Vector2f(tile.x-1, tile.y)))
+	if (IsTileAccessible(sf::Vector2f(static_cast<float>(tile.x-1), static_cast<float>(tile.y))))
 		res.emplace_back(sf::Vector2i(tile.x-1, tile.y), 1.0f);
-	if (IsTileAccessible(sf::Vector2f(tile.x+1, tile.y)))
+	if (IsTileAccessible(sf::Vector2f(static_cast<float>(tile.x+1), static_cast<float>(tile.y))))
 		res.emplace_back(sf::Vector2i(tile.x+1, tile.y), 1.0f);
-	if (IsTileAccessible(sf::Vector2f(tile.x, tile.y-1)))
+	if (IsTileAccessible(sf::Vector2f(static_cast<float>(tile.x), static_cast<float>(tile.y-1))))
 		res.emplace_back(sf::Vector2i(tile.x, tile.y-1), 1.0f);
-	if (IsTileAccessible(sf::Vector2f(tile.x, tile.y+1)))
+	if (IsTileAccessible(sf::Vector2f(static_cast<float>(tile.x), static_cast<float>(tile.y+1))))
 		res.emplace_back(sf::Vector2i(tile.x, tile.y+1), 1.0f);
 
-	if (IsTileAccessible(sf::Vector2f(tile.x-1, tile.y-1)))
+	if (IsTileAccessible(sf::Vector2f(static_cast<float>(tile.x-1), static_cast<float>(tile.y-1))))
 		res.emplace_back(sf::Vector2i(tile.x-1, tile.y-1), 1.4f);
-	if (IsTileAccessible(sf::Vector2f(tile.x+1, tile.y+1)))
+	if (IsTileAccessible(sf::Vector2f(static_cast<float>(tile.x+1), static_cast<float>(tile.y+1))))
 		res.emplace_back(sf::Vector2i(tile.x+1, tile.y+1), 1.4f);
-	if (IsTileAccessible(sf::Vector2f(tile.x+1, tile.y-1)))
+	if (IsTileAccessible(sf::Vector2f(static_cast<float>(tile.x+1), static_cast<float>(tile.y-1))))
 		res.emplace_back(sf::Vector2i(tile.x+1, tile.y-1), 1.4f);
-	if (IsTileAccessible(sf::Vector2f(tile.x-1, tile.y+1)))
+	if (IsTileAccessible(sf::Vector2f(static_cast<float>(tile.x-1), static_cast<float>(tile.y+1))))
 		res.emplace_back(sf::Vector2i(tile.x-1, tile.y+1), 1.4f);
 
 	return res;

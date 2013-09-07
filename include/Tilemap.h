@@ -128,7 +128,7 @@ public:
 
 		if (!collisionLayer)
 			return true;
-		return collisionLayer->GetTileGID(tilePos.x, tilePos.y) != 0;
+		return collisionLayer->GetTileGID(static_cast<int>(tilePos.x), static_cast<int>(tilePos.y)) != 0;
 	}
 
 	Path FindPath(sf::Vector2f start, sf::Vector2f end);
