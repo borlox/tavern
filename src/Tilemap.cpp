@@ -89,31 +89,40 @@ void Tilemap::Update()
 	camera->Update();
 }
 
-void Tilemap::Render(sf::RenderWindow& _window)
+void Tilemap::Render(sf::RenderTarget& window, bool cliff)
 {
+	sf::Vector2i offset = camera->GetTileOffset(tile_dimensions.x, tile_dimensions.y);
+	sf::IntRect bounds = camera->GetBounds(tile_dimensions.x, tile_dimensions.y);
+
+	for (size_t l =0; l < tile_layers.size(); ++l) {
+		if (cliff == tile_layers[l].IsCliffLayer())
+			RenderLayer(window, l);
+	}
+}
+
+void Tilemap::RenderLayer(sf::RenderTarget& target, size_t index)
+{
+	auto& layer = tile_layers[index];
+	if (!layer.IsVisible())
+		return;
+
 	sf::Vector2i offset = camera->GetTileOffset(tile_dimensions.x, tile_dimensions.y);
 	sf::IntRect bounds = camera->GetBounds(tile_dimensions.x, tile_dimensions.y);
 
 	for (int y = 0, tile_y = bounds.top; y < bounds.height; ++y, ++tile_y) {
 		for (int x = 0, tile_x = bounds.left; x < bounds.width; ++x, ++tile_x) {
+			if (tile_x < 0 || tile_y < 0)
+				continue;
+			if (tile_x >= map_dimensions.x || tile_y >= map_dimensions.y)
+				continue;
 
-			for (unsigned int l = 0; l < tile_layers.size(); ++l) {
-				if (!tile_layers[l].IsVisible())
-					continue;
+			int gid = layer.GetTileGID(tile_x, tile_y);
+			if (gid == 0)
+				continue;
 
-				if (tile_x < 0 || tile_y < 0)
-					continue;
-				if (tile_x >= map_dimensions.x || tile_y >= map_dimensions.y)
-					continue;
-
-				int gid = tile_layers.at(l).GetTileGID(tile_x, tile_y);
-				if (gid == 0)
-					continue;
-
-				const float pos_x = static_cast<float>(x * tile_dimensions.x - offset.x);
-				const float pos_y = static_cast<float>(y * tile_dimensions.y - offset.y);
-				TilesetForGID(gid).RenderTile(_window, gid, pos_x, pos_y);
-			}
+			float pos_x = static_cast<float>(x * tile_dimensions.x - offset.x);
+			float pos_y = static_cast<float>(y * tile_dimensions.y - offset.y);
+			TilesetForGID(gid).RenderTile(target, gid, pos_x, pos_y);
 		}
 	}
 }

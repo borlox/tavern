@@ -89,7 +89,8 @@ void World::Render(sf::RenderWindow& window)
 {
 	Tilemap* tilemap = GetTilemap(current_id);
 
-	tilemap->Render(window);
+	// render all non-cliff layers
+	tilemap->Render(window, false);
 
 	bool heroDrawn = false;
 	for (auto& obj: gameObjects) {
@@ -103,6 +104,9 @@ void World::Render(sf::RenderWindow& window)
 
 	if (heroObject && !heroDrawn)
 		heroObject->Render(window, tilemap->TileToScreen(heroObject->GetPosition()));
+
+	// render cliff layers
+	tilemap->Render(window, true);
 }
 
 bool World::MapExists(string id)

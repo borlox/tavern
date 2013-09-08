@@ -105,9 +105,10 @@ public:
 	/**
 	 * \brief Renders the tile map.
 	 *
-	 * \param _window SFML window to render to
+	 * \param window SFML window to render to
+	 * \param cliff Render the cliff layers
 	 */
-	void Render(sf::RenderWindow& _window);
+	void Render(sf::RenderTarget& target, bool cliff);
 
 	sf::Vector2f TileToScreen(sf::Vector2f tilePos);
 	sf::Vector2f ScreenToTile(sf::Vector2f screenPos);
@@ -178,6 +179,8 @@ public:
 
 private:
 	void UpdateCollisionLayer();
+
+	void RenderLayer(sf::RenderTarget& target, size_t index);
 
 	sf::Vector2f FindNearestAccessible(sf::Vector2f start, sf::Vector2f);
 	std::vector<std::pair<sf::Vector2i, float>> FindNeighbors(sf::Vector2i tile);
