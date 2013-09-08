@@ -8,6 +8,7 @@
 #include "Tilemap.h"
 #include "sf_smart_camera.h"
 #include "UserInterface.h"
+#include "UnitCamera.h"
 
 #include "Globals.h"
 
@@ -37,19 +38,21 @@ int main(int argc, char **argv)
 	window.resetGLStates();
 
 	World& world = g_World;
-	auto tilemap = world.LoadTilemap("test", "maps/test.tmx");
-	if (!tilemap) {
-		LOG(Error, "Failed to load tilemap");
-		return 0;
-	}
 
 	auto hero = new MovableObject(TextureManager::Get().Load("assets/image/character/TestCharacter.png"));
 	hero->SetId("hero");
 	hero->SetPosition(6, 6);
 	world.SetHeroObject(hero);
 
-	sftile::SfSmartCamera camera(800, 600);
-	tilemap->RegisterCamera(&camera);
+	UnitCamera camera(hero, 32, 32, 700, 400);
+	camera.SetRenderOffset(sf::Vector2f(50, 100));
+	world.SetDefaultCamera(&camera);
+
+	auto tilemap = world.LoadTilemap("test", "maps/test.tmx");
+	if (!tilemap) {
+		LOG(Error, "Failed to load tilemap");
+		return 0;
+	}
 
 	SetupStates();
 

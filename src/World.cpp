@@ -44,6 +44,7 @@ Tilemap* World::LoadTilemap(string id, string path)
 			cout << "Failed to load Tilemap from path: " << path << endl;
 			return nullptr;
 		}
+		tilemap.RegisterCamera(defaultCamera);
 		tilemaps.emplace(id, std::move(tilemap));
 	}
 
@@ -55,12 +56,11 @@ Tilemap* World::LoadTilemap(string id, string path)
 
 void World::exp_LoadTilemap(std::string name)
 {
-	fs::path path = "maps/";
+	fs::path path = "maps";
 	path /= (name + ".tmx");
 
-	auto camera = GetTilemap()->GetCamera();
 	auto map = LoadTilemap(name, path.string());
-	map->RegisterCamera(camera);
+	//map->RegisterCamera(defaultCamera);
 }
 
 Tilemap* World::GetTilemap(string id)

@@ -7,31 +7,18 @@ class GameObject;
 
 class Tilemap;
 
+namespace sftile {
+	class SfCamera;
+}
+
 using namespace sftile;
 using namespace priv;
 
 class World
 {
 public:
-	/**
-	 * \brief Default constructor
-	 *
-	 * Creates an empty world object.
-	 */
 	World();
-
-	/**
-	 * \brief Copy constructor
-	 *
-	 * Copies an existing world object.
-	 */
 	World(const World& _copy);
-
-	/**
-	 * \brief Assignment operator
-	 *
-	 * Copies an existing world object.
-	 */
 	World& operator=(const World& _copy);
 
 	/**
@@ -58,6 +45,11 @@ public:
 	 * \return Pointer to the tile map if successful
 	 */
 	Tilemap* GetTilemap(string id = "");
+
+	void SetDefaultCamera(SfCamera* camera)
+	{
+		defaultCamera = camera;
+	}
 
 	/**
 	 * \brief Handles any events referring to the tile engine.
@@ -133,6 +125,8 @@ private:
 	bool MapExists(string _id);
 
 	SfTilemapLoader loader;
+
+	SfCamera* defaultCamera;
 
 	std::map<string, Tilemap> tilemaps;
 

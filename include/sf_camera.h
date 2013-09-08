@@ -175,6 +175,16 @@ public:
   ///////////////////////////////////////////////////////////
   const sf::IntRect GetBounds(const int _tile_width, const int _tile_height);
 
+  virtual void SetRenderOffset(sf::Vector2f offset)
+  {
+	  renderOffset = offset;
+  }
+
+  virtual sf::Vector2f GetRenderOffset()
+  {
+	  return renderOffset;
+  }
+
 protected:
   /// Current position of the top-left corner of the camera
   sf::Vector2f position;
@@ -190,6 +200,8 @@ protected:
 
   /// True if the position of the camera needs to be updated
   bool need_update;
+
+  sf::Vector2f renderOffset;
 
 private:
   ///////////////////////////////////////////////////////////
