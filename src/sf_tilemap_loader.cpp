@@ -200,6 +200,7 @@ bool SfTilemapLoader::ParseTileLayer(const XMLElement* _element, SfTileLayer& _t
 	const XMLElement* properties = _element->FirstChildElement("properties");
 	if (properties) {
 		ParseProperties(properties, _tile_layer.properties);
+		_tile_layer.CheckProperties();
 	}
 
 	// Load the data node

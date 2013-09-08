@@ -43,7 +43,9 @@ SfTileLayer::SfTileLayer(const SfTileLayer& _copy)
   , name(_copy.name)
   , properties(_copy.properties)
   , layer_dimensions(_copy.layer_dimensions)
-{}
+{
+	CheckProperties();
+}
 
 
 ////////////////////////////////////////////////////////////
@@ -58,6 +60,8 @@ SfTileLayer& SfTileLayer::operator=(const SfTileLayer& _copy)
 	std::swap(name, temp.name);
 	std::swap(properties, temp.properties);
     std::swap(layer_dimensions, temp.layer_dimensions);
+
+	CheckProperties();
   }
 
   return *this;
@@ -72,6 +76,19 @@ int SfTileLayer::GetTileGID(const int _x, const int _y)
   int gid = tile_gids.at(_y).at(_x);
 
   return gid;
+}
+
+template <typename T>
+T get(const std::map<std::string, std::string>& prop, std::string key, T def)
+{
+	if (prop.find(key) == prop.end())
+		return def;
+	return boost::lexical_cast<T>(prop.at(key));
+}
+
+void SfTileLayer::CheckProperties()
+{
+	isCliff = get<int>(properties, "cliff", 0) != 0;
 }
 
 }

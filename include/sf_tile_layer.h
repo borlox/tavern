@@ -91,6 +91,11 @@ public:
 	  return visible;
   }
 
+  bool IsCliffLayer() const
+  {
+	  return isCliff;
+  }
+
 protected:
   std::string name;
 
@@ -103,6 +108,10 @@ protected:
   sf::Vector2i layer_dimensions;
 
   bool visible;
+
+  bool isCliff;
+
+  void CheckProperties();
 
 };
 
