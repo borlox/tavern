@@ -57,6 +57,7 @@
     <ClInclude Include="include\State.h" />
     <ClInclude Include="include\TextureManager.h" />
     <ClInclude Include="include\Tilemap.h" />
+    <ClInclude Include="include\UserInterface.h" />
     <ClInclude Include="include\World.h" />
   </ItemGroup>
   <ItemGroup>
@@ -810,6 +811,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Use</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="src\Tilemap.cpp" />
+    <ClCompile Include="src\UserInterface.cpp" />
     <ClCompile Include="src\World.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
