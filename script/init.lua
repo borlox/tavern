@@ -50,13 +50,44 @@ EventHandler:AddEventHandler("ObjectPathComplete", function(event, objId)
 	end
 end)
 
-local function HandleObjectClick(object)
+local ObjectHandlers = {
+	readable = function(obj)
+		DisplayText(obj:GetProperty("textfile"))
+	end,
+
+	door = function(obj)
+		Log(LogLevel.Msg, "Door to " .. obj:GetProperty("target"))
+
+		local target = obj:GetProperty("target")
+		local oldMapId = World:CurrentMapId()
+
+		World:LoadMap(target)
+
+		local newMap = World:GetMap("")
+		local foundPos = false
+		for obj in newMap:GetObjects("objects") do
+			if obj:GetType() == "spawn" and obj:GetProperty("from") == oldMapId then
+				local center = obj:GetCenter()
+				local pos = newMap:PixelToTile(Vector2f(center.x, center.y))
+				World:GetHero():SetPosition(pos.x, pos.y)
+				foundPos = true
+			end
+		end
+		if not foundPos then
+			World:GetHero():SetPosition(2, 2)
+		end
+	end,
+}
+
+local function HandleObjectClick(object, clickPos)
 	Log(LogLevel.Msg, "Object clicked: " .. object:GetName())
 
-	Object_MoveToThen(World:GetHero(), World:GetMap(""):PixelToTile(Vector2f(object:GetPosition())), function()
-		Log(LogLevel.Msg, "Hero reached " .. object:GetName())
-		DisplayText(object:GetProperty("textfile"))
-	end)
+	local type = object:GetType()
+	if ObjectHandlers[type] then
+		Object_MoveToThen(World:GetHero(), clickPos, function()
+			ObjectHandlers[type](object)
+		end)
+	end
 end
 
 local function PointInRect(pt, topleft, dim)
@@ -79,9 +110,9 @@ EventHandler:AddEventHandler("MouseButtonReleased", function(event, arg)
 		for obj in objects do
 			local objpos = map:PixelToTile(Vector2f(obj:GetPosition()))
 			local objdim = map:PixelToTile(Vector2f(obj:GetDimensions().x, obj:GetDimensions().y))
-			Log(LogLevel.Msg, "Object: " .. obj:GetName() .. " | x = " .. objpos.x .. " | y = " .. objpos.y)
+			--Log(LogLevel.Msg, "Object: " .. obj:GetName() .. " | x = " .. objpos.x .. " | y = " .. objpos.y)
 			if PointInRect(tilePos, objpos, objdim) then
-				HandleObjectClick(obj)
+				HandleObjectClick(obj, tilePos)
 				return
 			end
 		end
