@@ -3,6 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "tavern", "tavern.vcxproj", "{341BC7B7-BE75-4D2A-B897-9B5234132B89}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C7C366B6-922D-4D33-8A79-BE984AF395C6}"
+	ProjectSection(SolutionItems) = preProject
+		tavern.psess = tavern.psess
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
