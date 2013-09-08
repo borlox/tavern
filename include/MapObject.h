@@ -24,121 +24,85 @@ using namespace priv;
 
 class MapObject
 {
-friend class priv::SfTilemapLoader;
+	friend class priv::SfTilemapLoader;
 public:
-  ////////////////////////////////////////////////////////////
-  /// \brief Default constructor
-  ///
-  /// Creates an empty object.
-  ///
-  ////////////////////////////////////////////////////////////
 	MapObject();
-
-
-  ////////////////////////////////////////////////////////////
-  /// \brief Copy constructor
-  ///
-  /// Copies an existing object.
-  ///
-  ////////////////////////////////////////////////////////////
 	MapObject(const MapObject& _copy);
-
-  ////////////////////////////////////////////////////////////
-  /// \brief Assignment operator
-  ///
-  /// Copies an existing object.
-  ///
-  ////////////////////////////////////////////////////////////
 	MapObject& operator=(const MapObject& _copy);
 
-  ////////////////////////////////////////////////////////////
-  /// \brief Returns the name of the object
-  ///
-  /// \return String of the name of the object
-  ///
-  ////////////////////////////////////////////////////////////
+	/**
+	 * Return the name of the object
+	 */
 	std::string GetName()
 	{
 		return name;
 	}
 
-  ////////////////////////////////////////////////////////////
-  /// \brief Returns the string type of the object
-  ///
-  /// \return String type of the object
-  ///
-  ////////////////////////////////////////////////////////////
+	/**
+	 * Return the string type of the object
+	 */
 	std::string GetType()
 	{
 		return type;
 	}
 
-
-  ////////////////////////////////////////////////////////////
-  /// \brief Returns the position of the object
-  ///
-  /// \return Position of the object in pixels
-  ///
-  ////////////////////////////////////////////////////////////
+	/**
+	 * Return the position of the object
+	 */
 	sf::Vector2i GetPosition()
 	{
 		return position;
 	}
 	
-
+	/**
+	 * Return the center position of the object
+	 */
 	sf::Vector2i GetCenter()
 	{
 		return position + sf::Vector2i(dimensions.x / 2, dimensions.y / 2);
 	}
 
-
-  ////////////////////////////////////////////////////////////
-  /// \brief Returns the dimensions of the object
-  ///
-  /// \return Dimensions of the object in pixels
-  ///
-  ////////////////////////////////////////////////////////////
+	/**
+	 * Return the dimensions of the object
+	 */
 	sf::Vector2i GetDimensions()
 	{
 		return dimensions;
 	}
 
-
-  ////////////////////////////////////////////////////////////
-  /// \brief Returns the rotation angle of the object
-  ///
-  /// \return Rotation angle in degrees
-  ///
-  ////////////////////////////////////////////////////////////
+	/**
+	 * Return the rotation angle of the object
+	 */
 	float GetRotation()
 	{
 		return rotation;
 	}
 
-
-  ////////////////////////////////////////////////////////////
-  /// \brief Returns the GID of the tile being used (if any)
-  ///
-  /// \return GID of the tile being used (if any)
-  ///
-  ////////////////////////////////////////////////////////////
+	/**
+	 * Return the GID of the tile being used.
+	 * 
+	 * If no tile is used, return -1.
+	 */
 	int GetGid()
 	{
 		return gid;
 	}
 
-
-  ////////////////////////////////////////////////////////////
-  /// \brief Returns whether the object is visible or not
-  ///
-  /// \return True if the object is visible
-  ///
-  ////////////////////////////////////////////////////////////
+	/**
+	 * Return whether the object is visible or not
+	 */
 	bool IsVisible() const
 	{
 		return visible;
 	}
 
+	/**
+	 * Return the value of a property.
+	 *
+	 * If the property is not set, "" is returned.
+	 *
+	 * @param name The property name
+	 */
 	std::string GetProperty(const std::string& name) const
 	{
 		if (properties.find(name) != properties.end())
@@ -146,14 +110,12 @@ public:
 		return "";
 	}
 
-
-  ////////////////////////////////////////////////////////////
-  /// \brief Renders the object to the window
-  ///
-  /// \param _window Window to render to
-  ///
-  ////////////////////////////////////////////////////////////
-	void Render(sf::RenderWindow& _window);
+	/**
+	 * Render the object to the window
+	 *
+	 * @param window Window to render to
+	 */
+	void Render(sf::RenderWindow& window);
 
 	static luabind::scope ExportClass()
 	{
