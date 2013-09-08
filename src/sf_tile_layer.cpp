@@ -41,6 +41,7 @@ SfTileLayer::SfTileLayer(const SfTileLayer& _copy)
   : tile_gids(_copy.tile_gids)
   , visible(_copy.visible)
   , name(_copy.name)
+  , properties(_copy.properties)
   , layer_dimensions(_copy.layer_dimensions)
 {}
 
@@ -55,6 +56,7 @@ SfTileLayer& SfTileLayer::operator=(const SfTileLayer& _copy)
     std::swap(tile_gids, temp.tile_gids);
 	std::swap(visible, temp.visible);
 	std::swap(name, temp.name);
+	std::swap(properties, temp.properties);
     std::swap(layer_dimensions, temp.layer_dimensions);
   }
 

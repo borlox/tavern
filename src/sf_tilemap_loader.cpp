@@ -179,38 +179,45 @@ bool SfTilemapLoader::ParseTileset(const XMLElement* _element, SfTileset& _tiles
 ////////////////////////////////////////////////////////////
 bool SfTilemapLoader::ParseTileLayer(const XMLElement* _element, SfTileLayer& _tile_layer)
 {
-  // Load the arbitrary name of the layer
-  string name = _element->Attribute("name");
-  _tile_layer.name = name;
+	// Load the arbitrary name of the layer
+	string name = _element->Attribute("name");
+	_tile_layer.name = name;
   
-  cout << "Loading layer: " << name << endl;
+	cout << "Loading layer: " << name << endl;
 
-  // Load the dimensions of the layer
-  sf::Vector2i layer_dimensions(0, 0);
-  _element->QueryIntAttribute("width", &layer_dimensions.x);
-  _element->QueryIntAttribute("height", &layer_dimensions.y);
+	// Load the dimensions of the layer
+	sf::Vector2i layer_dimensions(0, 0);
+	_element->QueryIntAttribute("width", &layer_dimensions.x);
+	_element->QueryIntAttribute("height", &layer_dimensions.y);
 
-  int visible = 1;
-  _element->QueryIntAttribute("visible", &visible);
-  _tile_layer.visible = visible != 0; // != 0 to suppress MSVC warning
+	int visible = 1;
+	_element->QueryIntAttribute("visible", &visible);
+	_tile_layer.visible = visible != 0; // != 0 to suppress MSVC warning
 
-  _tile_layer.layer_dimensions = layer_dimensions;
+	_tile_layer.layer_dimensions = layer_dimensions;
 
-  // Load the data node
-  const XMLElement* data = _element->FirstChildElement("data");
+	// Load the properties
+	const XMLElement* properties = _element->FirstChildElement("properties");
+	if (properties) {
+		ParseProperties(properties, _tile_layer.properties);
+	}
 
-  // Find out the encoding of the data
-  string encoding_attr = (data->Attribute("encoding") != NULL) ? data->Attribute("encoding") : "xml";
+	// Load the data node
+	const XMLElement* data = _element->FirstChildElement("data");
 
-  // Go-go-gadget, Parsers!
-  if (encoding_attr == "xml" && !ParseXmlTileLayer(data, _tile_layer))
-    return false;
-  else if (encoding_attr == "base64" && !ParseBase64TileLayer(data, _tile_layer))
-    return false;
-  else if (encoding_attr == "csv" && !ParseCsvTileLayer(data, _tile_layer))
-    return false;
-  else
-    return true;
+	// Find out the encoding of the data
+	string encoding_attr = (data->Attribute("encoding") != NULL) ? data->Attribute("encoding") : "xml";
+
+	// Go-go-gadget, Parsers!
+	bool ok = false;
+	if (encoding_attr == "xml")
+		ok = ParseXmlTileLayer(data, _tile_layer);
+	else if (encoding_attr == "base64")
+		ok = ParseBase64TileLayer(data, _tile_layer);
+	else if (encoding_attr == "csv")
+		ok = ParseCsvTileLayer(data, _tile_layer);
+
+	return ok;
 }
 
 

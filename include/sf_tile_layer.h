@@ -94,6 +94,8 @@ public:
 protected:
   std::string name;
 
+  std::map<std::string, std::string> properties;
+
   /// Vector of the tile GIDs in the layer
   vector< vector<int> > tile_gids;
 
