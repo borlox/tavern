@@ -1,0 +1,11 @@
+Button, Entry {
+	Color: #fac87cff;
+	BorderColor: #fac87cff;
+	BorderWidth: 1;
+	BackgroundColoder: #4d4d47ff;
+	FontSize: 14;
+}
+
+Separator {
+	Color: #fac87cff;
+}
