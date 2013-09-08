@@ -101,6 +101,11 @@ public:
 		heroObject.reset(hero);
 	}
 
+	std::string CurrentMapId() const
+	{
+		return current_id;
+	}
+
 	/**
 	 * Return a pointer to the hero object.
 	 */
@@ -109,12 +114,16 @@ public:
 		return heroObject.get();
 	}
 
+	void exp_LoadTilemap(std::string name);
+
 	static luabind::scope ExportClass()
 	{
 		return
 			luabind::class_<World>("World")
 			.def("GetHero", &World::GetHeroObject)
 			.def("GetMap", &World::GetTilemap)
+			.def("CurrentMapId", &World::CurrentMapId)
+			.def("LoadMap", &World::exp_LoadTilemap)
 		;
 	}
 

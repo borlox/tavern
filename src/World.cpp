@@ -8,6 +8,8 @@
 
 using namespace sftile;
 
+namespace fs = boost::filesystem;
+
 World::World()
 : current_id("null")
 {
@@ -36,21 +38,29 @@ World& World::operator=(const World& copy)
 
 Tilemap* World::LoadTilemap(string id, string path)
 {
-	Tilemap tilemap;
-  
-	// Check to make sure the Tilemap doesn't already exists.
-	// If not, then attempt to parse the data for it.
-	if (!MapExists(id) && !loader.LoadTilemap(path, tilemap)) {
-		cout << "Failed to load Tilemap from path: " << path << endl;
-		return nullptr;
+	if (!MapExists(id)) {
+		Tilemap tilemap;
+		if (!loader.LoadTilemap(path, tilemap)) {
+			cout << "Failed to load Tilemap from path: " << path << endl;
+			return nullptr;
+		}
+		tilemaps.emplace(id, std::move(tilemap));
 	}
-  
-	tilemaps.emplace(id, std::move(tilemap));
 
 	cout << "Loaded Tilemap from path: " << path << endl;
 
 	current_id = id;
 	return GetTilemap(id);
+}
+
+void World::exp_LoadTilemap(std::string name)
+{
+	fs::path path = "maps/";
+	path /= (name + ".tmx");
+
+	auto camera = GetTilemap()->GetCamera();
+	auto map = LoadTilemap(name, path.string());
+	map->RegisterCamera(camera);
 }
 
 Tilemap* World::GetTilemap(string id)
