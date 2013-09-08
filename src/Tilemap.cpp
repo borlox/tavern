@@ -109,6 +109,8 @@ void Tilemap::RenderLayer(sf::RenderTarget& target, size_t index)
 	sf::Vector2i offset = camera->GetTileOffset(tile_dimensions.x, tile_dimensions.y);
 	sf::IntRect bounds = camera->GetBounds(tile_dimensions.x, tile_dimensions.y);
 
+	auto renderOffset = camera->GetRenderOffset();
+
 	for (int y = 0, tile_y = bounds.top; y < bounds.height; ++y, ++tile_y) {
 		for (int x = 0, tile_x = bounds.left; x < bounds.width; ++x, ++tile_x) {
 			if (tile_x < 0 || tile_y < 0)
@@ -122,7 +124,7 @@ void Tilemap::RenderLayer(sf::RenderTarget& target, size_t index)
 
 			float pos_x = static_cast<float>(x * tile_dimensions.x - offset.x);
 			float pos_y = static_cast<float>(y * tile_dimensions.y - offset.y);
-			TilesetForGID(gid).RenderTile(target, gid, pos_x, pos_y);
+			TilesetForGID(gid).RenderTile(target, gid, pos_x + renderOffset.x, pos_y + renderOffset.y);
 		}
 	}
 }
@@ -131,6 +133,7 @@ sf::Vector2f Tilemap::TileToScreen(sf::Vector2f tilePos)
 {
 	sf::Vector2i offset = camera->GetTileOffset(tile_dimensions.x, tile_dimensions.y);
 	sf::IntRect bounds = camera->GetBounds(tile_dimensions.x, tile_dimensions.y);
+	auto renderOffset = camera->GetRenderOffset();
 
 	float x = tilePos.x - bounds.left;
 	float y = tilePos.y - bounds.top;
@@ -138,16 +141,17 @@ sf::Vector2f Tilemap::TileToScreen(sf::Vector2f tilePos)
 	float px = x * tile_dimensions.x - offset.x;
 	float py = y * tile_dimensions.y - offset.y;
 
-	return sf::Vector2f(px, py);
+	return sf::Vector2f(px + renderOffset.x, py + renderOffset.y);
 }
 
 sf::Vector2f Tilemap::ScreenToTile(sf::Vector2f screenPos)
 {
 	sf::Vector2i offset = camera->GetTileOffset(tile_dimensions.x, tile_dimensions.y);
 	sf::IntRect bounds = camera->GetBounds(tile_dimensions.x, tile_dimensions.y);
+	auto renderOffset = camera->GetRenderOffset();
 
-	float x = (screenPos.x + offset.x) / tile_dimensions.x;
-	float y = (screenPos.y + offset.y) / tile_dimensions.y;
+	float x = (screenPos.x - renderOffset.x + offset.x) / tile_dimensions.x;
+	float y = (screenPos.y - renderOffset.y + offset.y) / tile_dimensions.y;
 
 	float px = x + bounds.left;
 	float py = y + bounds.top;
@@ -167,22 +171,35 @@ std::vector<std::pair<sf::Vector2i, float>> Tilemap::FindNeighbors(sf::Vector2i 
 {
 	std::vector<std::pair<sf::Vector2i, float>> res;
 
-	if (IsTileAccessible(sf::Vector2f(static_cast<float>(tile.x-1), static_cast<float>(tile.y))))
-		res.emplace_back(sf::Vector2i(tile.x-1, tile.y), 1.0f);
-	if (IsTileAccessible(sf::Vector2f(static_cast<float>(tile.x+1), static_cast<float>(tile.y))))
-		res.emplace_back(sf::Vector2i(tile.x+1, tile.y), 1.0f);
-	if (IsTileAccessible(sf::Vector2f(static_cast<float>(tile.x), static_cast<float>(tile.y-1))))
-		res.emplace_back(sf::Vector2i(tile.x, tile.y-1), 1.0f);
-	if (IsTileAccessible(sf::Vector2f(static_cast<float>(tile.x), static_cast<float>(tile.y+1))))
-		res.emplace_back(sf::Vector2i(tile.x, tile.y+1), 1.0f);
+	bool up    = false;
+	bool left  = false;
+	bool down  = false;
+	bool right = false;
 
-	if (IsTileAccessible(sf::Vector2f(static_cast<float>(tile.x-1), static_cast<float>(tile.y-1))))
+	if (IsTileAccessible(sf::Vector2f(static_cast<float>(tile.x-1), static_cast<float>(tile.y)))) {
+		res.emplace_back(sf::Vector2i(tile.x-1, tile.y), 1.0f);
+		left = true;
+	}
+	if (IsTileAccessible(sf::Vector2f(static_cast<float>(tile.x+1), static_cast<float>(tile.y)))) {
+		res.emplace_back(sf::Vector2i(tile.x+1, tile.y), 1.0f);
+		right = true;
+	}
+	if (IsTileAccessible(sf::Vector2f(static_cast<float>(tile.x), static_cast<float>(tile.y-1)))) {
+		res.emplace_back(sf::Vector2i(tile.x, tile.y-1), 1.0f);
+		up = true;
+	}
+	if (IsTileAccessible(sf::Vector2f(static_cast<float>(tile.x), static_cast<float>(tile.y+1)))) {
+		res.emplace_back(sf::Vector2i(tile.x, tile.y+1), 1.0f);
+		down = true;
+	}
+
+	if (up && left && IsTileAccessible(sf::Vector2f(static_cast<float>(tile.x-1), static_cast<float>(tile.y-1))))
 		res.emplace_back(sf::Vector2i(tile.x-1, tile.y-1), 1.4f);
-	if (IsTileAccessible(sf::Vector2f(static_cast<float>(tile.x+1), static_cast<float>(tile.y+1))))
+	if (down && right && IsTileAccessible(sf::Vector2f(static_cast<float>(tile.x+1), static_cast<float>(tile.y+1))))
 		res.emplace_back(sf::Vector2i(tile.x+1, tile.y+1), 1.4f);
-	if (IsTileAccessible(sf::Vector2f(static_cast<float>(tile.x+1), static_cast<float>(tile.y-1))))
+	if (up && right && IsTileAccessible(sf::Vector2f(static_cast<float>(tile.x+1), static_cast<float>(tile.y-1))))
 		res.emplace_back(sf::Vector2i(tile.x+1, tile.y-1), 1.4f);
-	if (IsTileAccessible(sf::Vector2f(static_cast<float>(tile.x-1), static_cast<float>(tile.y+1))))
+	if (down && left && IsTileAccessible(sf::Vector2f(static_cast<float>(tile.x-1), static_cast<float>(tile.y+1))))
 		res.emplace_back(sf::Vector2i(tile.x-1, tile.y+1), 1.4f);
 
 	return res;
