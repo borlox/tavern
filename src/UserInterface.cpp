@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "UserInterface.h"
 #include "Scripting.h"
+#include "TextureManager.h"
 
 using namespace sf;
 using namespace sfg;
@@ -9,8 +10,14 @@ namespace fs = boost::filesystem;
 
 void UserInterface::Initialize()
 {
+	topBar.setTexture(*TextureManager::Get().Load("assets/image/interface/TopBar.png"));
+	topBar.setPosition(0.f, 0.f);
+
+	bottomBar.setTexture(*TextureManager::Get().Load("assets/image/interface/BottomBar.png"));
+	bottomBar.setPosition(0.f, 500.f);
+	
 	fixedWin = sfg::Window::Create(0);
-	fixedWin->SetPosition(Vector2f(5.f, 390.f));
+	fixedWin->SetPosition(Vector2f(5.f, 505.f));
 
 	fixedLayout = Fixed::Create();
 	fixedWin->Add(fixedLayout);
@@ -28,6 +35,15 @@ void UserInterface::Initialize()
 
 	desktop.Add(textWindow.win);
 	desktop.Add(fixedWin);
+
+	desktop.LoadThemeFromFile("assets/misc/ui.theme");
+}
+
+void UserInterface::Render(sf::RenderWindow& target)
+{
+	target.draw(topBar);
+	target.draw(bottomBar);
+	sfgui.Display(target);
 }
 
 void UserInterface::InitScript()
@@ -68,7 +84,7 @@ void UserInterface::InitTextWindow()
 {
 	auto& tw = textWindow;
 	tw.win = sfg::Window::Create();
-	tw.win->SetPosition(Vector2f(100.f, 100.f));
+	tw.win->SetPosition(Vector2f(350.f, 250.f));
 
 	tw.layout = Box::Create(Box::VERTICAL, 5.f);
 

@@ -19,10 +19,7 @@ public:
 		desktop.Update(elapsed);
 	}
 
-	void Render(sf::Window& target)
-	{
-		sfgui.Display(target);
-	}
+	void Render(sf::RenderWindow& target);
 
 	bool ShouldQuit() const
 	{
@@ -67,6 +64,9 @@ private:
 	sfg::Fixed::Ptr fixedLayout;
 
 	sfg::Button::Ptr quitBtn;
+
+	sf::Sprite topBar;
+	sf::Sprite bottomBar;
 
 	struct {
 		sfg::Box::Ptr layout;
