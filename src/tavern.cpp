@@ -7,6 +7,7 @@
 #include "MovableObject.h"
 #include "Tilemap.h"
 #include "sf_smart_camera.h"
+#include "UserInterface.h"
 
 #include "Globals.h"
 
@@ -17,6 +18,7 @@ static void InitSingletons()
 {
 	TextureManager::Get().Initialize();
 	Scripting::Get().Initialize();
+	UserInterface::Get().Initialize();
 }
 
 static void InitScripting()
@@ -29,45 +31,7 @@ static void InitScripting()
 sfg::Desktop guiDesktop;
 
 void DisplayTextFromFile(const std::string& path)
-{
-	static bool initialized = false;
-	static sfg::Window::Ptr window;
-	static sfg::Label::Ptr label;
-	static sfg::Button::Ptr button;
-	static sfg::Box::Ptr box;
-
-	if (!initialized) {
-		window = sfg::Window::Create();
-		box = sfg::Box::Create(sfg::Box::VERTICAL, 10.f);
-
-		button = sfg::Button::Create("Ok");
-		button->GetSignal(sfg::Widget::OnLeftClick).Connect(sfg::Delegate(std::function<void(void)>([&]() {
-			window->Show(false);
-		})));
-
-		label = sfg::Label::Create("");
-
-		box->Pack(label);
-		box->Pack(button);
-		window->Add(box);
-
-		window->SetPosition(sf::Vector2f(100, 100));
-
-		guiDesktop.Add(window);
-
-		initialized = true;
-	}
-
-	std::ifstream inf(path);
-	std::string text;
-	std::string line;
-
-	while (std::getline(inf, line))
-		text += line + "\n";
-
-	label->SetText(text);
-	window->Show();
-}
+{ }
 
 int main(int argc, char **argv)
 {
@@ -78,54 +42,7 @@ int main(int argc, char **argv)
 
 	InitSingletons();
 
-	sfg::SFGUI sfgui;
-
 	sf::RenderWindow window(sf::VideoMode(800, 600), "tavern");
-
-	sfg::Window::Ptr guiWnd(sfg::Window::Create(0));
-	guiWnd->SetPosition(sf::Vector2f(0.f, 0.f));
-
-	sfg::Button::Ptr guiQuitBtn(sfg::Button::Create("Quit"));
-	guiQuitBtn->GetSignal(sfg::Widget::OnLeftClick).Connect(sfg::Delegate([&]() {
-		window.close();
-	}));
-
-	sfg::Button::Ptr guiResetBtn(sfg::Button::Create("Reset"));
-	guiResetBtn->GetSignal(sfg::Widget::OnLeftClick).Connect(sfg::Delegate(std::function<void (void)>([]() {
-		Scripting::Get().Reset();
-		InitScripting();
-	})));
-
-	sfg::Entry::Ptr guiEntry(sfg::Entry::Create());
-	guiEntry->SetRequisition(sf::Vector2f(300, 20));
-	sfg::Button::Ptr guiExec(sfg::Button::Create("Run"));
-	
-	auto executeString = sfg::Delegate([&]() {
-		std::string script = guiEntry->GetText();
-		if (!script.empty()) {
-			Scripting::Get().ExecuteString(script);
-		}
-		guiEntry->SetText("");
-	});
-
-	guiExec->GetSignal(sfg::Widget::OnLeftClick).Connect(executeString);
-	guiEntry->GetSignal(sfg::Widget::OnKeyRelease).Connect(sfg::Delegate([&]() {
-		if (g_CurrentEvent.key.code == sf::Keyboard::Return)
-			executeString();
-	}));
-
-	sfg::Box::Ptr guiEntryLayout(sfg::Box::Create(sfg::Box::HORIZONTAL, 5.0f));
-	guiEntryLayout->Pack(guiEntry);
-	guiEntryLayout->Pack(guiExec);
-
-	sfg::Fixed::Ptr guiFixed(sfg::Fixed::Create());
-	guiFixed->Put(guiQuitBtn, sf::Vector2f(390, 6));
-	guiFixed->Put(guiResetBtn, sf::Vector2f(390, 36));
-	guiFixed->Put(guiEntryLayout, sf::Vector2f(5, 390));
-
-	guiWnd->Add(guiFixed);
-	
-	guiDesktop.Add(guiWnd);
 
 	window.resetGLStates();
 
@@ -141,7 +58,6 @@ int main(int argc, char **argv)
 	auto hero = new MovableObject(TextureManager::Get().Load("assets/image/character/TestCharacter.png"));
 	hero->SetId("hero");
 	hero->SetPosition(6, 6);
-	//hero->Animate();
 	world.SetHeroObject(hero);
 
 	sftile::SfSmartCamera camera(800, 600);
@@ -157,16 +73,21 @@ int main(int argc, char **argv)
 	}
 	bool stateChanged = true;
 
+	UserInterface& gui = UserInterface::Get();
+
 	window.setFramerateLimit(120);
 	while (window.isOpen()) {
 		sf::Event event;
 		while (window.pollEvent(event)) {
-			g_CurrentEvent = event;
+			gui.HandleEvent(event);
+
+
 			world.HandleEvents(event);
-			guiDesktop.HandleEvent(event);
 			Scripting::Get().PostSfmlEvent(event);
 
 			if (event.type == sf::Event::Closed)
+				window.close();
+			if (gui.ShouldQuit())
 				window.close();
 		}
 
@@ -193,11 +114,11 @@ int main(int argc, char **argv)
 
 		world.Update(elapsed);
 		Scripting::Get().Update(elapsed);
-		guiDesktop.Update(elapsed);
+		gui.Update(elapsed);
 
 		window.clear();
 		world.Render(window);
-		sfgui.Display(window);
+		gui.Render(window);
 		window.display();
 	}
 
