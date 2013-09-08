@@ -84,6 +84,12 @@ public:
 	{
 		return position;
 	}
+	
+
+	sf::Vector2i GetCenter()
+	{
+		return position + sf::Vector2i(dimensions.x / 2, dimensions.y / 2);
+	}
 
 
   ////////////////////////////////////////////////////////////
@@ -158,6 +164,7 @@ public:
 			.def("IsVisible", &MapObject::IsVisible)
 			.def("GetPosition", ::GetPosition<MapObject>)
 			.def("GetDimensions", &MapObject::GetDimensions)
+			.def("GetCenter", &MapObject::GetCenter)
 			.def("GetProperty", &MapObject::GetProperty)
 		;
 	}
