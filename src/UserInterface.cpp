@@ -19,7 +19,7 @@ void UserInterface::Initialize()
 	quitBtn->GetSignal(Widget::OnLeftClick).Connect(Delegate([&]() {
 		shouldQuit = true;
 	}));
-	fixedLayout->Put(quitBtn, Vector2f(0.f, 30.f));
+	fixedLayout->Put(quitBtn, Vector2f(0.f, 33.f));
 
 	InitScript();	
 	fixedLayout->Put(script.layout, Vector2f(0.f, 0.f));
@@ -45,7 +45,7 @@ void UserInterface::InitScript()
 	});
 
 	script.execBtn->GetSignal(Widget::OnLeftClick).Connect(execString);
-	script.entry->GetSignal(Widget::OnKeyPress).Connect(Delegate([execString,this]() {
+	script.entry->GetSignal(Widget::OnKeyPress).Connect(Delegate([execString,this]() { // capture execString so it doesnt get lost
 		if (currentEvent.key.code == Keyboard::Return)
 			execString();
 	}));
