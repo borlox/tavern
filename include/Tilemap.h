@@ -89,6 +89,13 @@ public:
 	 */
 	void RegisterCamera(SfCamera* _camera);
 
+	SfCamera* GetCamera() const
+	{
+		return camera;
+	}
+
+
+
 	/**
 	 * \brief Handles any events referring to the tile map.
 	 *
