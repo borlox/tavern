@@ -26,6 +26,8 @@ void Scripting::Reset()
 void Scripting::Initialize()
 {
 	InitLuaState();
+
+	ExecuteFile("script/init.lua");
 }
 
 bool Scripting::ExecuteFile(const fs::path& path)

@@ -12,23 +12,13 @@
 #include "Globals.h"
 
 World g_World;
-sf::Event g_CurrentEvent;
 
 static void InitSingletons()
 {
 	TextureManager::Get().Initialize();
-	Scripting::Get().Initialize();
 	UserInterface::Get().Initialize();
+	Scripting::Get().Initialize();
 }
-
-static void InitScripting()
-{
-	Scripting& s = Scripting::Get();
-
-	s.ExecuteFile("script/init.lua");
-}
-
-sfg::Desktop guiDesktop;
 
 void DisplayTextFromFile(const std::string& path)
 { }
@@ -46,8 +36,6 @@ int main(int argc, char **argv)
 
 	window.resetGLStates();
 
-	sf::Clock clk;
-
 	World& world = g_World;
 	auto tilemap = world.LoadTilemap("test", "maps/test.tmx");
 	if (!tilemap) {
@@ -64,7 +52,6 @@ int main(int argc, char **argv)
 	tilemap->RegisterCamera(&camera);
 
 	SetupStates();
-	InitScripting();
 
 	State* currentState = GetState("MainMenuState");
 	if (!currentState) {
@@ -76,6 +63,7 @@ int main(int argc, char **argv)
 	UserInterface& gui = UserInterface::Get();
 
 	window.setFramerateLimit(120);
+	sf::Clock clk;
 	while (window.isOpen()) {
 		sf::Event event;
 		while (window.pollEvent(event)) {
