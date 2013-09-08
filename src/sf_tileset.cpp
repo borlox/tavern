@@ -76,7 +76,7 @@ SfTile SfTileset::GetTile(const unsigned int gid)
 }
 
 ////////////////////////////////////////////////////////////
-void SfTileset::RenderTile(sf::RenderWindow& _window, const unsigned int _id, const float _x, const float _y)
+void SfTileset::RenderTile(sf::RenderTarget& _window, const unsigned int _id, const float _x, const float _y)
 {
   SfTile tile = GetTile(_id);
   sf::Sprite sprite(*tileset_image, tile.GetRect());
