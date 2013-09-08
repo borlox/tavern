@@ -55,7 +55,7 @@ local function HandleObjectClick(object)
 
 	Object_MoveToThen(World:GetHero(), World:GetMap(""):PixelToTile(Vector2f(object:GetPosition())), function()
 		Log(LogLevel.Msg, "Hero reached " .. object:GetName())
-		DisplayTextFile(object:GetProperty("textfile"))
+		DisplayText(object:GetProperty("textfile"))
 	end)
 end
 

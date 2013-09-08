@@ -81,9 +81,10 @@ int main(int argc, char **argv)
 		while (window.pollEvent(event)) {
 			gui.HandleEvent(event);
 
-
-			world.HandleEvents(event);
-			Scripting::Get().PostSfmlEvent(event);
+			if (!gui.PopupVisible()) {
+				world.HandleEvents(event);
+				Scripting::Get().PostSfmlEvent(event);
+			}
 
 			if (event.type == sf::Event::Closed)
 				window.close();

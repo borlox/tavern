@@ -29,6 +29,25 @@ public:
 		return shouldQuit;
 	}
 
+	bool PopupVisible() const
+	{
+		return textWindow.win->IsLocallyVisible();
+	}
+
+	void ShowTextWindow(std::string file);
+
+	static void exp_ShowTextWindow(std::string file)
+	{
+		UserInterface::Get().ShowTextWindow(file);
+	}
+
+	static luabind::scope ExportClass()
+	{
+		return
+			luabind::def("DisplayText", UserInterface::exp_ShowTextWindow)
+		;
+	}
+
 private:
 	UserInterface()
 	{}
@@ -57,6 +76,16 @@ private:
 		sfg::Button::Ptr reloadBtn;
 		sfg::Separator::Ptr sep;
 	} script;
+	void InitScript();
+
+	struct {
+		sfg::Window::Ptr win;
+		sfg::Box::Ptr layout;
+		sfg::Label::Ptr label;
+		sfg::Separator::Ptr sep;
+		sfg::Button::Ptr okBtn;
+	} textWindow;
+	void InitTextWindow();
 };
 
 #endif //USER_INTERFACE_H

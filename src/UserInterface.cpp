@@ -5,10 +5,12 @@
 using namespace sf;
 using namespace sfg;
 
+namespace fs = boost::filesystem;
+
 void UserInterface::Initialize()
 {
 	fixedWin = sfg::Window::Create(0);
-	fixedWin->SetPosition(Vector2f(0.f, 0.f));
+	fixedWin->SetPosition(Vector2f(5.f, 390.f));
 
 	fixedLayout = Fixed::Create();
 	fixedWin->Add(fixedLayout);
@@ -17,8 +19,19 @@ void UserInterface::Initialize()
 	quitBtn->GetSignal(Widget::OnLeftClick).Connect(Delegate([&]() {
 		shouldQuit = true;
 	}));
-	fixedLayout->Put(quitBtn, Vector2f(350.f, 5.f));
+	fixedLayout->Put(quitBtn, Vector2f(0.f, 30.f));
 
+	InitScript();	
+	fixedLayout->Put(script.layout, Vector2f(0.f, 0.f));
+
+	InitTextWindow();
+
+	desktop.Add(textWindow.win);
+	desktop.Add(fixedWin);
+}
+
+void UserInterface::InitScript()
+{
 	script.layout = Box::Create(Box::HORIZONTAL, 5.0f);
 	script.entry = Entry::Create();
 	script.entry->SetRequisition(Vector2f(300.f, 20.f));
@@ -49,14 +62,53 @@ void UserInterface::Initialize()
 	script.layout->Pack(script.execBtn);
 	script.layout->Pack(script.sep);
 	script.layout->Pack(script.reloadBtn);
+}
 
-	fixedLayout->Put(script.layout, Vector2f(5.f, 390.f));
+void UserInterface::InitTextWindow()
+{
+	auto& tw = textWindow;
+	tw.win = sfg::Window::Create();
+	tw.win->SetPosition(Vector2f(100.f, 100.f));
 
-	desktop.Add(fixedWin);
+	tw.layout = Box::Create(Box::VERTICAL, 5.f);
+
+	tw.label = Label::Create();
+	tw.layout->Pack(tw.label);
+
+	tw.sep = Separator::Create(Separator::HORIZONTAL);
+	tw.layout->Pack(tw.sep);
+
+	tw.okBtn = Button::Create("Ok");
+	tw.okBtn->GetSignal(Widget::OnLeftClick).Connect(Delegate([&]() {
+		textWindow.win->Show(false);
+	}));
+	tw.layout->Pack(tw.okBtn);
+
+	tw.win->Add(tw.layout);
+	tw.win->Show(false);
 }
 
 void UserInterface::HandleEvent(const Event& event)
 {
 	currentEvent = event;
 	desktop.HandleEvent(event);
+}
+
+void UserInterface::ShowTextWindow(std::string file)
+{
+	//fs::path path = "assets/texts";
+	//path /= file;
+	fs::path path = file;
+
+	std::string text;
+
+	std::ifstream inf(path.string());
+	std::string line;
+
+	while (std::getline(inf, line))
+		text += line + '\n';
+
+	textWindow.label->SetText(text);
+	textWindow.label->RequestResize();
+	textWindow.win->Show();
 }

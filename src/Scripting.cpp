@@ -85,6 +85,7 @@ void Scripting::exp_SetEventHandler(object func)
 #include "GameObject.h"
 #include "World.h"
 #include "Tilemap.h"
+#include "UserInterface.h"
 #include "MapObject.h"
 
 namespace Exp
@@ -142,10 +143,9 @@ void Scripting::InitLuaState()
 			value("Trace", Log::Logger::Trace)
 		],
 
-		def("DisplayTextFile", DisplayTextFromFile),
-
 		ExportSfmlClasses(),
 
+		UserInterface::ExportClass(),
 		MapObject::ExportClass(),
 		Tilemap::ExportClass(),
 		World::ExportClass(),
