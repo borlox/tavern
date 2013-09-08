@@ -57,7 +57,6 @@ private:
 	void MarkEventHandled();
 
 	sf::Event currentEvent;
-	//volatile bool eventHandled;
 
 	bool shouldQuit;
 
