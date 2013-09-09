@@ -271,7 +271,7 @@ struct NodeAtPos
 	}
 };
 
-Tilemap::Path Tilemap::FindPath(sf::Vector2f start, sf::Vector2f end)
+Path Tilemap::FindPath(sf::Vector2f start, sf::Vector2f end)
 {
 	assert(IsTileAccessible(start));
 
@@ -347,7 +347,7 @@ Tilemap::Path Tilemap::FindPath(sf::Vector2f start, sf::Vector2f end)
 		bool first = true;
 		while (n) {
 			if (!first && n->parent) // do not use first or last step of the computed path, they just point to the upper left corner of the start/end tile
-				path.push(sf::Vector2f(n->x, n->y));
+				path.push(sf::Vector2f(static_cast<float>(n->x), static_cast<float>(n->y)));
 			n = n->parent;
 			first = false;
 		}

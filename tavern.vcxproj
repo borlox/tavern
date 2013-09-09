@@ -41,6 +41,7 @@
     <ClInclude Include="include\Log.h" />
     <ClInclude Include="include\MapObject.h" />
     <ClInclude Include="include\MovableObject.h" />
+    <ClInclude Include="include\Path.h" />
     <ClInclude Include="include\pch.h" />
     <ClInclude Include="include\Scripting.h" />
     <ClInclude Include="include\ScriptingHelper.h" />

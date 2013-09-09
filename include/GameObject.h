@@ -2,7 +2,7 @@
 #define GAME_OBJECT_H
 
 #include "ScriptingHelper.h"
-#include "Tilemap.h"
+#include "Path.h"
 
 class GameObject
 {
@@ -75,7 +75,7 @@ public:
 		subRect = rect;
 	}
 
-	void FollowPath(Tilemap::Path p, bool sendNotice)
+	void FollowPath(Path p, bool sendNotice)
 	{
 		path = p;
 		noticeOnPathComplete = true;
@@ -83,13 +83,13 @@ public:
 
 	void ResetPath()
 	{
-		path = Tilemap::Path();
+		path = Path();
 		noticeOnPathComplete = false;
 	}
 
 	virtual void Update(float elapsed);
 
-	void Render(sf::RenderTarget& target, sf::Vector2f screenPos)
+	void Render(sf::RenderTarget& target, sf::Vector2f screenPos) const
 	{
 		if (texture) {
 			sf::Sprite sprite(*texture, subRect);
@@ -131,7 +131,7 @@ private:
 	float moveSpeed;
 
 protected:
-	Tilemap::Path path;
+	Path path;
 	bool noticeOnPathComplete;
 };
 

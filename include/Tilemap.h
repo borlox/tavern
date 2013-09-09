@@ -6,6 +6,7 @@
 #include "sf_tileset.h"
 
 #include "Log.h"
+#include "Path.h"
 
 namespace sftile {
 	class SfCamera;
@@ -44,8 +45,6 @@ class Tilemap
 {
 friend class priv::SfTilemapLoader;
 public:
-	typedef std::stack<sf::Vector2f> Path;
-
 	/**
 	 * \brief Default constructor
 	 *
@@ -180,7 +179,7 @@ public:
 			.def("FindPath", &Tilemap::FindPath)
 			.def("GetObjects", &Tilemap::GetObjects, luabind::return_stl_iterator)
 			,
-			luabind::class_<Tilemap::Path>("Path")
+			luabind::class_<Path>("Path")
 		;
 	}
 
