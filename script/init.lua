@@ -44,7 +44,6 @@ EventHandler:AddEventHandler("StateStart", function(event, state)
 end)
 
 EventHandler:AddEventHandler("ObjectPathComplete", function(event, objId)
-	Log(LogLevel.Debug, "ObjectPathComplete, " .. objId)
 	if Object_MoveCompleteFunc[objId] then
 		Object_MoveCompleteFunc[objId]()
 	end
@@ -53,13 +52,13 @@ end)
 local function ParseOrientation(str)
 	str = str:lower()
 	if str == "south" then
-		return GameObject.South
+		return Orientation.South
 	elseif str == "north" then
-		return GameObject.North
+		return Orientation.North
 	elseif str == "west" then
-		return GameObject.West
+		return Orientation.West
 	elseif str == "east" then
-		return GameObject.East
+		return Orientation.East
 	end
 end
 
@@ -79,7 +78,7 @@ local ObjectHandlers = {
 		local newMap = World:GetMap("")
 		local foundPos = false
 		local ot = nil
-		for obj in newMap:GetObjects("objects") do
+		for obj in newMap:GetMapObjects("objects") do
 			if obj:GetType() == "spawn" and obj:GetProperty("from") == oldMapId then
 				local center = obj:GetCenter()
 				local pos = newMap:PixelToTile(Vector2f(center.x, center.y))
@@ -125,7 +124,7 @@ EventHandler:AddEventHandler("MouseButtonReleased", function(event, arg)
 	end
 
 	if arg.button == MouseButton.Left then
-		local objects = map:GetObjects("objects")
+		local objects = map:GetMapObjects("objects")
 
 		for obj in objects do
 			local objpos = map:PixelToTile(Vector2f(obj:GetPosition()))
