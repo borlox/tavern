@@ -94,6 +94,7 @@ void UserInterface::InitTextWindow()
 	tw.layout->Pack(tw.label);
 
 	tw.sep = Separator::Create(Separator::HORIZONTAL);
+	tw.sep->SetClass("textSeparator");
 	tw.layout->Pack(tw.sep);
 
 	tw.okBtn = Button::Create("Ok");

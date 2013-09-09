@@ -6,6 +6,26 @@ Button, Entry {
 	FontSize: 14;
 }
 
+Window {
+	TitleBackgroundColor: #4d4d47ff;
+
+	BackgroundColor: #FAE091FF;
+	Color: #fac87cff;
+	BorderColor: #000000FF;
+	BorderWidth: 1;
+	FontSize: 14;
+}
+
+Label {
+	BackgroundColor: #FAE091FF;
+	Color: #000000FF;
+	FontSize: 14;
+}
+
 Separator {
 	Color: #fac87cff;
+}
+
+.textSeparator {
+	Color: #000000FF;
 }
