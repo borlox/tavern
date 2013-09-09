@@ -111,10 +111,13 @@ public:
 				luabind::value("West", GameObject::West)
 			],
 			luabind::class_<GameObject>("GameObject")
+			.def(luabind::constructor<>())
+			.def(luabind::constructor<sf::Texture*>())
 			.def("SetPosition", pick_overload(GameObject, SetPosition, void, (float, float)))
 			.def("GetPosition", ::GetPosition<GameObject>)
 			.def("SetOrientation", &GameObject::SetOrientation)
 			.def("GetOrientation", &GameObject::GetOrientation)
+			.def("SetId", &GameObject::SetId)
 			.def("GetId", &GameObject::GetId)
 			.def("FollowPath", &GameObject::FollowPath)
 			;
