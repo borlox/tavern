@@ -127,7 +127,7 @@ void Tilemap::RenderObjects(sf::RenderTarget& target, const GameObject* hero)
 
 		for (auto& obj: gameObjects) {
 			auto pos = obj->GetPosition();
-			if (static_cast<int>(hpos.y) == tile_y)
+			if (static_cast<int>(pos.y) == tile_y)
 				RenderObject(target, obj.get());
 		}
 
