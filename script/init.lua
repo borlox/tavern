@@ -1,6 +1,14 @@
 
 Log(LogLevel.Msg, "Hello world from Lua!")
 
+function AddTestUnit()
+	local tex = LoadTexture("assets/image/character/TestCharacter.png")
+	local obj = AnimatedObject(tex)
+	obj:SetPosition(4, 4)
+	World:GetMap(""):AddGameObject(obj)
+	return obj
+end
+
 local EventHandler = {
 	handler = {},
 }
