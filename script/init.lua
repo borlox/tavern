@@ -50,6 +50,19 @@ EventHandler:AddEventHandler("ObjectPathComplete", function(event, objId)
 	end
 end)
 
+local function ParseOrientation(str)
+	str = str:lower()
+	if str == "south" then
+		return GameObject.South
+	elseif str == "north" then
+		return GameObject.North
+	elseif str == "west" then
+		return GameObject.West
+	elseif str == "east" then
+		return GameObject.East
+	end
+end
+
 local ObjectHandlers = {
 	readable = function(obj)
 		DisplayText(obj:GetProperty("textfile"))
@@ -65,16 +78,23 @@ local ObjectHandlers = {
 
 		local newMap = World:GetMap("")
 		local foundPos = false
+		local ot = nil
 		for obj in newMap:GetObjects("objects") do
 			if obj:GetType() == "spawn" and obj:GetProperty("from") == oldMapId then
 				local center = obj:GetCenter()
 				local pos = newMap:PixelToTile(Vector2f(center.x, center.y))
 				World:GetHero():SetPosition(pos.x, pos.y)
 				foundPos = true
+
+				ot = ParseOrientation(obj:GetProperty("orientation"))
 			end
 		end
 		if not foundPos then
 			World:GetHero():SetPosition(2, 2)
+		end
+
+		if ot ~= nil then
+			World:GetHero():SetOrientation(ot)
 		end
 	end,
 }

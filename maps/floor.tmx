@@ -2442,7 +2442,7 @@
    <tile gid="0"/>
   </data>
  </layer>
- <layer name="collision" width="20" height="20" visible="0" opacity="0.36">
+ <layer name="collision" width="20" height="20" visible="0" opacity="0.48">
   <data>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -2855,6 +2855,13 @@
   <object name="spawnFromTest" type="spawn" x="557" y="532" width="6" height="8">
    <properties>
     <property name="from" value="test"/>
+    <property name="orientation" value="south"/>
+   </properties>
+  </object>
+  <object name="test" type="unit" x="514" y="132" width="11" height="9">
+   <properties>
+    <property name="orientation" value="south"/>
+    <property name="type" value="test"/>
    </properties>
   </object>
  </objectgroup>
