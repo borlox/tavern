@@ -35,6 +35,8 @@ scope ExportUtilityClasses()
 		.def(luabind::constructor<int, int>())
 		.def_readwrite("x", &sf::Vector2i::x)
 		.def_readwrite("y", &sf::Vector2i::y)
+		,
+		class_<sf::Texture>("Texture")
 	;
 }
 
