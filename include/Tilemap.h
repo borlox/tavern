@@ -6,6 +6,7 @@
 #include "sf_tileset.h"
 
 #include "Log.h"
+#include "GameObject.h"
 #include "Path.h"
 
 namespace sftile {
@@ -93,8 +94,6 @@ public:
 		return camera;
 	}
 
-
-
 	/**
 	 * \brief Handles any events referring to the tile map.
 	 *
@@ -106,15 +105,31 @@ public:
 	 * \brief Updates anything in the tile map that needs
 	 *        updating.
 	 */
-	void Update();
+	void Update(float elapsed);
 
 	/**
-	 * \brief Renders the tile map.
+	 * Add an object to the world.
 	 *
-	 * \param window SFML window to render to
-	 * \param cliff Render the cliff layers
+	 * The World takes ownership of the object.
 	 */
-	void Render(sf::RenderTarget& target, bool cliff);
+	void AddObject(GameObject* obj)
+	{
+		gameObjects.emplace_back(obj);
+	}
+
+	/**
+	 * Render the tile map.
+	 *
+	 * @param target SFML window to render to
+	 */
+	void RenderTiles(sf::RenderTarget& target);
+
+	/**
+	 * Render the hero, all objects and the cliff layers
+	 *
+	 * @param target SFML window to render to
+	 */
+	void RenderObjects(sf::RenderTarget& target, const GameObject* hero);
 
 	sf::Vector2f TileToScreen(sf::Vector2f tilePos);
 	sf::Vector2f ScreenToTile(sf::Vector2f screenPos);
@@ -187,6 +202,7 @@ private:
 	void UpdateCollisionLayer();
 
 	void RenderLayer(sf::RenderTarget& target, size_t index);
+	void RenderObject(sf::RenderTarget& target, const GameObject* obj);
 
 	sf::Vector2f FindNearestAccessible(sf::Vector2f start, sf::Vector2f);
 	std::vector<std::pair<sf::Vector2i, float>> FindNeighbors(sf::Vector2i tile);
@@ -220,6 +236,8 @@ private:
 
 	/// Compression of the tile map
 	TilemapCompression compression;
+
+	std::vector<std::unique_ptr<GameObject>> gameObjects;
 };
 
 #endif // TILEMAP_H

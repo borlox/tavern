@@ -1,4 +1,5 @@
 #include "pch.h"
+#include "GameObject.h"
 #include "Tilemap.h"
 
 #include "sf_camera.h"
@@ -84,19 +85,71 @@ void Tilemap::HandleEvents(sf::Event evt)
 	camera->HandleEvents(evt);
 }
 
-void Tilemap::Update()
+void Tilemap::Update(float elapsed)
 {
 	camera->Update();
+
+	for (auto& obj: gameObjects)
+		obj->Update(elapsed);
+
+	boost::sort(gameObjects, [](const GameObject::Ptr& a, const GameObject::Ptr& b) {
+		return a->GetPosition().y < b->GetPosition().y;
+	});
 }
 
-void Tilemap::Render(sf::RenderTarget& window, bool cliff)
+void Tilemap::RenderTiles(sf::RenderTarget& window)
 {
 	sf::Vector2i offset = camera->GetTileOffset(tile_dimensions.x, tile_dimensions.y);
 	sf::IntRect bounds = camera->GetBounds(tile_dimensions.x, tile_dimensions.y);
 
 	for (size_t l =0; l < tile_layers.size(); ++l) {
-		if (cliff == tile_layers[l].IsCliffLayer())
+		if (!tile_layers[l].IsCliffLayer())
 			RenderLayer(window, l);
+	}
+}
+
+void Tilemap::RenderObject(sf::RenderTarget& target, const GameObject* obj)
+{
+	obj->Render(target, TileToScreen(obj->GetPosition()));
+}
+
+void Tilemap::RenderObjects(sf::RenderTarget& target, const GameObject* hero)
+{
+	sf::Vector2i offset = camera->GetTileOffset(tile_dimensions.x, tile_dimensions.y);
+	sf::IntRect bounds = camera->GetBounds(tile_dimensions.x, tile_dimensions.y);
+
+	auto renderOffset = camera->GetRenderOffset();
+
+	for (int y = 0, tile_y = bounds.top; y < bounds.height; ++y, ++tile_y) {
+		auto hpos = hero->GetPosition();
+		if (static_cast<int>(hpos.y) == tile_y)
+			RenderObject(target, hero);
+
+		for (auto& obj: gameObjects) {
+			auto pos = obj->GetPosition();
+			if (static_cast<int>(hpos.y) == tile_y)
+				RenderObject(target, obj.get());
+		}
+
+		for (int x = 0, tile_x = bounds.left; x < bounds.width; ++x, ++tile_x) {
+			if (tile_x < 0 || tile_y < 0)
+				continue;
+			if (tile_x >= map_dimensions.x || tile_y >= map_dimensions.y)
+				continue;
+
+			for (size_t l = 0; l < tile_layers.size(); ++l) {
+				auto& layer = tile_layers[l];
+				if (!layer.IsCliffLayer())
+					continue;
+				int gid = layer.GetTileGID(tile_x, tile_y);
+				if (gid == 0)
+					continue;
+
+				float pos_x = static_cast<float>(x * tile_dimensions.x - offset.x);
+				float pos_y = static_cast<float>(y * tile_dimensions.y - offset.y);
+				TilesetForGID(gid).RenderTile(target, gid, pos_x + renderOffset.x, pos_y + renderOffset.y);
+			}
+		}
 	}
 }
 

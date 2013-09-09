@@ -74,16 +74,6 @@ public:
 	void Render(sf::RenderWindow& _window);
 
 	/**
-	 * Add an object to the world.
-	 *
-	 * The World takes ownership of the object.
-	 */
-	void AddObject(GameObject* obj)
-	{
-		gameObjects.emplace_back(obj);
-	}
-
-	/**
 	 * Sets the hero object.
 	 *
 	 * The world takes ownership of the object.
@@ -133,7 +123,6 @@ private:
 	std::string current_id; // Id of the current map
 
 	std::unique_ptr<GameObject> heroObject;
-	std::vector<std::unique_ptr<GameObject>> gameObjects;
 };
 
 #endif // WORLD_H
