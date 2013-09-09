@@ -35,6 +35,7 @@
 
 // luabind
 #include <luabind/luabind.hpp>
+#include <luabind/adopt_policy.hpp>
 #include <luabind/iterator_policy.hpp>
 
 // SFML

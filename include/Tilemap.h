@@ -165,7 +165,7 @@ public:
 		return collisionLayer->GetTileGID(static_cast<int>(tilePos.x), static_cast<int>(tilePos.y)) != 0;
 	}
 
-	const std::vector<MapObject>& GetObjects(const std::string& layer)
+	const std::vector<MapObject>& GetMapObjects(const std::string& layer) const
 	{
 		static std::vector<MapObject> noObjects;
 
@@ -176,6 +176,15 @@ public:
 
 		LOG(Error, "Object layer '" << layer << "' not found.");
 		return noObjects;
+	}
+
+	std::vector<GameObject*> GetGameObjects() const
+	{
+		std::vector<GameObject*> result;
+		result.reserve(gameObjects.size());
+		for (auto& obj: gameObjects)
+			result.push_back(obj.get());
+		return result;
 	}
 
 	Path FindPath(sf::Vector2f start, sf::Vector2f end);
@@ -192,7 +201,10 @@ public:
 			.def("ContainsTilePos", &Tilemap::ContainsTilePos)
 			.def("IsTileAccessible", &Tilemap::IsTileAccessible)
 			.def("FindPath", &Tilemap::FindPath)
-			.def("GetObjects", &Tilemap::GetObjects, luabind::return_stl_iterator)
+			.def("GetMapObjects", &Tilemap::GetMapObjects, luabind::return_stl_iterator)
+
+			.def("AddGameObject", &Tilemap::AddObject, luabind::adopt(_2))
+			.def("GetGameObjects", &Tilemap::GetGameObjects, luabind::return_stl_iterator)
 			,
 			luabind::class_<Path>("Path")
 		;
