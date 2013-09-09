@@ -38,10 +38,16 @@ public:
 		UserInterface::Get().ShowTextWindow(file);
 	}
 
+	static bool exp_LoadUiTheme(std::string theme)
+	{
+		return UserInterface::Get().desktop.LoadThemeFromFile("assets/misc/" + theme + ".theme");
+	}
+
 	static luabind::scope ExportClass()
 	{
 		return
-			luabind::def("DisplayText", UserInterface::exp_ShowTextWindow)
+			luabind::def("DisplayText", UserInterface::exp_ShowTextWindow),
+			luabind::def("LoadUiTheme", UserInterface::exp_LoadUiTheme)
 		;
 	}
 
