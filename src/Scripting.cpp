@@ -85,6 +85,8 @@ void Scripting::exp_SetEventHandler(object func)
 
 #include "ScriptingSfml.h"
 #include "GameObject.h"
+#include "AnimatedObject.h"
+#include "MovableObject.h"
 #include "World.h"
 #include "Tilemap.h"
 #include "UserInterface.h"
@@ -158,7 +160,9 @@ void Scripting::InitLuaState()
 		MapObject::ExportClass(),
 		Tilemap::ExportClass(),
 		World::ExportClass(),
-		GameObject::ExportClass()
+		GameObject::ExportClass(),
+		AnimatedObject::ExportClass(),
+		MovableObject::ExportClass()
 	];
 
 	RegisterGlobals();

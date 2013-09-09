@@ -23,6 +23,16 @@ public:
 	{
 		return !path.empty();
 	}
+
+	static luabind::scope ExportClass()
+	{
+		return
+			luabind::class_<MovableObject, AnimatedObject>("MovableObject")
+			.def(luabind::constructor<>())
+			.def(luabind::constructor<sf::Texture*>())
+			.def("IsMoving", &MovableObject::IsMoving)
+		;
+	}
 };
 
 #endif //MOVABLE_OBJECT_H

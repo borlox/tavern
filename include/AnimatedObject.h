@@ -40,6 +40,17 @@ public:
 		animate = anim;
 	}
 
+	static luabind::scope ExportClass()
+	{
+		return
+			luabind::class_<AnimatedObject, GameObject>("AnimatedObject")
+			.def(luabind::constructor<>())
+			.def(luabind::constructor<sf::Texture*>())
+			.def("Animate", &AnimatedObject::Animate)
+			.def("ResetAnimation", &AnimatedObject::ResetAnimation)
+		;
+	}
+
 private:
 	void SetFrame(size_t n);
 };
