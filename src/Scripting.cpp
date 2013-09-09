@@ -89,6 +89,7 @@ void Scripting::exp_SetEventHandler(object func)
 #include "Tilemap.h"
 #include "UserInterface.h"
 #include "MapObject.h"
+#include "TextureManager.h"
 
 namespace Exp
 {
@@ -108,6 +109,11 @@ namespace Exp
 	void SetUpdateHandler(luabind::object func)
 	{
 		Scripting::Get().exp_SetUpdateHandler(func);
+	}
+
+	sf::Texture* LoadTexture(std::string file)
+	{
+		return TextureManager::Get().Load(file);
 	}
 
 	namespace DummyClass {
@@ -134,6 +140,7 @@ void Scripting::InitLuaState()
 		def("Log", &Exp::Log),
 		def("SetEventHandler", &Exp::SetEventHandler),
 		def("SetUpdateHandler", &Exp::SetUpdateHandler),
+		def("LoadTexture", &Exp::LoadTexture),
 
 		class_<Exp::DummyClass::LogLevel>("LogLevel")
 		.enum_("loglevels")[
