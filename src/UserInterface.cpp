@@ -10,6 +10,8 @@ namespace fs = boost::filesystem;
 
 void UserInterface::Initialize()
 {
+	popupOpen = false;
+
 	topBar.setTexture(*TextureManager::Get().Load("assets/image/interface/TopBar.png"));
 	topBar.setPosition(0.f, 0.f);
 
@@ -127,4 +129,5 @@ void UserInterface::ShowTextWindow(std::string file)
 	textWindow.label->SetText(text);
 	textWindow.label->RequestResize();
 	textWindow.win->Show();
+	popupOpen = true;
 }

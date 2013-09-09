@@ -17,6 +17,8 @@ public:
 	void Update(float elapsed)
 	{
 		desktop.Update(elapsed);
+		if (!textWindow.win->IsLocallyVisible())
+			popupOpen = false;
 	}
 
 	void Render(sf::RenderWindow& target);
@@ -28,10 +30,11 @@ public:
 
 	bool PopupVisible() const
 	{
-		return textWindow.win->IsLocallyVisible();
+		return popupOpen;
 	}
 
 	void ShowTextWindow(std::string file);
+
 
 	static void exp_ShowTextWindow(std::string file)
 	{
@@ -62,6 +65,7 @@ private:
 	sf::Event currentEvent;
 
 	bool shouldQuit;
+	bool popupOpen;
 
 	sfg::SFGUI sfgui;
 	sfg::Desktop desktop;
