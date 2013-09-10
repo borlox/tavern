@@ -80,6 +80,8 @@ private:
 	void RegisterGlobals();
 
 	void LoadUnitDefs();
+
+	void RunScriptsInDirectory(const boost::filesystem::path& dir);
 };
 
 inline void Scripting::PostEvent(const std::string& event)

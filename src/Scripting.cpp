@@ -27,8 +27,9 @@ void Scripting::Initialize()
 {
 	InitLuaState();
 
-	ExecuteFile("script/init.lua");
-	LoadUnitDefs();
+	RunScriptsInDirectory("script");
+	RunScriptsInDirectory("assets/units");
+
 	PostEvent("ScriptingInitialized");
 }
 
@@ -175,20 +176,18 @@ void Scripting::RegisterGlobals()
 	globals(L)["World"] = &g_World;
 }
 
-void Scripting::LoadUnitDefs()
+void Scripting::RunScriptsInDirectory(const boost::filesystem::path& dir)
 {
-	fs::path unitDir = "assets/units";
-	fs::path initFile = unitDir / "_init.lua";
+	fs::path initFile = dir / "_init.lua";
 
 	if (!fs::exists(initFile)) {
-		LOG(Error, "Failed to find unit initialization script: '" << initFile.string() << "'");
-		return;
+		LOG(Msg, "Failed to find initialization script: '" << initFile.string() << "'");
 	}
 
 	ExecuteFile(initFile);
 
 	fs::directory_iterator end;
-	for (fs::directory_iterator iter(unitDir); iter != end; ++iter) {
+	for (fs::directory_iterator iter(dir); iter != end; ++iter) {
 		if (fs::is_regular_file(*iter) && *iter != initFile) {
 			ExecuteFile(*iter);
 		}
