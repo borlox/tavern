@@ -2855,7 +2855,7 @@
   <object name="spawnFromTest" type="spawn" x="557" y="532" width="6" height="8">
    <properties>
     <property name="from" value="test"/>
-    <property name="orientation" value="south"/>
+    <property name="orientation" value="west"/>
    </properties>
   </object>
   <object name="test" type="unit" x="514" y="132" width="11" height="9">
