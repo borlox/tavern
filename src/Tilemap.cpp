@@ -326,7 +326,10 @@ struct NodeAtPos
 
 Path Tilemap::FindPath(sf::Vector2f start, sf::Vector2f end)
 {
-	assert(IsTileAccessible(start));
+	// Deactivate check: If the user issues a FindPath while the unit slightly
+	// moves over an inaccessible tile, this does not hold.
+	// FIXME (please)
+	//assert(IsTileAccessible(start));
 
 	sf::Vector2f target = FindNearestAccessible(start, end);
 
