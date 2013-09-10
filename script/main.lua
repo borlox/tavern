@@ -63,7 +63,7 @@ EventHandler:AddEventHandler("MouseButtonReleased", function(event, arg)
 
 		for obj in objects do
 			local objpos = map:PixelToTile(Vector2f(obj:GetPosition()))
-			local objdim = map:PixelToTile(Vector2f(obj:GetDimensions().x, obj:GetDimensions().y))
+			local objdim = map:PixelToTile(Vector2f(obj:GetDimensions()))
 			if PointInRect(tilePos, objpos, objdim) then
 				handledByObject = HandleObjectClick(obj, tilePos)
 				break

@@ -14,8 +14,8 @@ function SwitchMap(mapId)
 	for obj in newMap:GetMapObjects("objects") do
 		if obj:GetType() == "spawn" and obj:GetProperty("from") == oldMapId then
 			local center = obj:GetCenter()
-			local pos = newMap:PixelToTile(Vector2f(center.x, center.y))
-			World:GetHero():SetPosition(pos.x, pos.y)
+			local pos = newMap:PixelToTile(Vector2f(center))
+			World:GetHero():SetPosition(pos)
 			foundPos = true
 
 			ot = ParseOrientation(obj:GetProperty("orientation"))

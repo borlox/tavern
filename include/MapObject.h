@@ -124,7 +124,7 @@ public:
 			.def("GetName", &MapObject::GetName)
 			.def("GetType", &MapObject::GetType)
 			.def("IsVisible", &MapObject::IsVisible)
-			.def("GetPosition", ::GetPosition<MapObject>)
+			.def("GetPosition", &MapObject::GetPosition)
 			.def("GetDimensions", &MapObject::GetDimensions)
 			.def("GetCenter", &MapObject::GetCenter)
 			.def("GetProperty", &MapObject::GetProperty)
