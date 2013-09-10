@@ -1672,6 +1672,7 @@
   <object name="spawnFromFloor" type="spawn" x="77" y="239" width="9" height="11">
    <properties>
     <property name="from" value="floor"/>
+    <property name="orientation" value="east"/>
    </properties>
   </object>
  </objectgroup>

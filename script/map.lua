@@ -1,6 +1,35 @@
 
-function InitializeMap()
+local initializedMaps = {}
 
+local function AddUnitFromObj(obj, map)
+	Log(LogLevel.Msg, "Adding unit " .. obj:GetProperty("type"))
+	local type = obj:GetProperty("type")
+	local ot = ParseOrientation(obj:GetProperty("orientation"))
+
+	local unit = AddUnit(type, map)
+	unit:SetPosition(map:PixelToTile(Vector2f(obj:GetCenter())))
+	if ot then
+		unit:SetOrientation(ot)
+	end
+end
+
+function InitializeMap()
+	local mapId = World:CurrentMapId()
+	Log(LogLevel.Msg, "Initializing map " .. mapId)
+	if initializedMaps[mapId] then
+		return
+	end
+
+	local map = World:GetMap("")
+
+	for obj in map:GetMapObjects("objects") do
+		Log(LogLevel.Debug, obj:GetName() .. " " .. obj:GetType())
+		if obj:GetType() == "unit" then
+			AddUnitFromObj(obj, map)
+		end
+	end
+
+	initializedMaps[mapId] = true
 end
 
 function SwitchMap(mapId)
@@ -25,4 +54,10 @@ function SwitchMap(mapId)
 	if ot ~= nil then
 		World:GetHero():SetOrientation(ot)
 	end
+
+	InitializeMap()
 end
+
+EventHandler:AddEventHandler("ScriptingInitialized", function(event)
+	InitializeMap()
+end)

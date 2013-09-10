@@ -2858,10 +2858,10 @@
     <property name="orientation" value="west"/>
    </properties>
   </object>
-  <object name="test" type="unit" x="514" y="132" width="11" height="9">
+  <object name="Maid" type="unit" x="514" y="132" width="11" height="9">
    <properties>
     <property name="orientation" value="south"/>
-    <property name="type" value="test"/>
+    <property name="type" value="maid"/>
    </properties>
   </object>
  </objectgroup>

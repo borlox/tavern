@@ -10,14 +10,6 @@ function AddTestUnit()
 	return obj
 end
 
-function AddUnit(unitType)
-	local unitDef = GetUnitType(unitType)
-	local texture = LoadTexture(unitDef.model)
-	local unit = AnimatedObject(texture)
-	World:GetMap(""):AddGameObject(unit)
-	return unit
-end
-
 EventHandler:AddEventHandler("StateStart", function(event, state)
 	Log(LogLevel.Msg, "State start: " .. state)
 end)
