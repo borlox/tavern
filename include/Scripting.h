@@ -78,6 +78,8 @@ private:
 
 	void InitLuaState();
 	void RegisterGlobals();
+
+	void LoadUnitDefs();
 };
 
 inline void Scripting::PostEvent(const std::string& event)

@@ -28,6 +28,8 @@ void Scripting::Initialize()
 	InitLuaState();
 
 	ExecuteFile("script/init.lua");
+	LoadUnitDefs();
+	PostEvent("ScriptingInitialized");
 }
 
 bool Scripting::ExecuteFile(const fs::path& path)
@@ -171,4 +173,24 @@ void Scripting::InitLuaState()
 void Scripting::RegisterGlobals()
 {
 	globals(L)["World"] = &g_World;
+}
+
+void Scripting::LoadUnitDefs()
+{
+	fs::path unitDir = "assets/units";
+	fs::path initFile = unitDir / "_init.lua";
+
+	if (!fs::exists(initFile)) {
+		LOG(Error, "Failed to find unit initialization script: '" << initFile.string() << "'");
+		return;
+	}
+
+	ExecuteFile(initFile);
+
+	fs::directory_iterator end;
+	for (fs::directory_iterator iter(unitDir); iter != end; ++iter) {
+		if (fs::is_regular_file(*iter) && *iter != initFile) {
+			ExecuteFile(*iter);
+		}
+	}
 }
