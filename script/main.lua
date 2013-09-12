@@ -27,6 +27,11 @@ local ObjectHandlers = {
 	end,
 }
 
+local VisibleObjects = {
+	door = true,
+	readable = true,
+}
+
 local function HandleObjectClick(object, clickPos)
 	Log(LogLevel.Msg, "Object clicked: " .. object:GetName())
 
@@ -66,7 +71,7 @@ EventHandler:AddEventHandler("MouseButtonReleased", function(event, arg)
 
 		-- check for clicks on other units
 		for obj in map:GetGameObjects() do
-
+			
 		end
 		if clickHandled then
 			return
@@ -74,5 +79,26 @@ EventHandler:AddEventHandler("MouseButtonReleased", function(event, arg)
 
 		-- default action on click
 		UnitMoveTo(World:GetHero(), tilePos)
+	end
+end)
+
+EventHandler:AddEventHandler("MouseMoved", function(event, arg)
+	local map = GetCurrentMap()
+	local tilePos = map:ScreenToTile(Vector2f(arg.x, arg.y))
+
+	local highlight = false
+	for obj in map:GetMapObjects("objects") do
+		if VisibleObjects[obj:GetType()] then
+			local objpos = map:PixelToTile(Vector2f(obj:GetPosition()))
+			local objdim = map:PixelToTile(Vector2f(obj:GetDimensions()))
+			if PointInRect(tilePos, objpos, objdim) then
+				World:ShowHighlight(objpos, objdim)
+				highlight = true
+			end
+		end
+	end
+
+	if not highlight then
+		World:HideHighlight()
 	end
 end)

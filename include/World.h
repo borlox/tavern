@@ -96,6 +96,18 @@ public:
 		return heroObject.get();
 	}
 
+	void ShowHighlight(sf::Vector2f pos, sf::Vector2f size)
+	{
+		highlightPos = pos;
+		highlightSize = size;
+		showHighlight = true;
+	}
+
+	void HideHighlight()
+	{
+		showHighlight = false;
+	}
+
 	void exp_LoadTilemap(std::string name);
 
 	static luabind::scope ExportClass()
@@ -106,6 +118,8 @@ public:
 			.def("GetMap", &World::GetTilemap)
 			.def("CurrentMapId", &World::CurrentMapId)
 			.def("LoadMap", &World::exp_LoadTilemap)
+			.def("ShowHighlight", &World::ShowHighlight)
+			.def("HideHighlight", &World::HideHighlight)
 		;
 	}
 
@@ -123,6 +137,10 @@ private:
 	std::string current_id; // Id of the current map
 
 	std::unique_ptr<GameObject> heroObject;
+
+	bool showHighlight;
+	sf::Vector2f highlightPos;
+	sf::Vector2f highlightSize;
 };
 
 #endif // WORLD_H
