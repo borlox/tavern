@@ -121,6 +121,11 @@ namespace Exp
 		return TextureManager::Get().Load(file);
 	}
 
+	Tilemap* GetMap()
+	{
+		return g_World.GetTilemap();
+	}
+
 	namespace DummyClass {
 		struct LogLevel {};
 	}
@@ -146,6 +151,7 @@ void Scripting::InitLuaState()
 		def("SetEventHandler", &Exp::SetEventHandler),
 		def("SetUpdateHandler", &Exp::SetUpdateHandler),
 		def("LoadTexture", &Exp::LoadTexture),
+		def("GetCurrentMap", &Exp::GetMap),
 
 		class_<Exp::DummyClass::LogLevel>("LogLevel")
 		.enum_("loglevels")[
