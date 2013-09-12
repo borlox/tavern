@@ -45,25 +45,34 @@ EventHandler:AddEventHandler("MouseButtonReleased", function(event, arg)
 	local tilePos = map:ScreenToTile(Vector2f(arg.x, arg.y))
 
 	if not map:ContainsTilePos(tilePos) then
-		Log(LogLevel.Debug, "Click outside map")
 		return
 	end
 
 	if arg.button == MouseButton.Left then
-		local objects = map:GetMapObjects("objects")
-		local handledByObject = false
+		local clickHandled = false
 
-		for obj in objects do
+		-- check for clicks on map objects like doors
+		for obj in map:GetMapObjects("objects") do
 			local objpos = map:PixelToTile(Vector2f(obj:GetPosition()))
 			local objdim = map:PixelToTile(Vector2f(obj:GetDimensions()))
 			if PointInRect(tilePos, objpos, objdim) then
-				handledByObject = HandleObjectClick(obj, tilePos)
+				clickHandled = HandleObjectClick(obj, tilePos)
 				break
 			end
 		end
-
-		if not handledByObject then
-			UnitMoveTo(World:GetHero(), tilePos)
+		if clickHandled then
+			return
 		end
+
+		-- check for clicks on other units
+		for obj in map:GetGameObjects() do
+
+		end
+		if clickHandled then
+			return
+		end
+
+		-- default action on click
+		UnitMoveTo(World:GetHero(), tilePos)
 	end
 end)

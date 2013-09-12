@@ -58,6 +58,6 @@ function SwitchMap(mapId)
 	InitializeMap()
 end
 
-EventHandler:AddEventHandler("ScriptingInitialized", function(event)
+EventHandler:AddEventHandler("InitComplete", function(event)
 	InitializeMap()
 end)
