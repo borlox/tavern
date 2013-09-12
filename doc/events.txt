@@ -1,0 +1,73 @@
+Events
+======
+A list of all events posted to the scripting system.
+
+ScriptingInitialized
+--------------------
+Triggered, when the scripting system is initialized and all files have been
+executed. The world loading is not complete when this event is triggered.
+
+InitComplete
+------------
+Triggered when the game initialization is complete. This includes loading of the
+initial map and the hero, so the `World` variable is usable at this point.
+
+StateInitialize
+---------------
+Not used at the moment
+
+StateStart
+----------
+Not used at the moment
+
+StateStop
+---------
+Not used at the moment
+
+MouseButtonPressed(button)
+--------------------------
+```
+button = <MouseButtonEvent>
+```
+Fired when a mouse button has been pressed. The `button` argument contains the
+button used and the point of the mouse click in screen coordinates.
+
+MouseButtonPressed(button)
+--------------------------
+```
+button = <MouseButtonEvent>
+```
+Fired when a mouse button has been released. The `button` argument contains the
+button used and the point of the mouse click in screen coordinates.
+
+ObjectPathComplete(id)
+----------------------
+```
+id = <string> -- id of the object
+```
+Triggered when a game object completed its path and the event was requested when
+issuing the path.
+
+
+Event parameter types
+=====================
+Types related to events
+
+MouseButtonEvent
+----------------
+```
+MouseButtonEvent = {
+	button = <MouseButton>,
+	x = <float>, -- x position of the mouse
+	y = <float>, -- y position of the mouse
+}
+```
+All positions are in screen coordinates.
+
+MouseButton
+-----------
+```
+MouseButton = <enum
+	Left, Right, Middle, XButton1, XButton2,
+>
+```
