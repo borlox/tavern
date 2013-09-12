@@ -64,6 +64,9 @@ int main(int argc, char **argv)
 	bool stateChanged = true;
 
 	UserInterface& gui = UserInterface::Get();
+	Scripting& scripting = Scripting::Get();
+
+	scripting.PostEvent("InitComplete");
 
 	window.setFramerateLimit(120);
 	sf::Clock clk;
