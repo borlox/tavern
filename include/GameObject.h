@@ -94,7 +94,7 @@ public:
 		if (texture) {
 			sf::Sprite sprite(*texture, subRect);
 			sprite.setPosition(screenPos);
-			sprite.setOrigin(subRect.width * 0.5f, subRect.height * 0.9f);
+			sprite.setOrigin(subRect.width * 0.5f, subRect.height);
 
 			target.draw(sprite);
 		}
