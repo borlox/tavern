@@ -73,6 +73,9 @@ void Scripting::PostSfmlEvent(sf::Event& event)
 	case sf::Event::MouseButtonReleased:
 		PostEvent("MouseButtonReleased", event.mouseButton);
 		break;
+	case sf::Event::MouseMoved:
+		PostEvent("MouseMoved", event.mouseMove);
+		break;
 	}
 }
 
