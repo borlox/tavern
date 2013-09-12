@@ -94,6 +94,16 @@ void World::Render(sf::RenderWindow& window)
 	auto tilemap = GetTilemap(current_id);
 	tilemap->RenderTiles(window);
 	tilemap->RenderObjects(window, heroObject.get());
+
+	if (showHighlight) {
+		sf::RectangleShape rect;
+		rect.setPosition(tilemap->TileToScreen(highlightPos));
+		rect.setSize(tilemap->TileToScreenSize(highlightSize));
+		rect.setFillColor(sf::Color::Transparent);
+		rect.setOutlineColor(sf::Color(255, 255, 0, 128));
+		rect.setOutlineThickness(2.0f);
+		window.draw(rect);
+	}
 }
 
 bool World::MapExists(string id)
