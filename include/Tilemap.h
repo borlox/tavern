@@ -133,6 +133,11 @@ public:
 	void RenderObjects(sf::RenderTarget& target, const GameObject* hero);
 
 	sf::Vector2f TileToScreen(sf::Vector2f tilePos);
+	sf::Vector2f TileToScreenSize(sf::Vector2f tileSize)
+	{
+		return sf::Vector2f(tileSize.x * tile_dimensions.x, tileSize.y * tile_dimensions.y);
+	}
+
 	sf::Vector2f ScreenToTile(sf::Vector2f screenPos);
 
 	sf::Vector2f PixelToTile(sf::Vector2f pixelPos) const
