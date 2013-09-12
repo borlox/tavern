@@ -115,6 +115,7 @@ public:
 	void AddObject(GameObject* obj)
 	{
 		gameObjects.emplace_back(obj);
+		gameObjectPtrs.push_back(obj);
 	}
 
 	/**
@@ -178,13 +179,9 @@ public:
 		return noObjects;
 	}
 
-	std::vector<GameObject*> GetGameObjects() const
+	const std::vector<GameObject*>& GetGameObjects() const
 	{
-		std::vector<GameObject*> result;
-		result.reserve(gameObjects.size());
-		for (auto& obj: gameObjects)
-			result.push_back(obj.get());
-		return result;
+		return gameObjectPtrs;
 	}
 
 	Path FindPath(sf::Vector2f start, sf::Vector2f end);
@@ -250,6 +247,7 @@ private:
 	TilemapCompression compression;
 
 	std::vector<std::unique_ptr<GameObject>> gameObjects;
+	std::vector<GameObject*> gameObjectPtrs;
 };
 
 #endif // TILEMAP_H
