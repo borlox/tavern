@@ -1,0 +1,54 @@
+latex input:        mmd-article-header
+Title:              Whatever Title You Like 
+Base Header Level:  2  
+LaTeX Mode:         memoir  
+latex input:        mmd-article-begin-doc
+latex footer:       mmd-memoir-footer
+
+tavern scripting API
+====================
+This document describes the Lua scripting API for the tavern game.
+Allthough Lua has a dynamic type system, the types of variables or function
+arguments and return values are given in the form `<TypeName>`. All types are
+described in detail in the Types sectiong.
+
+
+Global variables
+----------------
+
+### <World> World
+This variable represents the game world with all the maps and the hero unit.
+
+Global functions
+----------------
+
+### Log(<LogLevel> level, <string> text)
+Add a message to the log file, if logging for the given level is enabled.
+
+### SetEventHandler(<function> handler)
+Set the handler function for events. For any event, the function given to
+`SetEventHandler` is called. The function arguments are
+
+```handler(<string> event, ...)```
+
+where `...` are a variable number of event parameters.
+
+### SetUpdateHandler(<function> handler)
+Set the handler function for frame updates. This handler is called on every 
+frame drawn. Its argument is the elapsed time in seconds:
+
+```handler(<float> elapsed)```
+
+**Note**: As this function is called very frequently, it should not do too much
+work to be as fast as possible. 
+
+### <Texture> LoadTexture(<string> filename)
+Load and return a texture from a file.
+
+### <Map> GetCurrentMap()
+Return the current map.
+
+Types
+-----
+
+
