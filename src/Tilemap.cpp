@@ -115,6 +115,10 @@ void Tilemap::RenderObject(sf::RenderTarget& target, const GameObject* obj)
 
 void Tilemap::RenderObjects(sf::RenderTarget& target, const GameObject* hero)
 {
+	static std::vector<const GameObject*> objectsToRender;
+	if (objectsToRender.capacity() == 0)
+		objectsToRender.reserve(128);
+
 	sf::Vector2i offset = camera->GetTileOffset(tile_dimensions.x, tile_dimensions.y);
 	sf::IntRect bounds = camera->GetBounds(tile_dimensions.x, tile_dimensions.y);
 
@@ -123,13 +127,20 @@ void Tilemap::RenderObjects(sf::RenderTarget& target, const GameObject* hero)
 	for (int y = 0, tile_y = bounds.top; y < bounds.height; ++y, ++tile_y) {
 		auto hpos = hero->GetPosition();
 		if (static_cast<int>(hpos.y) == tile_y)
-			RenderObject(target, hero);
+			objectsToRender.push_back(hero);
 
 		for (auto& obj: gameObjects) {
 			auto pos = obj->GetPosition();
 			if (static_cast<int>(pos.y) == tile_y)
-				RenderObject(target, obj.get());
+				objectsToRender.push_back(obj.get());
 		}
+
+		boost::sort(objectsToRender, [](const GameObject* a, const GameObject* b) {
+			return a->GetPosition().y < b->GetPosition().y;	
+		});
+		for (auto& obj: objectsToRender)
+			RenderObject(target, obj);
+		objectsToRender.clear();
 
 		for (int x = 0, tile_x = bounds.left; x < bounds.width; ++x, ++tile_x) {
 			if (tile_x < 0 || tile_y < 0)
