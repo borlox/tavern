@@ -108,9 +108,9 @@ int main(int argc, char **argv)
 		}
 
 		world.Update(elapsed);
-		Scripting::Get().Update(elapsed);
 		gui.Update(elapsed);
-
+		Scripting::Get().Update(elapsed);
+		
 		window.clear();
 		world.Render(window);
 		gui.Render(window);
