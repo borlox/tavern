@@ -59,8 +59,7 @@ void World::exp_LoadTilemap(std::string name)
 	fs::path path = "maps";
 	path /= (name + ".tmx");
 
-	auto map = LoadTilemap(name, path.string());
-	//map->RegisterCamera(defaultCamera);
+	LoadTilemap(name, path.string());
 }
 
 Tilemap* World::GetTilemap(string id)
@@ -93,7 +92,6 @@ void World::Render(sf::RenderWindow& window)
 {
 	auto tilemap = GetTilemap(current_id);
 	tilemap->RenderTiles(window);
-	tilemap->RenderObjects(window, heroObject.get());
 
 	if (showHighlight) {
 		sf::RectangleShape rect;
@@ -104,6 +102,8 @@ void World::Render(sf::RenderWindow& window)
 		rect.setOutlineThickness(2.0f);
 		window.draw(rect);
 	}
+
+	tilemap->RenderObjects(window, heroObject.get());
 }
 
 bool World::MapExists(string id)
