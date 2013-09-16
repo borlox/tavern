@@ -14,12 +14,7 @@ public:
 
 	void HandleEvent(const sf::Event& event);
 
-	void Update(float elapsed)
-	{
-		desktop.Update(elapsed);
-		if (!textWindow.win->IsLocallyVisible())
-			popupOpen = false;
-	}
+	void Update(float elapsed);
 
 	void Render(sf::RenderWindow& target);
 
@@ -46,11 +41,29 @@ public:
 		return UserInterface::Get().desktop.LoadThemeFromFile("assets/misc/" + theme + ".theme");
 	}
 
+	static void exp_PrepareDialog(std::string text)
+	{
+		UserInterface::Get().PrepareDialog(text);
+	}
+
+	static void exp_AddDialogButton(std::string id, std::string text)
+	{
+		UserInterface::Get().AddDialogButton(id, text);
+	}
+
+	static void exp_ShowDialog()
+	{
+		UserInterface::Get().ShowDialog();
+	}
+
 	static luabind::scope ExportClass()
 	{
 		return
 			luabind::def("DisplayText", UserInterface::exp_ShowTextWindow),
-			luabind::def("LoadUiTheme", UserInterface::exp_LoadUiTheme)
+			luabind::def("LoadUiTheme", UserInterface::exp_LoadUiTheme),
+			luabind::def("PrepareDialog", UserInterface::exp_PrepareDialog),
+			luabind::def("AddDialogButton", UserInterface::exp_AddDialogButton),
+			luabind::def("ShowDialog", UserInterface::exp_ShowDialog)
 		;
 	}
 
@@ -61,6 +74,12 @@ private:
 	void SetCommonHandler(sfg::Widget::Ptr widget);
 
 	void MarkEventHandled();
+
+	void PrepareDialog(const std::string& text);
+	void AddDialogButton(std::string id, std::string text);
+	void ShowDialog();
+	void ClearDialog();
+	void HideDialog();
 
 	sf::Event currentEvent;
 
@@ -95,6 +114,16 @@ private:
 		sfg::Button::Ptr okBtn;
 	} textWindow;
 	void InitTextWindow();
+
+	struct {
+		sfg::Window::Ptr win;
+		sfg::Box::Ptr layout;
+		sfg::Label::Ptr label;
+		sfg::Separator::Ptr sep;
+		std::vector<sfg::Button::Ptr> buttons;
+		bool clearButtons;
+	} dialogWindow;
+	void InitDialogWindow();
 };
 
 #endif //USER_INTERFACE_H

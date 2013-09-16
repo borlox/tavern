@@ -34,8 +34,10 @@ void UserInterface::Initialize()
 	fixedLayout->Put(script.layout, Vector2f(0.f, 0.f));
 
 	InitTextWindow();
+	InitDialogWindow();
 
 	desktop.Add(textWindow.win);
+	desktop.Add(dialogWindow.win);
 	desktop.Add(fixedWin);
 
 	desktop.LoadThemeFromFile("assets/misc/ui.theme");
@@ -107,11 +109,39 @@ void UserInterface::InitTextWindow()
 	tw.win->Show(false);
 }
 
+void UserInterface::InitDialogWindow()
+{
+	auto& dw = dialogWindow;
+
+	dw.win = sfg::Window::Create();
+	dw.win->SetPosition(Vector2f(250, 250));
+
+	dw.layout = Box::Create(Box::VERTICAL, 5.f);
+
+	dw.label = Label::Create();
+	dw.layout->Pack(dw.label);
+
+	dw.sep = Separator::Create(Separator::HORIZONTAL);
+	dw.sep->SetClass("textSeparator");
+	dw.layout->Pack(dw.sep);
+
+	dw.win->Add(dw.layout);
+	dw.win->Show(false);
+}
+
 void UserInterface::HandleEvent(const Event& event)
 {
 	currentEvent = event;
 	desktop.HandleEvent(event);
 }
+
+void UserInterface::Update(float elapsed)
+{
+	desktop.Update(elapsed);
+	if (!textWindow.win->IsLocallyVisible() && !dialogWindow.win->IsLocallyVisible())
+		popupOpen = false;
+}
+
 
 void UserInterface::ShowTextWindow(std::string file)
 {
@@ -131,4 +161,49 @@ void UserInterface::ShowTextWindow(std::string file)
 	textWindow.label->RequestResize();
 	textWindow.win->Show();
 	popupOpen = true;
+}
+
+void UserInterface::PrepareDialog(const std::string& text)
+{
+	ClearDialog();
+	auto& dw = dialogWindow;
+
+	dw.label->SetText(text);
+}
+
+void UserInterface::AddDialogButton(std::string id, std::string text)
+{
+	Button::Ptr btn = Button::Create(text);
+	btn->GetSignal(Widget::OnLeftClick).Connect(Delegate([=]() {
+		Scripting::Get().PostEvent("DialogButtonClicked", id);
+		HideDialog();
+	}));
+
+	auto& dw = dialogWindow;
+	dw.buttons.push_back(btn);
+	dw.layout->Pack(btn);
+}
+
+void UserInterface::ShowDialog()
+{
+	dialogWindow.win->Refresh();
+	dialogWindow.win->Show();
+	popupOpen = true;
+}
+
+void UserInterface::HideDialog()
+{
+	auto& dw = dialogWindow;
+
+	dw.win->Show(false);
+}
+
+void UserInterface::ClearDialog()
+{
+	auto& dw = dialogWindow;
+
+	for (auto& btn: dw.buttons)
+		dw.layout->Remove(btn);
+
+	dw.buttons.clear();
 }
