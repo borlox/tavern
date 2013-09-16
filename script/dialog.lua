@@ -1,6 +1,15 @@
 
 local CurrentConversation = nil
 
+local function ShowConversation(conv)
+	CurrentConversation.showOnUpdate = false
+	PrepareDialog(conv.text)
+	for _, answer in ipairs(conv.answers) do
+		AddDialogButton(answer.action, answer.text)
+	end
+	ShowDialog()
+end
+
 function BeginConversation(unitType)
 	local def = unitType.talk._default
 	local conv = unitType.talk[def]
@@ -13,15 +22,13 @@ function BeginConversation(unitType)
 
 	ShowConversation(conv)
 end
+AddHelpMessage(BeginConversation, [[BeginConversation(unitType)
 
-function ShowConversation(conv)
-	CurrentConversation.showOnUpdate = false
-	PrepareDialog(conv.text)
-	for _, answer in ipairs(conv.answers) do
-		AddDialogButton(answer.action, answer.text)
-	end
-	ShowDialog()
-end
+Begin a conversation with a unit of the given type. This will open the dialog window.
+
+Paramters:
+	unitType - The actual unit type (not its id), as given by GetUnitType
+]])
 
 EventHandler:AddEventHandler("DialogButtonClicked", function(event, id)
 	if not CurrentConversation then

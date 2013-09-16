@@ -10,6 +10,7 @@ Button::Button() :
 }
 
 Button::~Button() {
+
 }
 
 Button::Ptr Button::Create( const sf::String& label ) {
