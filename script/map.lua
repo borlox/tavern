@@ -6,7 +6,7 @@ local function AddUnitFromObj(obj, map)
 	local type = obj:GetProperty("type")
 	local ot = ParseOrientation(obj:GetProperty("orientation"))
 
-	local unit = AddUnit(type, map)
+	local unit = AddUnit(type, obj:GetName(), map)
 	unit:SetPosition(map:PixelToTile(Vector2f(obj:GetCenter())))
 	if ot then
 		unit:SetOrientation(ot)
